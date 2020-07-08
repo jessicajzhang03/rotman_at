@@ -1,0 +1,261 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{jjz}
+\usetikzlibrary{cd}
+\usepackage[nameinlink]{cleveref}
+
+\theoremstyle{definition} 
+\newtheorem{intex}{Exercise}[section]
+\newenvironment{exercise}{\begin{intex}\label{\theintex}}{\end{intex}}
+\crefname{intex}{Exercise}{Exercises}
+
+\setlist[enumerate,1]{label=(\roman*),leftmargin=\parindent}
+\crefname{enumi}{Exercise~\theintex~Part}{Exercise~\theintex~Parts}
+
+\newcommand*\II{\mathbb I}
+\DeclareMathOperator\obj{obj}
+\DeclareMathOperator\Hom{Hom}
+\newcommand*\cat[1]{\mathcal{#1}}
+\newcommand*\Cat[1]{\textbf{#1}}
+\newcommand*\Top{\Cat{Top}}
+\newcommand*\Set{\Cat{Set}}
+\DeclareMathOperator\im{im}
+\newcommand{\ecls}{%
+  {\sim}%
+}
+
+\setcounter{section}{-1} 
+
+\title{Rotman algebraic topology solutions}
+\author{Jessica Zhang} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introduction} 
+\subsection*{Brouwer Fixed Point Theorem} 
+\begin{exercise}
+As per the hint, observe that if $y\in G$, then we have $y=r(y)+(y-r(y))$. Obviously, we have $r(y)\in H$. Moreover, we know that \[r(y-r(y))=r(y)-r(r(y))=0,\] and so $y-r(y)\in\ker r$. Thus $G\subseteq H\oplus\ker r$. 
+
+The reverse is obviously true, since $H$ and $\ker r$ are both subgroups of $G$. 
+\end{exercise} 
+
+\begin{exercise}
+Suppose instead that $f:D^1\to D^1$ has no fixed point. Then consider the continuous map $g:D^1\to S^0$ given by \[g(x)=\begin{cases}1&~\text{if}~f(x)<x\\-1&~\text{if}~f(x)>x\end{cases}.\] Notice that because $f(x)\ne x$ for all $x$, the function $g$ is well-defined. 
+
+Moreover, we know that $f(-1)\ne-1$, since $f$ has no fixed point, and so $f(-1)>-1$. Thus $g(-1)=-1$. Similarly, we have $g(1)=1$. 
+
+Thus we have $g(D^1)=S^0$, which is disconnected. This is a contradiction, so $f$ must have had a fixed point. 
+\end{exercise} 
+
+\begin{exercise}
+Suppose that $r$ is such a retract. Then we have the following commutative diagram: 
+\[\begin{tikzcd}
+&S^n\arrow[rd,"r"]&\\
+S^{n-1}\arrow[ru,"i"]\arrow[rr,"1"]&&S^{n-1}. 
+\end{tikzcd}\] 
+Applying $H_{n-1}$, we get another commutative diagram: 
+\[\begin{tikzcd}[row sep=huge] 
+&H_{n-1}(S^n)\arrow[rd,"H_{n-1}(r)"]&\\
+H_{n-1}(S^{n-1})\arrow[ru,"H_{n-1}(i)"]\arrow[rr,"H_{n-1}(1)"]&&H_{n-1}(S^{n-1}).
+\end{tikzcd}\]
+We know that $H_{n-1}(S^n)=0$, however, implying that $H_{n-1}(1)=0$. This contradicts the fact that $H_{n-1}(S^{n-1})=\ZZ\ne0$. Thus the retraction $r$ could not have existed. 
+\end{exercise} 
+
+\begin{exercise}
+Suppose $g:D^n\to X$ is a homeomorphism. Then we know that $g^{-1}\circ f\circ g$ is a continuous map from $D^n$ to itself, and so it has a fixed point $x$. Then we know that $g^{-1}(f(g(x)))=x$, and so it follows that $f(g(x))=g(x)$. Thus $g(x)\in X$ is a fixed point of $f$. 
+\end{exercise} 
+
+\begin{exercise}
+Consider the function $h:\II\times\II\to\II\times\II$ given by \[h(s,t)=f(s)-g(t)+(s,t).\] This is the sum of continuous functions, and so it is itself continuous. Moreover, we know that $\II\times\II$ is homeomorphic to $D^1$, and so it follows that there is a fixed point $(s,t)$ of $h$. But this means that $f(s)-g(t)=0$, and so we are done. 
+\end{exercise} 
+
+\begin{exercise}
+Observe that $x\in\Delta^{n-1}$ must contain some positive coordinate, because $\sum x_i=1$ and $x_i\ge0$ for all $i$. Since $a_{ij}>0$ for every $i,j$, it follows that $Ax$ contains only nonnegative coordinates and, moreover, contains at least one positive coordinate. Thus $\sig(Ax)>0$, and so $g(x)$ is well-defined. 
+
+Moreover, it is continuous because the linear map $A$, the map $\sig$, and the division function are all continuous. 
+
+Because $\Delta^{n-1}\approx D^{n-1}$, it follows that there exists some $x$ with \[x=\frac{Ax}{\sig(Ax)}.\] Then $\lambda=\sig(Ax)>0$ is a positive eigenvalue for $A$ and $x\in\Delta^{n-1}$ is a corresponding eigenvector. 
+
+We know that $x$ contains only nonnegative coordinates. Suppose then that some coordinate, say $x_1$, is zero. Then obviously the first coordinate of $\lambda x$ is zero. However, the first coordinate of $Ax$ is \[a_{11}x_1+a_{12}x_2+\dots+a_{1n}x_n=a_{12}x_2+\dots+a_{1n}x_n.\] Since $\sum x_i=1$ and $x_1=0$, there exists some $k\ne1$ such that $x_k>0$. Then $a_{1k}x_k>0$, and since each $i$ already has $a_{1i}x_i\ge0$, it follows that the first coordinate of $Ax$ is strictly positive, contradicting that $Ax=\lambda x$. 
+
+Thus the eigenvector $x$ has all positive coordinates. 
+\end{exercise} 
+
+\subsection*{Categories and Functors} 
+\begin{exercise} 
+We know that \[g\circ(f\circ h)=g\circ1_b=g\] and \[(g\circ f)\circ h=1_A\circ h=h,\] and so associativity implies $g=h$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode 
+\begin{enumerate} 
+\item Notice that if $1_A$ and $1_A'$ are both identities, then we must have \[1_A=1_A\circ 1_A'=1_A',\] which proves the desired result. 
+
+\item If $1_A'$ is the new identity in $\mathcal C'$, then we know that $1_A'\in\Hom_{\mathcal C'}(A,A)\subseteq\Hom_{\mathcal C}(A,A)$, and so $1_A\circ 1_A'$ is defined. But we know that \[1_A'\circ1_A=1_A'=1_A'\circ1_A',\] and so \cref{0.7} implies the result. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise}
+Clearly, the Hom-sets are pairwise disjoint, since each $i^x_y$ appears at most once. 
+
+It is also obviously associative. In particular, if $a\le b\le c\le d$, then we know that \[i^c_d\circ\left(i^b_c\circ i^a_b\right)=i^c_d\circ i^a_c=i^a_d,\] and similarly for $\left(i^c_d\circ i^b_c\right)\circ i^a_b$. 
+
+Finally, the map $i^x_x$ is the identity on $x\in X$. To see that it is a left-identity, note that if $y\le x$, then \[i_x^x\circ i_x^y=i_x^y.\] Similarly, we can show that this map is a right-identity as well, and so we are done. 
+\end{exercise} 
+
+\begin{exercise}
+Disjointness is clear, since there is only one object. Because $G$ is a monoid, it is associative and has an identity, proving that $\mathcal C$ is a category. 
+\end{exercise} 
+
+\begin{exercise}
+It is pretty clear that $\obj(\Top)\subset\obj(\Top^2)$. Moreover, a continuous map $f:X\to Y$ between two topological spaces corresponds to the map $(f,\emptyset)$ in $\Top^2$ from $(X,\emptyset)$ to $(Y,\emptyset)$, which then means that $\Top$ can be thought of as a subcategory of $\Top^2$. 
+\end{exercise} 
+
+\begin{exercise}
+It is worth noting that Rotman's definition here is incorrect. The morphisms in $\mathcal M$ should be the commutative squares, not merely the ordered pairs $(h,k)$. 
+
+Indeed, consider the following counterexample to Rotman's definition. Let $\mathcal C$ be the category of sets. Furthermore, let $A$ be a set with more than one element. Then the following diagrams are both commutative: 
+\[\begin{tikzcd}
+A\arrow[r,"1_A"]\arrow[d,"1_A"]&A\arrow[d,"0"]&A\arrow[r,"0"]\arrow[d,"1_A"]&A\arrow[d,"0"]\\ 
+A\arrow[r,"0"]&\{0\}&A\arrow[r,"0"]&\{0\}.
+\end{tikzcd}\]
+This implies that the ordered pair $(1_A,0)$, where $0$ is considered to be the map that sends everything in $A$ to the zero element, is both in $\Hom(1_A,0)$ and in $\Hom(0,0)$, contradicting disjointness. 
+
+If we instead consider morphisms of $\mathcal M$ to be the commutative squares, where composition is defined by ``stacking'' the squares on top of one another, disjointness is clear. After all, the squares contain $f$ and $g$, and so Hom-sets of different objects must be disjoint. 
+
+Associativity is clear, as the morphisms of $\mathcal C$ are associative.
+
+Finally, there is an identity $1_f$ for every $f\in\Hom_{\mathcal C}(A,B)$, namely the one where $h=1_A$ and $k=1_B$. 
+\end{exercise} 
+
+\begin{exercise}
+With the hint, this is clear. In particular, we consider $\Top^2$ to be the subcategory of the arrow category of $\Top$ in which the objects are inclusions, and $\Hom_{\Top^2}(i,j)=\Hom_\Top(i,j)$. 
+\end{exercise} 
+
+\begin{exercise}
+To see that it is a congruence at all, observe that Property (i) is satisfied because there is only one Hom-set. Moreover, if $x\sim x'$ and $y\sim y'$, then we know that $x(x')^{-1}=h_x$ and $y(y')^{-1}=h_y$ for some $h_x,h_y\in H$. But then we know that \[(yx)(y'x')^{-1}=yx(x')^{-1}(y')^{-1}=yh_x(y')^{-1}.\] However, since $(y')^{-1}=y^{-1}h_y$, we know that this is simply \[(yx)(y'x')^{-1}=yh_xy^{-1}h_y.\] Because $H$ is normal, we know that $yh_xy^{-1}\in H$. Thus the product of this and $h_y$ is in $H$ as well, and so $xy\sim x'y'$, as desired. 
+
+To see that $[*,*]=G/H$ simply requires the observation that $x\sim y$ if and only if $x$ and $y$ are in the same coset of $H$. 
+\end{exercise} 
+
+\begin{exercise}
+This follows from the fact that functors preserve (or, in the case of contravariant functors, reverse) the directions of the arrows. Thus the resulting diagram still commutes. 
+\end{exercise} 
+
+\begin{exercise}
+Note that for (i)--(iv), we can simply use inverses. For instance, for \Set, it suffices to note that if $f$ is a bijection, then $f^{-1}$ is a bijection, which is clearly true. Similarly, the inverse of a homeomorphism is a homeomorphism, and the inverse of a group or ring isomorphism is still an isomorphism. 
+
+For (v), note that $i_x^y$ is defined and satisfies the requirements that $i_x^y\circ i_y^x=i_x^x$ and $i_y^x\circ i_x^y=i_y^y$. 
+
+For part (vi), notice that $f^{-1}$ works because $f$ is a homeomorphism. In particular, it is a bijection, and so $f^{-1}(A')=A$. Moreover, it is (bi)continuous since $f$ is. 
+
+Finally, for the monoid $G$, if $g$ has a two-sided inverse $h$, then $hg=gh=1$, which is the identity element of $\Hom(G,G)$. 
+\end{exercise} 
+
+\begin{exercise}
+To prove that $T'$ is a functor, first observe that criterion (i) of a functor is satisfied because $T$ does so. Moreover, if $[f]\in\Hom_{\cat C'}(A,B)$, then $f\in\Hom_{\cat C}(A,B)$, and so $T'([f])=Tf$ is a morphism in $\cat A$. In particular, if $[g]\circ[f]=[g\circ f]$ is defined in $\cat C'$, then $g\circ f$ is defined in $\cat C$. This means, then, that \[T'([g]\circ[f])=T(g\circ f)=(Tg)\circ(Tf)=T'([g])\circ T'([f]).\] Finally, it remains to note that $T'([1_A])=T_{1_A}=1_{TA}=1_{T'([A])}$ for every object $A$. Thus $T'$ is a functor, as desired. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode 
+\begin{enumerate} 
+\item It is clear that $tG\in\obj\Cat{Ab}$ for every group $G$. Now suppose that we have a homomorphism $f:G\to H$. Then we know that $t(f)$ is a morphism $f|_{tG}$ from $tG$ to $tH$. To see this, note that it is the restriction of a homomorphism, and thus is itself a homormophism. Moreover, if $x\in f(tG)$, then $x=f(y)$ for some $y\in G$ with finite order. But then there exists some $n$ so that $y^n=1$. Thus $x^n=f(y^n)=1$, and so $x$ has finite order. But $x\in f(G)\subseteq H$ implies that $x\in tH$. 
+
+Now we must check that $t$ respects composition. Indeed, if $g\circ f$ is defined, then \[t(g\circ f)=(g\circ f)_{tG}=g|_{f(tG)}\circ f|_{tG}.\] But $f(tG)\subseteq tH$, and so this is simply \[t(g\circ f)=g|_{tH}\circ f|_{tG}=t(g)\circ t(f),\] which proves that composition is respected. 
+
+Finally, note simply that $t(1_G)=1|_{tG}$, which is the identity on $tG$. 
+
+\item Suppose that $f$ is an injective homomorphism from $G$ to $H$. Then suppose that $t(f)(x)=t(f)(y)$. But $f(x)=f|_{tG}(x)=t(f)(x)$, and so it follows that $f(x)=f(y)$. Injectivity of $f$ proves the result. 
+
+\item Let $G=\ZZ$ and $H=\ZZ/2\ZZ$ and let $f$ take even integers to 0 and odd integers to 1. This is evidently surjective. But $tG=\{0\}$ while $tH=\{0,1\}$, and so $t(f):tG\to tH$ cannot be surjective. 
+\end{enumerate}
+\end{exercise} 
+
+\begin{exercise} \leavevmode 
+\begin{enumerate}
+\item If $f$ is a surjection, then consider an arbitrary coset $a+pH$ of $H/pH$. We know that there exists some $b\in G$ with $f(b)=a$, and so it follows that $F(f)$ takes $b+pG$ to $a+pH$, proving surjectivity of $F(f)$. 
+
+\item Consider the function $f:\ZZ\to\ZZ$ taking $x$ to $2x$. Then, letting $p=2$, we know that $F(f):\ZZ/2\ZZ\to\ZZ/2\ZZ$ has $F(f)([0])=F(f)([1])$. 
+\end{enumerate}
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item This is evident because $\RR$ is a ring, and the operations are pointwise. 
+
+\item By the previous part, we know that if $X$ is a topological space, then $C(X)$ is a ring. Now suppose that $f:X\to Y$ is a continuous map. Then define \begin{align*}C(f):C(Y)&\to C(X)\\g&\mapsto g\circ f\end{align*} and note that this is well-defined. Moreover, we know that $C(g\circ f)(h)=h\circ g\circ f$, while $C(f)\circ C(g)$ takes $h$ to $C(f)\circ(h\circ g)=h\circ g\circ f$, which proves that $C$ reverses composition. Finally, we know that $C(1_x)$ takes $g$ to $g\circ 1_X=g$ and is therefore the identity on $C(Y)$. Thus $C$ (or, rather, the map taking $X$ to $C(X)$, to be precise) gives rise to a contravariant functor. 
+\end{enumerate}
+\end{exercise} 
+
+\section{Homotopy} 
+\begin{exercise} \leavevmode
+Suppose $H:f_0\simeq f_1$ is a homotopy. Then let $F(t)=H(x,t)$ for some fixed $x$. It is clear that $F(0)=x_0$ and $F(1)=1$. Moreover, since $H$ is continuous, it follows that so too is $F$. For the converse, simply let the homotopy $H:f_0\simeq f_1$ take $(x,t)\in X\times\II$ to $F(t)$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item There exist functions $f:X\to Y$ and $g:Y\to X$ such that $g\circ f\simeq1_X$ and $f\circ g\simeq1_Y$. Moreover, there is a homotopy $F:1_X\simeq c$, where $c$ denotes the constant map at some $x_0\in X$. Then consider the map $G:Y\times\II\to Y$ which takes $(y,t)$ to $f(F(g(y),t))$. In particular, we know that $G$ is continuous and that it is thus a homotopy from $f\circ g$ to the constant map $c'$ at $y_0=f(x_0)$. But then we find that $1_Y\simeq f\circ g\simeq c'$, and so $Y$ is contractible. 
+
+\item Consider, for example, the subsets $X,Y\subset\RR^2$ where \begin{align*}X&=\{(x,0):x\in[0,1]\},\\Y&=\left\{(x,x):x\in\left[0,\frac12\right]\right\}\cup\left\{(x,1-x):x\in\left[\frac12,1\right]\right\}.\end{align*} It is obvious that $X$ is convex, but $Y$ is not, even though there is an obvious homotopy equivalence from $X$ to $Y$. 
+\end{enumerate}
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+We know that $R(x)=e^{i\alpha}x$, and so the continuous map $F:S^1\times\II\to S^1$ given by $F(x,t)=e^{i\alpha t}x$ is a homotopy $F:1_S\simeq R$. Thus, if $g:S^1\to S^1$ is continuous, then let $\theta$ be such that $g(1)=g(e^{i\cdot0})=e^{i\theta}$. Then we know that, letting $R$ now be the rotation of $-\theta$ degrees, we must have $R\circ g\simeq 1_S\simeq g=g$ and $(R\circ g)(1)=1$, as desired. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item Pick $(x_1,y_1),(x_2,y_2)\in X\times Y$. Then we know that, for any $t\in\II$, we have \[t(x_1,y_1)+(1-t)(x_2,y_2)=(tx_1+(1-t)x_2,ty_1+(1-t)y_2).\] The result follows from convexity of $X$ and $Y$. 
+
+\item If $F_X:1_X\simeq c_X$ and $F_Y:1_Y\simeq c_Y$, where $c_X$ and $c_Y$ are constant maps at $c_X$ and $c_Y$, respectively, then the map \begin{align*}F:(X\times Y)\times\II&\to X\times Y\\(x,y,t)&\mapsto(F_X(x,t),F_Y(y,t))\end{align*} is clearly a homotopy from $1_{X\times Y}$ to $(c_X,c_Y)$. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+It is clear that $X$ is compact. After all, any open cover of $X$ must contain some set $U$ containing 0, and thus containing cofinitely many elements of $X$. 
+
+If we have a map $h:X\to Y$, then because $Y$ is discrete, we know that $\{h^{-1}(y):y\in Y\}$ is an open covering of $X$ and thus by compactness admits a finite subcovering. Thus there are only finitely many elements of $y$ in the image of $h$. 
+
+Now suppose that $f:X\to Y$ is a homotopy equivalence. Then there exists some $g:Y\to X$ with a homotopy $H:f\circ g\simeq1_Y$. But $H(\{y\}\times I)$ is the continuous image of a connected map and is therefore itself connected. Because $Y$ is discrete, this means that $H(y,0)=H(y,1)$ for all $y$. But we know that $f$ has finite image, and $Y$ is infinite, so there exists some $y$ such that $y\not\in\im f$. In particular, we have $y\ne f(g(y))$, and so $H(y,0)=f(g(y))\ne y=1_Y(y)$, a contradiction. Thus $X$ and $Y$ are not of the same homotopy type. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Suppose $X$ is contractible, with $F:c\simeq1_X$, where $c$ is the constant map at $p$. Note that, for every $x\in X$, there is a path $F(x,t):\{x\}\times\II\to X$ taking $x$ to $p\in X$. In particular, this means that every $x$ is in the same component as $p$, proving connectedness. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+The map $H:X\to\II\to X$ taking $(x,t)$ to $x$ and $(y,t)$ to $x$ if and only if $t>\frac12$ works. Indeed, note that $H^{-1}(\{x\}\times\II)$ is simply $\{x\}\times\II\cup\{y\}\times(\frac12,1]$, which is open in $X\times\II$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item Consider the map taking the unit interval to $S^1$ given by $t\mapsto e^{2\pi it}$. 
+
+\item If $r:Y\to X$ is a retraction, then we know from $1_Y\simeq c$ that $r\circ1_Y\circ i\simeq r\circ c\circ i$, where $i$ is the injection $X\hookrightarrow Y$. But the left side is simply $r\circ i=1_X$, while the left side is a constant map, proving the result. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+We know that there exists some constant map $c$ with $f\simeq c$. But then $g\circ f\simeq g\circ c$, and the right side is a constant map. Thus $g\circ f$ is also nullhomotopic. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+First, suppose that $g$ is an identification. Note that $(gf)^{-1}(U)$ open in $X$ implies that $g^{-1}(U)$ is open in $Y$ because $f$ is an identification. But the hypothesis on $g$ implies that $U$ is open in $Z$. Since $gf$ is clearly a continuous surjection, the result follows. 
+
+Now, suppose that $gf$ is an identification. It suffices to prove that $g^{-1}(U)\subseteq Y$ open implies that $U\subseteq Z$ is open. But we know by continuity of $f$ that $f^{-1}(g^{-1}(U))$ is open, and so $gf$ being an identification implies the result. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+First, note that this is a well-defined function in the sense that $[x]=[y]$ in $X/\ecls$ implies that $\overline f([x])=\overline f([y])$. 
+
+This is evidently continuous. After all, suppose that $U\subseteq Y/\square$ is open. Then we know that \[\overline f^{-1}(U)=\{[x]\in X/\ecls:[f(x)]\in U\}=U'.\] If we let $v:X\to X/\ecls$ and $u:Y\to Y/\square$ be the natural maps, then we know that $U'$ is open in $X/\ecls$ because \[v^{-1}(U')=\{x\in X:f(x)\in u^{-1}(U)\}=f^{-1}(u^{-1}(U))\] is open. 
+
+Finally, we will show that $\overline f$ is an identification. It is obviously surjective. Moreover, if $U'=\overline f^{-1}(U)$ is open in $X/\ecls$, then we simply note that a similar argument as above gives us that $v^{-1}(U')=f^{-1}(u^{-1}(U))$ is open. Since $f$ and $u$ are identifications, it follows that $U$ was an open set in the first place, proving the result. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+
+\end{exercise} 
+
+\end{document} 
