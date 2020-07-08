@@ -255,7 +255,21 @@ Finally, we will show that $\overline f$ is an identification. It is obviously s
 \end{exercise} 
 
 \begin{exercise} \leavevmode
+Note that if $K\subseteq Z$ is closed, then it is compact and so $h(K)$ is compact in $Z$, hence itself closed. Thus $h$ is a closed map, and hence an identification. 
 
+Now because $v:X\to X/\ker h$ is an identification, Corollary 1.9 applies. Indeed, Corollary 1.9 implies that $hv^{-1}=\phi$ is a closed map. Thus it is an identification, i.e., a continuous surjection. 
+
+But the same corollary also implies that $\phi^{-1}=vh^{-1}$ is continuous. This, combined with Example 1.3, in which it was shown that $\phi$ is injective, proves the result, as $\phi$ is now a bicontinuous bijection, i.e., a homeomorphism. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+First observe that $f(x)=f(y)$ implies that $[x,t]=[y,t]$ and so $t=1$. Thus $f$ is injective and hence bijective onto its image $CX_t=\{[x,t]\in CX:x\in X\}$. Then open sets in $CX_t$ are precisely of the form $U\cap CX_t$ for an open set $U\subseteq CX$. But clearly we can assume that $[x,1]\not\in U$ because $[x,1]\not\in CX_t$, and thus we wind up with $X\times[0,1)$, where $CX_t=X\times\{t\}$. This is obviously homeomorphic to $X$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+The functor takes a map $f:X\to Y$ to $Cf:CX\to CY$ given by $C([x,t])=[f(x),t]$. Note that this is well-defined. Moreover, it is obvious that this is satisfies the properties of a functor. Indeed, if $g:Y\to Z$, then \[C(g\circ f)([x,t])=[g(f(x)),t]=((Cg)\circ(Cf))([x,t])\] and clearly $C(1_X)$ is the identity on $CX$. \begin{exercise} \leavevmode
+
+\end{exercise} 
 \end{exercise} 
 
 \end{document} 
