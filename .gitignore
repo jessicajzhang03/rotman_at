@@ -1,0 +1,7 @@
+
+rotman_old/ 
+*.log 
+*.aux
+*.out
+*.pre
+*.synctex.gz
