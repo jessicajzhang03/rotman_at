@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[10pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{jjz}
 \usetikzlibrary{cd}
@@ -10,6 +10,7 @@
 \crefname{intex}{Exercise}{Exercises}
 
 \setlist[enumerate,1]{label=(\roman*),leftmargin=\parindent}
+\setlist{parsep=0pt,listparindent=\parindent}
 \crefname{enumi}{Exercise~\theintex~Part}{Exercise~\theintex~Parts}
 
 \newcommand*\II{\mathbb I}
@@ -23,25 +24,49 @@
 \newcommand{\ecls}{%
   {\sim}%
 }
+\newcommand\ep{\epsilon}
 
 \setcounter{section}{-1} 
+\setcounter{secnumdepth}{1}
 
-\title{Rotman algebraic topology solutions}
+\title{Solutions to Rotman's algebraic topology}
+\newcommand\booktitle{Introduction to Algebraic Topology} 
+\newcommand\bookauthor{Joseph J. Rotman}
 \author{Jessica Zhang} 
 \date{\today}
 
 \begin{document}
-\maketitle
+\begin{titlepage}
+\centering
+\vspace*{\fill}
+{\LARGE\bfseries\sffamily\thetitle} 
+
+\vspace{2em}
+
+{\large\sffamily\theauthor} 
+
+\vspace{1em}
+
+{\large\sffamily\thedate}
+\vspace*{\fill}
+\end{titlepage}
+
+\tableofcontents
+
+\newpage 
 
 \section{Introduction} 
-\subsection*{Brouwer Fixed Point Theorem} 
-\begin{exercise}
+\subsection{Notation} 
+No exercises! 
+
+\subsection{Brouwer Fixed Point Theorem} 
+\begin{exercise} \leavevmode
 As per the hint, observe that if $y\in G$, then we have $y=r(y)+(y-r(y))$. Obviously, we have $r(y)\in H$. Moreover, we know that \[r(y-r(y))=r(y)-r(r(y))=0,\] and so $y-r(y)\in\ker r$. Thus $G\subseteq H\oplus\ker r$. 
 
 The reverse is obviously true, since $H$ and $\ker r$ are both subgroups of $G$. 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 Suppose instead that $f:D^1\to D^1$ has no fixed point. Then consider the continuous map $g:D^1\to S^0$ given by \[g(x)=\begin{cases}1&~\text{if}~f(x)<x\\-1&~\text{if}~f(x)>x\end{cases}.\] Notice that because $f(x)\ne x$ for all $x$, the function $g$ is well-defined. 
 
 Moreover, we know that $f(-1)\ne-1$, since $f$ has no fixed point, and so $f(-1)>-1$. Thus $g(-1)=-1$. Similarly, we have $g(1)=1$. 
@@ -49,7 +74,7 @@ Moreover, we know that $f(-1)\ne-1$, since $f$ has no fixed point, and so $f(-1)
 Thus we have $g(D^1)=S^0$, which is disconnected. This is a contradiction, so $f$ must have had a fixed point. 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 Suppose that $r$ is such a retract. Then we have the following commutative diagram: 
 \[\begin{tikzcd}
 &S^n\arrow[rd,"r"]&\\
@@ -63,15 +88,15 @@ H_{n-1}(S^{n-1})\arrow[ru,"H_{n-1}(i)"]\arrow[rr,"H_{n-1}(1)"]&&H_{n-1}(S^{n-1})
 We know that $H_{n-1}(S^n)=0$, however, implying that $H_{n-1}(1)=0$. This contradicts the fact that $H_{n-1}(S^{n-1})=\ZZ\ne0$. Thus the retraction $r$ could not have existed. 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 Suppose $g:D^n\to X$ is a homeomorphism. Then we know that $g^{-1}\circ f\circ g$ is a continuous map from $D^n$ to itself, and so it has a fixed point $x$. Then we know that $g^{-1}(f(g(x)))=x$, and so it follows that $f(g(x))=g(x)$. Thus $g(x)\in X$ is a fixed point of $f$. 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 Consider the function $h:\II\times\II\to\II\times\II$ given by \[h(s,t)=f(s)-g(t)+(s,t).\] This is the sum of continuous functions, and so it is itself continuous. Moreover, we know that $\II\times\II$ is homeomorphic to $D^1$, and so it follows that there is a fixed point $(s,t)$ of $h$. But this means that $f(s)-g(t)=0$, and so we are done. 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 Observe that $x\in\Delta^{n-1}$ must contain some positive coordinate, because $\sum x_i=1$ and $x_i\ge0$ for all $i$. Since $a_{ij}>0$ for every $i,j$, it follows that $Ax$ contains only nonnegative coordinates and, moreover, contains at least one positive coordinate. Thus $\sig(Ax)>0$, and so $g(x)$ is well-defined. 
 
 Moreover, it is continuous because the linear map $A$, the map $\sig$, and the division function are all continuous. 
@@ -83,8 +108,8 @@ We know that $x$ contains only nonnegative coordinates. Suppose then that some c
 Thus the eigenvector $x$ has all positive coordinates. 
 \end{exercise} 
 
-\subsection*{Categories and Functors} 
-\begin{exercise} 
+\subsection{Categories and Functors} 
+\begin{exercise} \leavevmode
 We know that \[g\circ(f\circ h)=g\circ1_b=g\] and \[(g\circ f)\circ h=1_A\circ h=h,\] and so associativity implies $g=h$. 
 \end{exercise} 
 
@@ -96,7 +121,7 @@ We know that \[g\circ(f\circ h)=g\circ1_b=g\] and \[(g\circ f)\circ h=1_A\circ h
 \end{enumerate} 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 Clearly, the Hom-sets are pairwise disjoint, since each $i^x_y$ appears at most once. 
 
 It is also obviously associative. In particular, if $a\le b\le c\le d$, then we know that \[i^c_d\circ\left(i^b_c\circ i^a_b\right)=i^c_d\circ i^a_c=i^a_d,\] and similarly for $\left(i^c_d\circ i^b_c\right)\circ i^a_b$. 
@@ -104,15 +129,15 @@ It is also obviously associative. In particular, if $a\le b\le c\le d$, then we 
 Finally, the map $i^x_x$ is the identity on $x\in X$. To see that it is a left-identity, note that if $y\le x$, then \[i_x^x\circ i_x^y=i_x^y.\] Similarly, we can show that this map is a right-identity as well, and so we are done. 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 Disjointness is clear, since there is only one object. Because $G$ is a monoid, it is associative and has an identity, proving that $\mathcal C$ is a category. 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 It is pretty clear that $\obj(\Top)\subset\obj(\Top^2)$. Moreover, a continuous map $f:X\to Y$ between two topological spaces corresponds to the map $(f,\emptyset)$ in $\Top^2$ from $(X,\emptyset)$ to $(Y,\emptyset)$, which then means that $\Top$ can be thought of as a subcategory of $\Top^2$. 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 It is worth noting that Rotman's definition here is incorrect. The morphisms in $\mathcal M$ should be the commutative squares, not merely the ordered pairs $(h,k)$. 
 
 Indeed, consider the following counterexample to Rotman's definition. Let $\mathcal C$ be the category of sets. Furthermore, let $A$ be a set with more than one element. Then the following diagrams are both commutative: 
@@ -129,21 +154,21 @@ Associativity is clear, as the morphisms of $\mathcal C$ are associative.
 Finally, there is an identity $1_f$ for every $f\in\Hom_{\mathcal C}(A,B)$, namely the one where $h=1_A$ and $k=1_B$. 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 With the hint, this is clear. In particular, we consider $\Top^2$ to be the subcategory of the arrow category of $\Top$ in which the objects are inclusions, and $\Hom_{\Top^2}(i,j)=\Hom_\Top(i,j)$. 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 To see that it is a congruence at all, observe that Property (i) is satisfied because there is only one Hom-set. Moreover, if $x\sim x'$ and $y\sim y'$, then we know that $x(x')^{-1}=h_x$ and $y(y')^{-1}=h_y$ for some $h_x,h_y\in H$. But then we know that \[(yx)(y'x')^{-1}=yx(x')^{-1}(y')^{-1}=yh_x(y')^{-1}.\] However, since $(y')^{-1}=y^{-1}h_y$, we know that this is simply \[(yx)(y'x')^{-1}=yh_xy^{-1}h_y.\] Because $H$ is normal, we know that $yh_xy^{-1}\in H$. Thus the product of this and $h_y$ is in $H$ as well, and so $xy\sim x'y'$, as desired. 
 
 To see that $[*,*]=G/H$ simply requires the observation that $x\sim y$ if and only if $x$ and $y$ are in the same coset of $H$. 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 This follows from the fact that functors preserve (or, in the case of contravariant functors, reverse) the directions of the arrows. Thus the resulting diagram still commutes. 
 \end{exercise} 
 
-\begin{exercise}
+\begin{exercise} \leavevmode
 Note that for (i)--(iv), we can simply use inverses. For instance, for \Set, it suffices to note that if $f$ is a bijection, then $f^{-1}$ is a bijection, which is clearly true. Similarly, the inverse of a homeomorphism is a homeomorphism, and the inverse of a group or ring isomorphism is still an isomorphism. 
 
 For (v), note that $i_x^y$ is defined and satisfies the requirements that $i_x^y\circ i_y^x=i_x^x$ and $i_y^x\circ i_x^y=i_y^y$. 
@@ -153,8 +178,8 @@ For part (vi), notice that $f^{-1}$ works because $f$ is a homeomorphism. In par
 Finally, for the monoid $G$, if $g$ has a two-sided inverse $h$, then $hg=gh=1$, which is the identity element of $\Hom(G,G)$. 
 \end{exercise} 
 
-\begin{exercise}
-To prove that $T'$ is a functor, first observe that criterion (i) of a functor is satisfied because $T$ does so. Moreover, if $[f]\in\Hom_{\cat C'}(A,B)$, then $f\in\Hom_{\cat C}(A,B)$, and so $T'([f])=Tf$ is a morphism in $\cat A$. In particular, if $[g]\circ[f]=[g\circ f]$ is defined in $\cat C'$, then $g\circ f$ is defined in $\cat C$. This means, then, that \[T'([g]\circ[f])=T(g\circ f)=(Tg)\circ(Tf)=T'([g])\circ T'([f]).\] Finally, it remains to note that $T'([1_A])=T_{1_A}=1_{TA}=1_{T'([A])}$ for every object $A$. Thus $T'$ is a functor, as desired. 
+\begin{exercise} \leavevmode
+To prove that $T'$ is a functor, first observe that criterion (i) of a functor is satisfied because $T$ does so. Moreover, if $[f]\in\Hom_{\cat C'}(A,B)$, then $f\in\Hom_{\cat C}(A,B)$, and so $T'([f])=Tf$ is a morphism in $\cat A$. In particular, if $[g]\circ[f]=[g\circ f]$ is defined in $\cat C'$, then $g\circ f$ is defined in $\cat C$. This means, then, that \[T'([g]\circ[f])=T(g\circ f)=(Tg)\circ(Tf)=T'([g])\circ T'([f]).\] Finally, it remains to note that $T'([1_A])=T_{1_A}=1_{TA}=1_{T'([A])}$ for every object $A$. Thus $T'$ is a functor.
 \end{exercise} 
 
 \begin{exercise} \leavevmode 
@@ -187,7 +212,13 @@ Finally, note simply that $t(1_G)=1|_{tG}$, which is the identity on $tG$.
 \end{enumerate}
 \end{exercise} 
 
-\section{Homotopy} 
+\newpage
+
+\section{Some Basic Topological Notions} 
+\subsection{Homotopy} 
+No exercises! 
+
+\subsection{Convexity, Contractibility, and Cones} 
 \begin{exercise} \leavevmode
 Suppose $H:f_0\simeq f_1$ is a homotopy. Then let $F(t)=H(x,t)$ for some fixed $x$. It is clear that $F(0)=x_0$ and $F(1)=1$. Moreover, since $H$ is continuous, it follows that so too is $F$. For the converse, simply let the homotopy $H:f_0\simeq f_1$ take $(x,t)\in X\times\II$ to $F(t)$. 
 \end{exercise} 
@@ -267,9 +298,128 @@ First observe that $f(x)=f(y)$ implies that $[x,t]=[y,t]$ and so $t=1$. Thus $f$
 \end{exercise} 
 
 \begin{exercise} \leavevmode
-The functor takes a map $f:X\to Y$ to $Cf:CX\to CY$ given by $C([x,t])=[f(x),t]$. Note that this is well-defined. Moreover, it is obvious that this is satisfies the properties of a functor. Indeed, if $g:Y\to Z$, then \[C(g\circ f)([x,t])=[g(f(x)),t]=((Cg)\circ(Cf))([x,t])\] and clearly $C(1_X)$ is the identity on $CX$. \begin{exercise} \leavevmode
-
+The functor takes a map $f:X\to Y$ to $Cf:CX\to CY$ given by $C([x,t])=[f(x),t]$. Note that this is well-defined. Moreover, it is obvious that this is satisfies the properties of a functor. Indeed, if $g:Y\to Z$, then \[C(g\circ f)([x,t])=[g(f(x)),t]=((Cg)\circ(Cf))([x,t])\] and clearly $C(1_X)$ is the identity on $CX$. 
 \end{exercise} 
+
+\subsection{Paths and Path Connectedness} 
+\begin{exercise} \leavevmode
+Using the hint, suppose that $g:\II\to X$ is a path with $g(0)=(0,a)\in A$ and with $g(t)\in G$ for all $t>0$. Then note that $\pi_i\circ g$ is continuous for $i=1,2$, where $\pi_i$ are the projections to the $x$- and $y$-axes. This implies the existence of an $\ep>0$ such that $t\in(0,\ep)$ implies that $g(t)=(x(t),\sin(1/x(t)))$ has $x(t),|\sin(1/x(t))-a|<\delta$. But this is obviously impossible, as $\sin(1/x(t))$ will oscillate wildly between $-1$ and $1$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Let $(a_i)$ and $(b_i)$ be points in $S^n$. We will construct $n$ paths which, when joined together in the customary fashion (i.e., by traversing each of the $n-1$ subpaths in $1/(n-1)$ time), will give us a path from $(a_i)$ to $(b_i)$. 
+
+The first path $f_1$ is defined as \[f_1(t)=((1-t)a_1+tb_1,c_2,a_3,a_4,\dots,a_n),\] where $c_2$ is chosen to be of the same sign as $a_2$ and in such a way that $f(t)\in S^n$. Note that such a $c_2$ always exists. 
+
+In general, for $1\le i\le n-1$, the path $f_i$ will fix every coordinate except for the $i$-th, which it will take to $b_i$, and the $(i+1)$-th, which we use as a ``free'' coordinate to allow for such adjusting. Moreover, observe that if the first $n-1$ coordinates of two points on $S^1$ are the same, then the $n$-th coordinates either will be the same or will be negatives. 
+
+If joining the paths $f_1,f_2,\dots,f_{n-1}$ together gives a path from $(a_i)$ to $(b_i)$, then we are done. Note that this occurs if $a_n$ and $b_n$ have the same sign. 
+
+Otherwise, construct a path $g$ which adjusts the $n$-th coordinate and uses the $(n-1)$-th coordinate as a ``free'' one, preserving the sign. This effectively allows us to switch the sign of the $n$-th coordinate so that the $n$-th coordinate is just $b_n$. Moreover, because we preserved the sign of the $(n-1)$-th coordinate, it is still equal to $b_{n-1}$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+It suffices to show the forward direction, so suppose that $U$ is not path connected. Then there are at least two path components. 
+
+We will show that each path component is open, which will prove that $U$ is not connected. But because $U$ is open, we know that open sets in $U$ (as a subspace) or also open in $\RR^n$. Thus, for every $x\in U$, there is a ball $B_x$ centered at $x$ and contained in $U$. This ball is obviously path-connected. As such, if $x$ is in the path component $A$, it must follow that $B_x\subseteq A$, proving that $A$ is open. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+We know that if $X$ is contractible then there exists a point $c\in X$ such that $1_X$ is homotopic to the constant map at $c$ from $X$ to itself. Now consider the map $c:\II\to X$ satisfying $c(t)=c$ for all $t$. In the proof of Theorem 1.13, we saw that any path is homotopic to $c$. In particular, the constant maps $x:\II\to X$ and $y:\II\to X$ at $x$ and $y$, respectively, are both homotopic to $c$. Note that these give rise to paths from $x$ to $c$ and from $c$ to $y$, respectively, which in turn give rise to a path from $x$ to $y$. This proves path connectedness. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item If $X$ is path connected, then let $c$ and $c'$ be constant maps. Let $f$ be a path from (the point) $c$ to (the point) $c'$ and define $H:X\times\II\to X$ as $H(x,t)=f(t)$. Then $H$ is a homotopy from $c$ to $c'$. 
+
+For the reverse direction, let $H$ be a homotopy from $c$ to $c'$ and define the path $f:\II\to X$ as $f(t)=H(c,t)$. 
+
+\item Let $f:X\to Y$ be a continuous function. Fix some $y_0\in Y$ and consider the map \begin{align*}H:X\times\II&\to Y\\(x,t)&\mapsto p_x(t),\end{align*} where $p_x$ is a path from $f(x)$ to $y_0$. This is a homotopy from $f$ to the constant map mapping $X$ to $y_0$. 
+
+But if $g:X\to Y$ is another continuous function, then the same argument shows that $g\simeq y_0$, and so $f\simeq g$, as desired. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+It suffices to show that if $a\in A$ and $b\in B$, then there is a path from $a$ to $b$. But fix some point $x\in A\cap B$. Then there is a path from $a$ to $x$, and a path from $x$ to $b$. Joining the two paths gives a path from $a$ to $b$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+This is simply done by noting that for any $(x,y),(x',y')\in X\times Y$, we can join the paths $f(t)=((1-t)x+tx',y)$ and $g(t)=(x',(1-t)y+ty')$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Suppose $f(a),f(b)\in Y$. Then let $p$ be a path from $a$ to $b$ in $X$. Now simply note that $q(t)=f(p(t))$ is a path from $f(a)$ to $f(b)$, proving the result. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item We already know that there are at least two path components because the entire space is not path connected. Moreover, both $A$ and $G$ are path connected, and so it follows that they must themselves be the path components. 
+
+\item Simply note that the sequence $\left\{\left(\frac1{n\pi},\sin(n\pi)\right)\right\}\subset G$ approaches $(0,0)\in A$. 
+
+\item As per the hint, consider $U$ to be the open disk with center $(0,\frac12)$ and radius $\frac14$. Then $X\cap U$ is open in $X$. But note that $v(X\cap U)$ is not open in $X/A\approx[0,\frac1{2\pi}]$. After all, note that any ball $B_\ep$ around the point 0 (which is the image of $A$ under the natural map in this case) must contain some point $\frac1{n\pi}<\ep$. But $\frac1{n\pi}$, which corresponds to the point $\left(\frac1{n\pi},0\right)\in X\setminus U$, is not contained in $v(X\cap U)$. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+By definition, path components are path connected. Moreover, if $C$ is a path component and there exists some point $x\in X$ and $c\in C$ so that there is a path between $x$ and $c$, then the definition of path components implies that $x\in C$. Thus path components are maximally path connected. 
+
+Finally, suppose that $A$ is path connected and pick $a\in A$. There exists a unique path component $C$ such that $a\in C$. Then for all $b\in A$, we know that there is a path between $a$ and $b$, and so $b\in C$. Thus $A\subseteq C$, as desired. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Simply use \cref{1.22} and observe that $I$ is path connected. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Note that, if $X$ is locally path connected, then for all $x\in X$, there exists some open path connected, hence connected, neighborhood $V$ of $x$. Alternatively, note that if $U\subseteq X$ is open, then its components are unions of its path components and thus open. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Given any open subset $U$ of $X\times Y$ containing a given point $(x,y)\in X\times Y$, there must exist a basic open neighborhood $U_x\times U_y\subseteq U$ of $(x,y)$. Then we know that there exists some path connected $V_x$ with $x\in V_x\subseteq U_x$, and similarly for $y$. Then $V_x\times V_y$ is path connected by \cref{1.21}. The result follows. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Note that open subsets of open subsets are open in the main space. In particular, let $A\subseteq X$ be open. Given any $x\in A$, let $U$ be an open neighborhood of $x$ in $A$. Note that this is also an open neighborhood in $X$, and so there exists an open path connected $V$ in $X$ (and hence open in $A$ as well) such that $x\in V\subseteq U$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Consider the map $F:(\RR^{n+1}\setminus\{0\})\times\II\to\RR^{n+1}\setminus\{0\}$ given by \[F((x_i),t)=\left[(1-t)+\frac t{\sqrt{\sum x_i^2}}\right](x_i).\] This is evidently a homotopy which makes $S^n$ a deformation retract. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+The exact same map as in \cref{1.29} works for this case. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+It is easy to see that the deformation retract of a deformation retract is a deformation retract, either by a direct argument or by applying Theorem 1.22. Thus the previous exercise implies that it suffices to show that $D^n\setminus\{0\}$ is a deformation retract of $S^n\setminus\{a,b\}$. But the map $(x_i)\mapsto(x_1,\dots,x_{n-1},0)$ is exactly the map needed, and so we are done. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+If $H:f_0\simeq f_1$, then the map $H':(y,t)\mapsto H(r(y),t)$ is a homotopy from $\tilde{f_0}$ to $\tilde{f_1}$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Let $Y=\{y\}$ and observe that $(x,1)\sim y$ for all $x\in X$. Thus $(x,1)\sim(x',1)$ for alL $x,x'\in X$. Moreover, this is the only equivalence. Thus $M_f$ is precisely the quotient space $(X\times\II)/(X\times\{1\})=CX$.
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item We first tackle $i$. It is obvious that $i$ is injective, and thus a bijection onto its image $i(X)=\{[x,0]:x\in X\}$. Moreover, the open sets in $i(X)$ are precisely of the $U\cap i(X)$ for open sets $U$ in $M_f$. 
+
+Note that we can suppose without loss of generality that $U$ is contained in $v(X\times[0,1))$, where $v$ is the natural map. Thus $U$ simply looks like the Cartesian product of an open interval with an open set of $X$. This proves that $i$ is a homeomorphism, for the open sets of $i(X)$ map exactly to the open sets of $X$. 
+
+We can show that $j$ is a homeomorphism onto $j(Y)$ in a similar manner. The main idea is simply that $y\not\sim y'$ for any $y,y'\in j(Y)$. 
+
+\item It is obvious that $(rj)(y)=r[y]=y=1_Y(y)$ for any $y\in Y$. It is also clearly continuous by the gluing lemma. Thus $r$ is indeed a retraction. 
+
+\item Define $F:M_f\times\II\to M_f$ as suggested in the hint. It is evident that $F$ is continuous. Moreover, for any $[x,t]\in M_f$, we know that \begin{align*}F([x,t],0)&=[x,t]\\F([x,t],1)&=[x,1]=[f(x)]\in Y.\end{align*} Similarly, if $[y]\in Y$, then the definition implies that the remaining criteria for this homotopy to induce a deformation retraction $r(x)=F(x,1)$ are satisfied. 
+
+\item Note that Rotman writes that $f$ is homotopic to $r\circ i$; in fact, we can and do prove the stronger statement that $f$ coincides with $r\circ i$. 
+
+Let $f:X\to Y$ be continuous. Then it is clear that the map $f=r\circ i$, where $i:X\to M_f$ is an injection and $r:M_f\to Y$ is the retraction taking $[x,t]$ to $[f(x)]$ and taking $[y]$ to itself, proving the result. 
+\end{enumerate} 
 \end{exercise} 
 
 \end{document} 

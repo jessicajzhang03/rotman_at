@@ -4,7 +4,6 @@
 % PACKAGES
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}   
-
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{amsfonts,amsmath,amsthm,amssymb,mathtools}
 \usepackage[shortlabels]{enumitem}
@@ -46,8 +45,9 @@
 %%%%%%%%%%%%%%%%%
 % HEADER/FOOTER
 \pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markboth{Chapter \thesection. #1}{} }
 \fancyhf{}
-\rhead{\thedate}
+\rhead{\leftmark}
 \lhead{\theauthor}
 \rfoot{Page \thepage}
 \renewcommand{\headrulewidth}{0.2pt}

@@ -5,3 +5,6 @@ rotman_old/
 *.out
 *.pre
 *.synctex.gz
+*.toc
+.*
+.DS_Store
