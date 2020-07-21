@@ -1,0 +1,213 @@
+\documentclass[../solutions.tex]{subfiles}
+
+\begin{document}
+
+\section{Some Basic Topological Notions} 
+\subsection{Homotopy} 
+No exercises! 
+
+\subsection{Convexity, Contractibility, and Cones} 
+\begin{exercise} \leavevmode
+Suppose $H:f_0\simeq f_1$ is a homotopy. Then let $F(t)=H(x,t)$ for some fixed $x$. It is clear that $F(0)=x_0$ and $F(1)=1$. Moreover, since $H$ is continuous, it follows that so too is $F$. For the converse, simply let the homotopy $H:f_0\simeq f_1$ take $(x,t)\in X\times\II$ to $F(t)$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item There exist functions $f:X\to Y$ and $g:Y\to X$ such that $g\circ f\simeq1_X$ and $f\circ g\simeq1_Y$. Moreover, there is a homotopy $F:1_X\simeq c$, where $c$ denotes the constant map at some $x_0\in X$. Then consider the map $G:Y\times\II\to Y$ which takes $(y,t)$ to $f(F(g(y),t))$. In particular, we know that $G$ is continuous and that it is thus a homotopy from $f\circ g$ to the constant map $c'$ at $y_0=f(x_0)$. But then we find that $1_Y\simeq f\circ g\simeq c'$, and so $Y$ is contractible. 
+
+\item Consider, for example, the subsets $X,Y\subset\RR^2$ where \begin{align*}X&=\{(x,0):x\in[0,1]\},\\Y&=\left\{(x,x):x\in\left[0,\frac12\right]\right\}\cup\left\{(x,1-x):x\in\left[\frac12,1\right]\right\}.\end{align*} It is obvious that $X$ is convex, but $Y$ is not, even though there is an obvious homotopy equivalence from $X$ to $Y$. 
+\end{enumerate}
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+We know that $R(x)=e^{i\alpha}x$, and so the continuous map $F:S^1\times\II\to S^1$ given by $F(x,t)=e^{i\alpha t}x$ is a homotopy $F:1_S\simeq R$. Thus, if $g:S^1\to S^1$ is continuous, then let $\theta$ be such that $g(1)=g(e^{i\cdot0})=e^{i\theta}$. Then we know that, letting $R$ now be the rotation of $-\theta$ degrees, we must have $R\circ g\simeq 1_S\simeq g=g$ and $(R\circ g)(1)=1$, as desired. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item Pick $(x_1,y_1),(x_2,y_2)\in X\times Y$. Then we know that, for any $t\in\II$, we have \[t(x_1,y_1)+(1-t)(x_2,y_2)=(tx_1+(1-t)x_2,ty_1+(1-t)y_2).\] The result follows from convexity of $X$ and $Y$. 
+
+\item If $F_X:1_X\simeq c_X$ and $F_Y:1_Y\simeq c_Y$, where $c_X$ and $c_Y$ are constant maps at $c_X$ and $c_Y$, respectively, then the map \begin{align*}F:(X\times Y)\times\II&\to X\times Y\\(x,y,t)&\mapsto(F_X(x,t),F_Y(y,t))\end{align*} is clearly a homotopy from $1_{X\times Y}$ to $(c_X,c_Y)$. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+It is clear that $X$ is compact. After all, any open cover of $X$ must contain some set $U$ containing 0, and thus containing cofinitely many elements of $X$. 
+
+If we have a map $h:X\to Y$, then because $Y$ is discrete, we know that $\{h^{-1}(y):y\in Y\}$ is an open covering of $X$ and thus by compactness admits a finite subcovering. Thus there are only finitely many elements of $y$ in the image of $h$. 
+
+Now suppose that $f:X\to Y$ is a homotopy equivalence. Then there exists some $g:Y\to X$ with a homotopy $H:f\circ g\simeq1_Y$. But $H(\{y\}\times I)$ is the continuous image of a connected map and is therefore itself connected. Because $Y$ is discrete, this means that $H(y,0)=H(y,1)$ for all $y$. But we know that $f$ has finite image, and $Y$ is infinite, so there exists some $y$ such that $y\not\in\im f$. In particular, we have $y\ne f(g(y))$, and so $H(y,0)=f(g(y))\ne y=1_Y(y)$, a contradiction. Thus $X$ and $Y$ are not of the same homotopy type. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Suppose $X$ is contractible, with $F:c\simeq1_X$, where $c$ is the constant map at $p$. Note that, for every $x\in X$, there is a path $F(x,t):\{x\}\times\II\to X$ taking $x$ to $p\in X$. In particular, this means that every $x$ is in the same component as $p$, proving connectedness. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+The map $H:X\to\II\to X$ taking $(x,t)$ to $x$ and $(y,t)$ to $x$ if and only if $t>\frac12$ works. Indeed, note that $H^{-1}(\{x\}\times\II)$ is simply $\{x\}\times\II\cup\{y\}\times(\frac12,1]$, which is open in $X\times\II$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item Consider the map taking the unit interval to $S^1$ given by $t\mapsto e^{2\pi it}$. 
+
+\item If $r:Y\to X$ is a retraction, then we know from $1_Y\simeq c$ that $r\circ1_Y\circ i\simeq r\circ c\circ i$, where $i$ is the injection $X\hookrightarrow Y$. But the left side is simply $r\circ i=1_X$, while the left side is a constant map, proving the result. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+We know that there exists some constant map $c$ with $f\simeq c$. But then $g\circ f\simeq g\circ c$, and the right side is a constant map. Thus $g\circ f$ is also nullhomotopic. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+First, suppose that $g$ is an identification. Note that $(gf)^{-1}(U)$ open in $X$ implies that $g^{-1}(U)$ is open in $Y$ because $f$ is an identification. But the hypothesis on $g$ implies that $U$ is open in $Z$. Since $gf$ is clearly a continuous surjection, the result follows. 
+
+Now, suppose that $gf$ is an identification. It suffices to prove that $g^{-1}(U)\subseteq Y$ open implies that $U\subseteq Z$ is open. But we know by continuity of $f$ that $f^{-1}(g^{-1}(U))$ is open, and so $gf$ being an identification implies the result. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+First, note that this is a well-defined function in the sense that $[x]=[y]$ in $X/\ecls$ implies that $\overline f([x])=\overline f([y])$. 
+
+This is evidently continuous. After all, suppose that $U\subseteq Y/\square$ is open. Then we know that \[\overline f^{-1}(U)=\{[x]\in X/\ecls:[f(x)]\in U\}=U'.\] If we let $v:X\to X/\ecls$ and $u:Y\to Y/\square$ be the natural maps, then we know that $U'$ is open in $X/\ecls$ because \[v^{-1}(U')=\{x\in X:f(x)\in u^{-1}(U)\}=f^{-1}(u^{-1}(U))\] is open. 
+
+Finally, we will show that $\overline f$ is an identification. It is obviously surjective. Moreover, if $U'=\overline f^{-1}(U)$ is open in $X/\ecls$, then we simply note that a similar argument as above gives us that $v^{-1}(U')=f^{-1}(u^{-1}(U))$ is open. Since $f$ and $u$ are identifications, it follows that $U$ was an open set in the first place, proving the result. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Note that if $K\subseteq Z$ is closed, then it is compact and so $h(K)$ is compact in $Z$, hence itself closed. Thus $h$ is a closed map, and hence an identification. 
+
+Now because $v:X\to X/\ker h$ is an identification, Corollary 1.9 applies. Indeed, Corollary 1.9 implies that $hv^{-1}=\phi$ is a closed map. Thus it is an identification, i.e., a continuous surjection. 
+
+But the same corollary also implies that $\phi^{-1}=vh^{-1}$ is continuous. This, combined with Example 1.3, in which it was shown that $\phi$ is injective, proves the result, as $\phi$ is now a bicontinuous bijection, i.e., a homeomorphism. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+First observe that $f(x)=f(y)$ implies that $[x,t]=[y,t]$ and so $t=1$. Thus $f$ is injective and hence bijective onto its image $CX_t=\{[x,t]\in CX:x\in X\}$. Then open sets in $CX_t$ are precisely of the form $U\cap CX_t$ for an open set $U\subseteq CX$. But clearly we can assume that $[x,1]\not\in U$ because $[x,1]\not\in CX_t$, and thus we wind up with $X\times[0,1)$, where $CX_t=X\times\{t\}$. This is obviously homeomorphic to $X$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+The functor takes a map $f:X\to Y$ to $Cf:CX\to CY$ given by $C([x,t])=[f(x),t]$. Note that this is well-defined. Moreover, it is obvious that this is satisfies the properties of a functor. Indeed, if $g:Y\to Z$, then \[C(g\circ f)([x,t])=[g(f(x)),t]=((Cg)\circ(Cf))([x,t])\] and clearly $C(1_X)$ is the identity on $CX$. 
+\end{exercise} 
+
+\subsection{Paths and Path Connectedness} 
+\begin{exercise} \leavevmode
+Using the hint, suppose that $g:\II\to X$ is a path with $g(0)=(0,a)\in A$ and with $g(t)\in G$ for all $t>0$. Then note that $\pi_i\circ g$ is continuous for $i=1,2$, where $\pi_i$ are the projections to the $x$- and $y$-axes. This implies the existence of an $\ep>0$ such that $t\in(0,\ep)$ implies that $g(t)=(x(t),\sin(1/x(t)))$ has $x(t),|\sin(1/x(t))-a|<\delta$. But this is obviously impossible, as $\sin(1/x(t))$ will oscillate wildly between $-1$ and $1$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Let $(a_i)$ and $(b_i)$ be points in $S^n$. We will construct $n$ paths which, when joined together in the customary fashion (i.e., by traversing each of the $n-1$ subpaths in $1/(n-1)$ time), will give us a path from $(a_i)$ to $(b_i)$. 
+
+The first path $f_1$ is defined as \[f_1(t)=((1-t)a_1+tb_1,c_2,a_3,a_4,\dots,a_n),\] where $c_2$ is chosen to be of the same sign as $a_2$ and in such a way that $f(t)\in S^n$. Note that such a $c_2$ always exists. 
+
+In general, for $1\le i\le n-1$, the path $f_i$ will fix every coordinate except for the $i$-th, which it will take to $b_i$, and the $(i+1)$-th, which we use as a ``free'' coordinate to allow for such adjusting. Moreover, observe that if the first $n-1$ coordinates of two points on $S^1$ are the same, then the $n$-th coordinates either will be the same or will be negatives. 
+
+If joining the paths $f_1,f_2,\dots,f_{n-1}$ together gives a path from $(a_i)$ to $(b_i)$, then we are done. Note that this occurs if $a_n$ and $b_n$ have the same sign. 
+
+Otherwise, construct a path $g$ which adjusts the $n$-th coordinate and uses the $(n-1)$-th coordinate as a ``free'' one, preserving the sign. This effectively allows us to switch the sign of the $n$-th coordinate so that the $n$-th coordinate is just $b_n$. Moreover, because we preserved the sign of the $(n-1)$-th coordinate, it is still equal to $b_{n-1}$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+It suffices to show the forward direction, so suppose that $U$ is not path connected. Then there are at least two path components. 
+
+We will show that each path component is open, which will prove that $U$ is not connected. But because $U$ is open, we know that open sets in $U$ (as a subspace) or also open in $\RR^n$. Thus, for every $x\in U$, there is a ball $B_x$ centered at $x$ and contained in $U$. This ball is obviously path-connected. As such, if $x$ is in the path component $A$, it must follow that $B_x\subseteq A$, proving that $A$ is open. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+We know that if $X$ is contractible then there exists a point $c\in X$ such that $1_X$ is homotopic to the constant map at $c$ from $X$ to itself. Now consider the map $c:\II\to X$ satisfying $c(t)=c$ for all $t$. In the proof of Theorem 1.13, we saw that any path is homotopic to $c$. In particular, the constant maps $x:\II\to X$ and $y:\II\to X$ at $x$ and $y$, respectively, are both homotopic to $c$. Note that these give rise to paths from $x$ to $c$ and from $c$ to $y$, respectively, which in turn give rise to a path from $x$ to $y$. This proves path connectedness. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item If $X$ is path connected, then let $c$ and $c'$ be constant maps. Let $f$ be a path from (the point) $c$ to (the point) $c'$ and define $H:X\times\II\to X$ as $H(x,t)=f(t)$. Then $H$ is a homotopy from $c$ to $c'$. 
+
+For the reverse direction, let $H$ be a homotopy from $c$ to $c'$ and define the path $f:\II\to X$ as $f(t)=H(c,t)$. 
+
+\item Let $f:X\to Y$ be a continuous function. Fix some $y_0\in Y$ and consider the map \begin{align*}H:X\times\II&\to Y\\(x,t)&\mapsto p_x(t),\end{align*} where $p_x$ is a path from $f(x)$ to $y_0$. This is a homotopy from $f$ to the constant map mapping $X$ to $y_0$. 
+
+But if $g:X\to Y$ is another continuous function, then the same argument shows that $g\simeq y_0$, and so $f\simeq g$, as desired. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+It suffices to show that if $a\in A$ and $b\in B$, then there is a path from $a$ to $b$. But fix some point $x\in A\cap B$. Then there is a path from $a$ to $x$, and a path from $x$ to $b$. Joining the two paths gives a path from $a$ to $b$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+This is simply done by noting that for any $(x,y),(x',y')\in X\times Y$, we can join the paths $f(t)=((1-t)x+tx',y)$ and $g(t)=(x',(1-t)y+ty')$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Suppose $f(a),f(b)\in Y$. Then let $p$ be a path from $a$ to $b$ in $X$. Now simply note that $q(t)=f(p(t))$ is a path from $f(a)$ to $f(b)$, proving the result. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item We already know that there are at least two path components because the entire space is not path connected. Moreover, both $A$ and $G$ are path connected, and so it follows that they must themselves be the path components. 
+
+\item Simply note that the sequence $\left\{\left(\frac1{n\pi},\sin(n\pi)\right)\right\}\subset G$ approaches $(0,0)\in A$. 
+
+\item As per the hint, consider $U$ to be the open disk with center $(0,\frac12)$ and radius $\frac14$. Then $X\cap U$ is open in $X$. But note that $v(X\cap U)$ is not open in $X/A\approx[0,\frac1{2\pi}]$. After all, note that any ball $B_\ep$ around the point 0 (which is the image of $A$ under the natural map in this case) must contain some point $\frac1{n\pi}<\ep$. But $\frac1{n\pi}$, which corresponds to the point $\left(\frac1{n\pi},0\right)\in X\setminus U$, is not contained in $v(X\cap U)$. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+By definition, path components are path connected. Moreover, if $C$ is a path component and there exists some point $x\in X$ and $c\in C$ so that there is a path between $x$ and $c$, then the definition of path components implies that $x\in C$. Thus path components are maximally path connected. 
+
+Finally, suppose that $A$ is path connected and pick $a\in A$. There exists a unique path component $C$ such that $a\in C$. Then for all $b\in A$, we know that there is a path between $a$ and $b$, and so $b\in C$. Thus $A\subseteq C$, as desired. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Simply use \cref{1.22} and observe that $I$ is path connected. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Note that, if $X$ is locally path connected, then for all $x\in X$, there exists some open path connected, hence connected, neighborhood $V$ of $x$. Alternatively, note that if $U\subseteq X$ is open, then its components are unions of its path components and thus open. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Given any open subset $U$ of $X\times Y$ containing a given point $(x,y)\in X\times Y$, there must exist a basic open neighborhood $U_x\times U_y\subseteq U$ of $(x,y)$. Then we know that there exists some path connected $V_x$ with $x\in V_x\subseteq U_x$, and similarly for $y$. Then $V_x\times V_y$ is path connected by \cref{1.21}. The result follows. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Note that open subsets of open subsets are open in the main space. In particular, let $A\subseteq X$ be open. Given any $x\in A$, let $U$ be an open neighborhood of $x$ in $A$. Note that this is also an open neighborhood in $X$, and so there exists an open path connected $V$ in $X$ (and hence open in $A$ as well) such that $x\in V\subseteq U$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Consider the map $F:(\RR^{n+1}\setminus\{0\})\times\II\to\RR^{n+1}\setminus\{0\}$ given by \[F((x_i),t)=\left[(1-t)+\frac t{\sqrt{\sum x_i^2}}\right](x_i).\] This is evidently a homotopy which makes $S^n$ a deformation retract. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+The exact same map as in \cref{1.29} works for this case. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+It is easy to see that the deformation retract of a deformation retract is a deformation retract, either by a direct argument or by applying Theorem 1.22. Thus the previous exercise implies that it suffices to show that $D^n\setminus\{0\}$ is a deformation retract of $S^n\setminus\{a,b\}$. But the map $(x_i)\mapsto(x_1,\dots,x_{n-1},0)$ is exactly the map needed, and so we are done. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+If $H:f_0\simeq f_1$, then the map $H':(y,t)\mapsto H(r(y),t)$ is a homotopy from $\tilde{f_0}$ to $\tilde{f_1}$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Let $Y=\{y\}$ and observe that $(x,1)\sim y$ for all $x\in X$. Thus $(x,1)\sim(x',1)$ for alL $x,x'\in X$. Moreover, this is the only equivalence. Thus $M_f$ is precisely the quotient space $(X\times\II)/(X\times\{1\})=CX$.
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item We first tackle $i$. It is obvious that $i$ is injective, and thus a bijection onto its image $i(X)=\{[x,0]:x\in X\}$. Moreover, the open sets in $i(X)$ are precisely of the $U\cap i(X)$ for open sets $U$ in $M_f$. 
+
+Note that we can suppose without loss of generality that $U$ is contained in $v(X\times[0,1))$, where $v$ is the natural map. Thus $U$ simply looks like the Cartesian product of an open interval with an open set of $X$. This proves that $i$ is a homeomorphism, for the open sets of $i(X)$ map exactly to the open sets of $X$. 
+
+We can show that $j$ is a homeomorphism onto $j(Y)$ in a similar manner. The main idea is simply that $y\not\sim y'$ for any $y,y'\in j(Y)$. 
+
+\item It is obvious that $(rj)(y)=r[y]=y=1_Y(y)$ for any $y\in Y$. It is also clearly continuous by the gluing lemma. Thus $r$ is indeed a retraction. 
+
+\item Define $F:M_f\times\II\to M_f$ as suggested in the hint. It is evident that $F$ is continuous. Moreover, for any $[x,t]\in M_f$, we know that \begin{align*}F([x,t],0)&=[x,t]\\F([x,t],1)&=[x,1]=[f(x)]\in Y.\end{align*} Similarly, if $[y]\in Y$, then the definition implies that the remaining criteria for this homotopy to induce a deformation retraction $r(x)=F(x,1)$ are satisfied. 
+
+\item Note that Rotman writes that $f$ is homotopic to $r\circ i$; in fact, we can and do prove the stronger statement that $f$ coincides with $r\circ i$. 
+
+Let $f:X\to Y$ be continuous. Then it is clear that the map $f=r\circ i$, where $i:X\to M_f$ is an injection and $r:M_f\to Y$ is the retraction taking $[x,t]$ to $[f(x)]$ and taking $[y]$ to itself, proving the result. 
+\end{enumerate} 
+\end{exercise} 
+
+\end{document}

@@ -1,0 +1,162 @@
+\documentclass[../solutions.tex]{subfiles} 
+
+\begin{document}
+
+\section{Introduction} 
+\subsection{Notation} 
+No exercises! 
+
+\subsection{Brouwer Fixed Point Theorem} 
+\begin{exercise} \leavevmode
+As per the hint, observe that if $y\in G$, then we have $y=r(y)+(y-r(y))$. Obviously, we have $r(y)\in H$. Moreover, we know that \[r(y-r(y))=r(y)-r(r(y))=0,\] and so $y-r(y)\in\ker r$. Thus $G\subseteq H\oplus\ker r$. 
+
+The reverse is obviously true, since $H$ and $\ker r$ are both subgroups of $G$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Suppose instead that $f:D^1\to D^1$ has no fixed point. Then consider the continuous map $g:D^1\to S^0$ given by \[g(x)=\begin{cases}1&~\text{if}~f(x)<x\\-1&~\text{if}~f(x)>x\end{cases}.\] Notice that because $f(x)\ne x$ for all $x$, the function $g$ is well-defined. 
+
+Moreover, we know that $f(-1)\ne-1$, since $f$ has no fixed point, and so $f(-1)>-1$. Thus $g(-1)=-1$. Similarly, we have $g(1)=1$. 
+
+Thus we have $g(D^1)=S^0$, which is disconnected. This is a contradiction, so $f$ must have had a fixed point. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Suppose that $r$ is such a retract. Then we have the following commutative diagram: 
+\[\begin{tikzcd}
+&S^n\arrow[rd,"r"]&\\
+S^{n-1}\arrow[ru,"i"]\arrow[rr,"1"]&&S^{n-1}. 
+\end{tikzcd}\] 
+Applying $H_{n-1}$, we get another commutative diagram: 
+\[\begin{tikzcd}[row sep=huge] 
+&H_{n-1}(S^n)\arrow[rd,"H_{n-1}(r)"]&\\
+H_{n-1}(S^{n-1})\arrow[ru,"H_{n-1}(i)"]\arrow[rr,"H_{n-1}(1)"]&&H_{n-1}(S^{n-1}).
+\end{tikzcd}\]
+We know that $H_{n-1}(S^n)=0$, however, implying that $H_{n-1}(1)=0$. This contradicts the fact that $H_{n-1}(S^{n-1})=\ZZ\ne0$. Thus the retraction $r$ could not have existed. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Suppose $g:D^n\to X$ is a homeomorphism. Then we know that $g^{-1}\circ f\circ g$ is a continuous map from $D^n$ to itself, and so it has a fixed point $x$. Then we know that $g^{-1}(f(g(x)))=x$, and so it follows that $f(g(x))=g(x)$. Thus $g(x)\in X$ is a fixed point of $f$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Consider the function $h:\II\times\II\to\II\times\II$ given by \[h(s,t)=f(s)-g(t)+(s,t).\] This is the sum of continuous functions, and so it is itself continuous. Moreover, we know that $\II\times\II$ is homeomorphic to $D^1$, and so it follows that there is a fixed point $(s,t)$ of $h$. But this means that $f(s)-g(t)=0$, and so we are done. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Observe that $x\in\Delta^{n-1}$ must contain some positive coordinate, because $\sum x_i=1$ and $x_i\ge0$ for all $i$. Since $a_{ij}>0$ for every $i,j$, it follows that $Ax$ contains only nonnegative coordinates and, moreover, contains at least one positive coordinate. Thus $\sig(Ax)>0$, and so $g(x)$ is well-defined. 
+
+Moreover, it is continuous because the linear map $A$, the map $\sig$, and the division function are all continuous. 
+
+Because $\Delta^{n-1}\approx D^{n-1}$, it follows that there exists some $x$ with \[x=\frac{Ax}{\sig(Ax)}.\] Then $\lambda=\sig(Ax)>0$ is a positive eigenvalue for $A$ and $x\in\Delta^{n-1}$ is a corresponding eigenvector. 
+
+We know that $x$ contains only nonnegative coordinates. Suppose then that some coordinate, say $x_1$, is zero. Then obviously the first coordinate of $\lambda x$ is zero. However, the first coordinate of $Ax$ is \[a_{11}x_1+a_{12}x_2+\dots+a_{1n}x_n=a_{12}x_2+\dots+a_{1n}x_n.\] Since $\sum x_i=1$ and $x_1=0$, there exists some $k\ne1$ such that $x_k>0$. Then $a_{1k}x_k>0$, and since each $i$ already has $a_{1i}x_i\ge0$, it follows that the first coordinate of $Ax$ is strictly positive, contradicting that $Ax=\lambda x$. 
+
+Thus the eigenvector $x$ has all positive coordinates. 
+\end{exercise} 
+
+\subsection{Categories and Functors} 
+\begin{exercise} \leavevmode
+We know that \[g\circ(f\circ h)=g\circ1_b=g\] and \[(g\circ f)\circ h=1_A\circ h=h,\] and so associativity implies $g=h$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode 
+\begin{enumerate} 
+\item Notice that if $1_A$ and $1_A'$ are both identities, then we must have \[1_A=1_A\circ 1_A'=1_A',\] which proves the desired result. 
+
+\item If $1_A'$ is the new identity in $\mathcal C'$, then we know that $1_A'\in\Hom_{\mathcal C'}(A,A)\subseteq\Hom_{\mathcal C}(A,A)$, and so $1_A\circ 1_A'$ is defined. But we know that \[1_A'\circ1_A=1_A'=1_A'\circ1_A',\] and so \cref{0.7} implies the result. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Clearly, the Hom-sets are pairwise disjoint, since each $i^x_y$ appears at most once. 
+
+It is also obviously associative. In particular, if $a\le b\le c\le d$, then we know that \[i^c_d\circ\left(i^b_c\circ i^a_b\right)=i^c_d\circ i^a_c=i^a_d,\] and similarly for $\left(i^c_d\circ i^b_c\right)\circ i^a_b$. 
+
+Finally, the map $i^x_x$ is the identity on $x\in X$. To see that it is a left-identity, note that if $y\le x$, then \[i_x^x\circ i_x^y=i_x^y.\] Similarly, we can show that this map is a right-identity as well, and so we are done. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Disjointness is clear, since there is only one object. Because $G$ is a monoid, it is associative and has an identity, proving that $\mathcal C$ is a category. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+It is pretty clear that $\obj(\Top)\subset\obj(\Top^2)$. Moreover, a continuous map $f:X\to Y$ between two topological spaces corresponds to the map $(f,\emptyset)$ in $\Top^2$ from $(X,\emptyset)$ to $(Y,\emptyset)$, which then means that $\Top$ can be thought of as a subcategory of $\Top^2$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+It is worth noting that Rotman's definition here is incorrect. The morphisms in $\mathcal M$ should be the commutative squares, not merely the ordered pairs $(h,k)$. 
+
+Indeed, consider the following counterexample to Rotman's definition. Let $\mathcal C$ be the category of sets. Furthermore, let $A$ be a set with more than one element. Then the following diagrams are both commutative: 
+\[\begin{tikzcd}
+A\arrow[r,"1_A"]\arrow[d,"1_A"]&A\arrow[d,"0"]&A\arrow[r,"0"]\arrow[d,"1_A"]&A\arrow[d,"0"]\\ 
+A\arrow[r,"0"]&\{0\}&A\arrow[r,"0"]&\{0\}.
+\end{tikzcd}\]
+This implies that the ordered pair $(1_A,0)$, where $0$ is considered to be the map that sends everything in $A$ to the zero element, is both in $\Hom(1_A,0)$ and in $\Hom(0,0)$, contradicting disjointness. 
+
+If we instead consider morphisms of $\mathcal M$ to be the commutative squares, where composition is defined by ``stacking'' the squares on top of one another, disjointness is clear. After all, the squares contain $f$ and $g$, and so Hom-sets of different objects must be disjoint. 
+
+Associativity is clear, as the morphisms of $\mathcal C$ are associative.
+
+Finally, there is an identity $1_f$ for every $f\in\Hom_{\mathcal C}(A,B)$, namely the one where $h=1_A$ and $k=1_B$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+With the hint, this is clear. In particular, we consider $\Top^2$ to be the subcategory of the arrow category of $\Top$ in which the objects are inclusions, and $\Hom_{\Top^2}(i,j)=\Hom_\Top(i,j)$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+To see that it is a congruence at all, observe that Property (i) is satisfied because there is only one Hom-set. Moreover, if $x\sim x'$ and $y\sim y'$, then we know that $x(x')^{-1}=h_x$ and $y(y')^{-1}=h_y$ for some $h_x,h_y\in H$. But then we know that \[(yx)(y'x')^{-1}=yx(x')^{-1}(y')^{-1}=yh_x(y')^{-1}.\] However, since $(y')^{-1}=y^{-1}h_y$, we know that this is simply \[(yx)(y'x')^{-1}=yh_xy^{-1}h_y.\] Because $H$ is normal, we know that $yh_xy^{-1}\in H$. Thus the product of this and $h_y$ is in $H$ as well, and so $xy\sim x'y'$, as desired. 
+
+To see that $[*,*]=G/H$ simply requires the observation that $x\sim y$ if and only if $x$ and $y$ are in the same coset of $H$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+This follows from the fact that functors preserve (or, in the case of contravariant functors, reverse) the directions of the arrows. Thus the resulting diagram still commutes. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Note that for (i)--(iv), we can simply use inverses. For instance, for \Set, it suffices to note that if $f$ is a bijection, then $f^{-1}$ is a bijection, which is clearly true. Similarly, the inverse of a homeomorphism is a homeomorphism, and the inverse of a group or ring isomorphism is still an isomorphism. 
+
+For (v), note that $i_x^y$ is defined and satisfies the requirements that $i_x^y\circ i_y^x=i_x^x$ and $i_y^x\circ i_x^y=i_y^y$. 
+
+For part (vi), notice that $f^{-1}$ works because $f$ is a homeomorphism. In particular, it is a bijection, and so $f^{-1}(A')=A$. Moreover, it is (bi)continuous since $f$ is. 
+
+Finally, for the monoid $G$, if $g$ has a two-sided inverse $h$, then $hg=gh=1$, which is the identity element of $\Hom(G,G)$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+To prove that $T'$ is a functor, first observe that criterion (i) of a functor is satisfied because $T$ does so. Moreover, if $[f]\in\Hom_{\cat C'}(A,B)$, then $f\in\Hom_{\cat C}(A,B)$, and so $T'([f])=Tf$ is a morphism in $\cat A$. In particular, if $[g]\circ[f]=[g\circ f]$ is defined in $\cat C'$, then $g\circ f$ is defined in $\cat C$. This means, then, that \[T'([g]\circ[f])=T(g\circ f)=(Tg)\circ(Tf)=T'([g])\circ T'([f]).\] Finally, it remains to note that $T'([1_A])=T_{1_A}=1_{TA}=1_{T'([A])}$ for every object $A$. Thus $T'$ is a functor.
+\end{exercise} 
+
+\begin{exercise} \leavevmode 
+\begin{enumerate} 
+\item It is clear that $tG\in\obj\Cat{Ab}$ for every group $G$. Now suppose that we have a homomorphism $f:G\to H$. Then we know that $t(f)$ is a morphism $f|_{tG}$ from $tG$ to $tH$. To see this, note that it is the restriction of a homomorphism, and thus is itself a homormophism. Moreover, if $x\in f(tG)$, then $x=f(y)$ for some $y\in G$ with finite order. But then there exists some $n$ so that $y^n=1$. Thus $x^n=f(y^n)=1$, and so $x$ has finite order. But $x\in f(G)\subseteq H$ implies that $x\in tH$. 
+
+Now we must check that $t$ respects composition. Indeed, if $g\circ f$ is defined, then \[t(g\circ f)=(g\circ f)_{tG}=g|_{f(tG)}\circ f|_{tG}.\] But $f(tG)\subseteq tH$, and so this is simply \[t(g\circ f)=g|_{tH}\circ f|_{tG}=t(g)\circ t(f),\] which proves that composition is respected. 
+
+Finally, note simply that $t(1_G)=1|_{tG}$, which is the identity on $tG$. 
+
+\item Suppose that $f$ is an injective homomorphism from $G$ to $H$. Then suppose that $t(f)(x)=t(f)(y)$. But $f(x)=f|_{tG}(x)=t(f)(x)$, and so it follows that $f(x)=f(y)$. Injectivity of $f$ proves the result. 
+
+\item Let $G=\ZZ$ and $H=\ZZ/2\ZZ$ and let $f$ take even integers to 0 and odd integers to 1. This is evidently surjective. But $tG=\{0\}$ while $tH=\{0,1\}$, and so $t(f):tG\to tH$ cannot be surjective. 
+\end{enumerate}
+\end{exercise} 
+
+\begin{exercise} \leavevmode 
+\begin{enumerate}
+\item If $f$ is a surjection, then consider an arbitrary coset $a+pH$ of $H/pH$. We know that there exists some $b\in G$ with $f(b)=a$, and so it follows that $F(f)$ takes $b+pG$ to $a+pH$, proving surjectivity of $F(f)$. 
+
+\item Consider the function $f:\ZZ\to\ZZ$ taking $x$ to $2x$. Then, letting $p=2$, we know that $F(f):\ZZ/2\ZZ\to\ZZ/2\ZZ$ has $F(f)([0])=F(f)([1])$. 
+\end{enumerate}
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item This is evident because $\RR$ is a ring, and the operations are pointwise. 
+
+\item By the previous part, we know that if $X$ is a topological space, then $C(X)$ is a ring. Now suppose that $f:X\to Y$ is a continuous map. Then define \begin{align*}C(f):C(Y)&\to C(X)\\g&\mapsto g\circ f\end{align*} and note that this is well-defined. Moreover, we know that $C(g\circ f)(h)=h\circ g\circ f$, while $C(f)\circ C(g)$ takes $h$ to $C(f)\circ(h\circ g)=h\circ g\circ f$, which proves that $C$ reverses composition. Finally, we know that $C(1_x)$ takes $g$ to $g\circ 1_X=g$ and is therefore the identity on $C(Y)$. Thus $C$ (or, rather, the map taking $X$ to $C(X)$, to be precise) gives rise to a contravariant functor. 
+\end{enumerate}
+\end{exercise} 
+
+\end{document}
