@@ -12,4 +12,6 @@ rotman_old/
 *-*.pdf
 *-*.asy
 *-*.tex
-
+*.dvi 
+*.fdb*
+*.fls
