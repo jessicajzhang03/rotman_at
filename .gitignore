@@ -6,6 +6,10 @@ rotman_old/
 *.pre
 *.synctex.gz
 *.toc 
-.DS_Store
-rotman_sols/.DS_Store
-rotman_errata/.DS_Store
+**/.DS_Store
+*.asy
+*.
+*-*.pdf
+*-*.asy
+*-*.tex
+
