@@ -1,0 +1,107 @@
+\documentclass[../../solutions.tex]{subfiles}
+
+\setcounter{section}{2}
+
+\begin{document} 
+
+\section{The Fundamental Group}
+\subsection{The Fundamental Groupoid} 
+\begin{exercise} \leavevmode
+The homotopy $H:X\times\II\to Z$ given by \[H:(x,t)\mapsto\begin{cases}g_0(F(x,2t))&\text{if}~t\le\frac12,\\G(f_1(x),2t-1)&\text{if}~t\ge\frac12\end{cases}\] works. Continuity follows because $g_0(F(x,1))=G(f_1(x),0)$. 
+
+Moreover, this homotopy is indeed $\rel A$. For a detailed argument why this is so, simply suppose that $a\in A$ and $t\in I$. If $t\le\frac12$, then $F(a,2t)=f_0(a)$ by definition of $F$. Hence $H(a,t)=g_0(f_0(a))$. 
+
+Similarly, we can show that if $t\ge\frac12$, then $H(a,t)=g_1(f_1(a))$. This follows because $f_1(a)\in B$ and $G$ is a homotopy $\rel B$. 
+
+It thus suffices to show that $g_0(f_0(a))=g_1(f_1(a))$. But this is obvious because $f_0$ and $f_1$ agree on $A$, and $g_0$ and $g_1$ agree on $B\supseteq f_0(A)$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item First, note that $f'$ is well-defined because $f(0)=f(1)$. It is obvious by continuity of $f$ and $\ln$ that $f'$ is continuous. 
+
+Moreover, consider the map \[H':\left(e^{2\pi i\theta},t\right)\mapsto H(\theta,t).\] This is clearly continuous, for the same reasons that $f'$ was continuous. If $t=0$, clearly $H'(e^{2\pi i\theta},t)=H(\theta,0)=f(\theta)=f'(e^{2\pi i\theta})$, and similarly for $t=1$. Thus $H$ is indeed a homotopy from $f'$ to $g'$. 
+
+To see that it is a homotopy $\rel\{1\}$, simply note that $e^{2\pi i\theta}=1$ corresponds to $\theta=0,1$. Thus it follows that \[H'(1,t)=H(1,t)=f(1)\] for all $t$, proving the result. 
+
+\item Theorem 3.1 implies that $f*g\simeq f_1*g_1\rel\Idot$. Using the previous part, we find that $(f*g)'\simeq(f_1*g_1)'\rel\{1\}$. Now, using the observation that $(f*g)'=f'*g'$, we find that $f'*g'\simeq f_1'*g_1'\rel\{1\}$, as desired. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+The forward direction is trivial. 
+
+For the converse, note that $g'$ is a constant map, and so $f'$ is nullhomotopic. Then Theorem 1.6 implies that $f'\simeq g'\rel\{1\}$. In particular, note that $g':S^1\to X$ takes every element of $S^1$ to $g'(1)=g(0)=x_0$. Observe that $f'(1)=x_0$ as well, and so it follows that $f'\simeq g\rel\{1\}$, as desired. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item Instead of applying Theorem 1.6, I constructed an explicit homotopy. (If you are interested in a proof using Theorem 1.6, my guess would be that it relies on the fact that $\Delta^2\approx D^2$. However, I have not gone through the details.) 
+
+The effective idea of the homotopy I constructed is to, at time $t\in[0,1]$, return the function which traverses the first $t$ units of the face opposite $e_0$, then goes along a segment to the point $t$ units away from $e_1$ on the fact opposite $e_2$, before returning back to $e_1$, as shown in the red path below. 
+
+\begin{figure}[htbp]
+\centering 
+\begin{asy}
+settings.outformat="pdf";
+unitsize(3cm);
+pair e0, e1, e2; 
+e0 = (-1/2,0); 
+e1 = (1/2,0); 
+e2 = (0,sqrt(3)/2); 
+
+pair te0,te2; 
+real t = 0.7; 
+te0 = t*e2+(1-t)*e1; 
+te2 = t*e0+(1-t)*e1; 
+
+draw(e0--e1,dotted,MidArcArrow(SimpleHead)); 
+draw(e1--e2,dotted,MidArcArrow(SimpleHead)); 
+draw(e0--e2,dotted,MidArcArrow(SimpleHead)); 
+
+draw(e1--te0--te2--cycle,red,MidArcArrow(SimpleHead));
+
+dot("$e_0$",e0,WNW); 
+dot("$e_1$",e1,ENE); 
+dot("$e_2$",e2,E); 
+dot(te0,red);
+dot(te2,red);
+\end{asy}
+\end{figure} 
+
+The specific homotopy $H:\II\times\II\to X$ from $(\sigma_0*\sigma_1^{-1})*\sigma_2$ to the constant map at $e_1$ is as follows: \[H(x,t)=\begin{cases}\sigma_0(4(1-t)x)&\text{if}~x\le\frac14,\\\sigma((1-x)\ep_0(1-t)+x\ep_2(t))&\text{if}~\frac14\le x\le\frac12,\\\sigma(2tx-(2t-1))&\text{if}~x\ge\frac12.\end{cases}\]
+
+We leave it to the reader to check that this works. 
+
+\item One can generate a similar homotopy, which we do not do here. 
+
+\item This time, we use the homotopy which goes up along $\gamma$ for $t$ units, before going parallel to $\beta$ and coming back down along $\delta^{-1}$. The particular formula is as follows: 
+\[H(x,t)=\begin{cases}F(0,4tx)&\text{if}~x\le\frac14,\\F(4x-1,t)&\text{if}~\frac14\le x\le\frac12,\\F(1,2t(1-x))&\text{if}~\frac12\le x.\end{cases}\] Once again, we leave the details to the reader to check. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Simply use the homotopy $H:\II\times\II\to X\times Y$ which takes $(s,t)$ to $(F(s,t),G(s,t))$. This is clearly a homotopy from $(f_0,g_0)$ to $(f_1,g_1)$. To see that it is still $\rel\Idot$, simply observe that $H(0,t)=(F(0,t),G(0,t))$. Because $F$ and $G$ are both $\rel\Idot$, it follows that $H(0,t)$ never changes. A similar argument shows that $H(1,t)$ is always the same, and so $H$ is indeed a homotopy $\rel\Idot$. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item It is obvious that the homotopy $H':(x,t)\mapsto H(x,1-t)$ works. 
+
+\item This is just some slightly annoying manipulation. In particular, note that \[(f*g)(x)=\begin{cases}f(2x)&\text{if}~x\le\frac12,\\g(2x-1)&\text{if}~x\ge\frac12.\end{cases}\] By replacing $x$ with $1-x$ to get the inverse, we find that \[(f*g)^{-1}(x)=\begin{cases}f(2-2x)&\text{if}~x\ge\frac12,\\g(1-2x)&\text{if}~x\le\frac12.\end{cases}\] However, note that \begin{align*}(g^{-1}*f^{-1})(x)&=\begin{cases}g^{-1}(2x)&\text{if}~x\ge\frac12,\\f^{-1}(2x-1)&\text{if}~x\ge\frac12\end{cases}\\&=\begin{cases}g(1-2x)&\text{if}~x\le\frac12,\\f(2-2x)&\text{if}~x\ge\frac12.\end{cases}\end{align*} Thus the two are indeed the same. 
+
+\item Take the closed path $f(t)=e^{2\pi it}$ on $S^1$. Then note that $(f*f^{-1})(\frac18)=f(\frac14)=i$, while $(f^{-1}*f)(\frac18)=f^{-1}(\frac14)=-i$. 
+
+\item Suppose $i_p*f=f$ and $f$ is not constant. Note that continuity implies that there must exist some $0<t<1$ so that $f(t)\ne p$. Thus there exists some $k\in\NN$ so that $t<1-2^{-k}$. 
+
+We claim, however, that $f$ must be constant on $[0,1-2^{-n}]$ for every $n\in\NN$. We prove this inductively. Clearly, it is true on $n=0$. If it is true on $n-1$, then we know that $i_p*f$ must be equal to $p$ on $[0,\frac12]$, as well as on $[\frac12,1-2^{-n}]$ (note that $1-2^{-n}$ comes from $2(1-2^{-n})-1$, which itself comes from the equation for the star operator). Thus $f$ is constant on $[0,1-2^{-n}]$, as desired. 
+
+Thus it follows that $f(t)=p$, a contradiction. Thus $f$ must have been constant in the first place. 
+\end{enumerate} 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+
+\end{exercise} 
+
+\end{document}
