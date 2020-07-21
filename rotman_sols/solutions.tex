@@ -469,7 +469,19 @@ The following map works: \[f:x\mapsto\frac{t_2-t_1}{s_2-s_1}(x-s_1)+t_1.\]
 \end{exercise} 
 
 \begin{exercise} \leavevmode
+Pick arbitrary $T(x),T(x')\in T(X)$ and observe that \[tT(x)+(1-t)T(x')=T(tx+(1-t)x')\in T(X).\] Thus $T(X)$ is affine if $X$ is affine, and convex if $X$ is convex. The second statement of the exercise follows by noting that $\ell$ is convex. 
+\end{exercise} 
 
+\begin{exercise} \leavevmode
+Without loss of generality, we delete $p_0$. Now suppose that \[\sum_{i=1}^ms_ip_i+sb=0,\quad\sum_{i=1}^ms_i+s=0.\] Then we know by definition of the barycenter $b$ that \[\sum_{i=1}^ms_ip_i+\frac s{m+1}\sum_{i=0}^mp_i=0.\] Moreover, letting $s'_i$ be the coefficient of $p_i$ in the above equation, it is obvious that $\sum_{i=0}^ms'_i=s+\sum_{i=1}^ms_i=0$. Thus $s'_i=0$ for all $i$ because $\{p_0,\dots,p_m\}$ was affine independent. But then we conclude that $0=s'_0=\frac s{m+1}$, and so $s=0$. For every $i\in\{1,\dots,m\}$, we have $0=s'_i=\frac s{m+1}+s_i$. Thus $s=0$ implies $s_i=0$ for every $i$,a nd so it follows that $\{b,p_1,\dots,p_m\}$ is affine independent, as desired.
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Once again, suppose without loss of generality that $i=0$. Then the map taking $\sum t_ip_i\in[p_0,p_1,\dots,p_m]$ to $\left(\sum_{i=1}^mt_ip_i,t_0\right)$ works. Note that this actually requires the affine independence of the $p_i$'s, as well as the fact that the coefficients $t_i$ are all between 0 and 1. 
+\end{exercise} 
+
+\begin{exercise} \leavevmode
+Notice that $[0,e_1,\dots,e_n]$, where $e_i$ are the standard basis vectors in $\RR^n$, is an $n$-simplex. Thus there is a homeomorphism $[p_0,\dots,p_n]\to[0,e_1,\dots,e_n]$. If we translate the image by $\vec v=(-\frac14,-\frac14,\dots,-\frac14)$, then we can map the result to $D^n$ by taking a radial mapping. In particular, this map will take \begin{align*}p_0&\mapsto\frac{\vec v}{\norm{\vec v}}\\p_i&\mapsto\frac{e_i+\vec v}{\norm{e_i+\vec v}}~\text{for}~i\ne0.\end{align*} Note that this extends to a homeomorphism. 
 \end{exercise} 
 
 \end{document} 
