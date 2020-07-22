@@ -101,7 +101,29 @@ Thus it follows that $f(t)=p$, a contradiction. Thus $f$ must have been constant
 \end{exercise} 
 
 \begin{exercise} \leavevmode
-
+Recall that we defined the $\sin(1/x)$ space as the union of $A=\{(0,y):-1\le y\le1\}$ and $G=\{(x,\sin(1/x)):0<x\le1/2\pi\}$. We also know that $A$ and $G$ are the path components of the $\sin(1/x)$ space. Moreover, both $A$ and $G$ are contractible, and so every path in either $A$ or $G$ is nullhomotopic. In particular, we conclude that the fundamental group at any basepoint is trivial.  
 \end{exercise} 
+
+\begin{exercise} \leavevmode 
+Let $X$ be the $\sin(1/x)$ space. We know that $CX$ is contractible. But consider an open ball around the point $x=((0,0),0)$, that is, the point $(0,0)$ on the ``zeroth'' level of the cone. Consider a small neighborhood (not including the points $(t,1)$, in particular) around this point and pick some element $y=((\ep,\sin(1/\ep)),0)$ in the neighborhood. Now observe that any path between $x$ and $y$ can be projected down to a path between $(0,0)$ and $(\ep,\sin(1/\ep))$ in $X$, which we know does not exist. Hence $CX$ is contractible but not locally path connected. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that composition is associative because $\circ$ is. Moreover, the path class of the trivial loop based at $p$ is the identity on $p$. Thus this is a category. 
+
+To see that each morphism in $\cat C$, simply note that the inverse path, i.e., the path $f^{-1}$ taking $t$ to $f(1-t)$, gives a path class $[f^{-1}]$ which works as an inverse to $[f]\in\Hom(p,q)$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode 
+We simply let $\pi_0$ take $(X,x_0)\in\Cat{Sets}_*$ to the set of all path components of $X$, with basepoint equal to the path component containing $x_0$. It takes a morphism $f\in\Hom((X,x_0),(Y,y_0))$ to the map $\pi_0(f)$ which takes each path component $A$ of $X$ to the path component $B$ of $Y$ which contains $f(A)$. 
+
+Note that this is possible because continuous images of path connected spaces are path connected and hence contained within a single path component of $Y$. Moreover, this is indeed a pointed map because the path component containing $x_0$ must be contained in the path component containing $f(x_0)=y_0$, which is the basepoing of $\pi_0((Y,y_0))$. 
+
+It is easy to check functoriality, completing the proof. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Evidently the only possible path is the constant path at $x_0$. Hence $\pi_1(X,x_0)$ is the trivial group, i.e., $\{1\}$. 
+\end{exercise}
 
 \end{document}
