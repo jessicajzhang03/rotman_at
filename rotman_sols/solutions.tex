@@ -3,12 +3,13 @@
 \usepackage{jjz}
 \usetikzlibrary{cd}
 \usepackage[nameinlink]{cleveref}
+\usepackage{mathrsfs}
 \usepackage{subfiles} 
 
 \theoremstyle{definition} 
 \newtheorem{intex}{Exercise}[section]
 \newenvironment{exercise}{\begin{intex}\label{\theintex}}{\end{intex}}
-\crefname{intex}{Exercise}{Exercises}
+\crefname{intex}{exercise}{exercises}
 
 \setlist[enumerate,1]{label=(\roman*),leftmargin=\parindent}
 \setlist{parsep=0pt,listparindent=\parindent}
@@ -17,7 +18,7 @@
 \newcommand*\II{\mathbb I}
 \DeclareMathOperator\obj{obj}
 \DeclareMathOperator\Hom{Hom}
-\renewcommand*\cat[1]{\mathcal{#1}}
+\renewcommand*\cat[1]{\mathscr{#1}}
 \newcommand*\Cat[1]{\textbf{#1}}
 \renewcommand*\Top{\Cat{Top}}
 \renewcommand*\Set{\Cat{Set}}
