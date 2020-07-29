@@ -117,13 +117,186 @@ To see that each morphism in $\cat C$, simply note that the inverse path, i.e., 
 \begin{exercise} \leavevmode 
 We simply let $\pi_0$ take $(X,x_0)\in\Cat{Sets}_*$ to the set of all path components of $X$, with basepoint equal to the path component containing $x_0$. It takes a morphism $f\in\Hom((X,x_0),(Y,y_0))$ to the map $\pi_0(f)$ which takes each path component $A$ of $X$ to the path component $B$ of $Y$ which contains $f(A)$. 
 
-Note that this is possible because continuous images of path connected spaces are path connected and hence contained within a single path component of $Y$. Moreover, this is indeed a pointed map because the path component containing $x_0$ must be contained in the path component containing $f(x_0)=y_0$, which is the basepoing of $\pi_0((Y,y_0))$. 
+Note that this is possible because continuous images of path connected spaces are path connected and hence contained within a single path component of $Y$. Moreover, this is indeed a pointed map because the path component containing $x_0$ must be contained in the path component containing $f(x_0)=y_0$, which is the basepoint of $\pi_0((Y,y_0))$. 
 
 It is easy to check functoriality, completing the proof. 
 \end{exercise}
 
 \begin{exercise} \leavevmode
 Evidently the only possible path is the constant path at $x_0$. Hence $\pi_1(X,x_0)$ is the trivial group, i.e., $\{1\}$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that $1_S$ is a loop based at 1, i.e., an element of $\pi_1(S^1,1)$. 
+Thus if $\pi_1(S^1,1)$ were trivial, then $1_S$ would be nullhomotopic. 
+The hint gives the rest of the solution. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We know that $\deg u=1$. 
+Since 1 is a generator for $\ZZ$, it follows that $[u]$ generates $\pi_1(S^1,1)$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Let $\tilde\gamma(t)=m\tilde f(t)$, where $\tilde f$ is the lifting of $f$ satisfying $\tilde f(0)=0$. 
+Now simply observe that \[\exp\tilde\gamma(t)=\left(\exp\tilde f(t)\right)^m=f(t)^m\] and $\tilde\gamma(0)=0$. 
+Thus $\tilde\gamma$ is indeed the lifting of $f^m$ taking 0 to 0, and so we conclude that \[\deg(f^m)=\tilde\gamma(1)=m\tilde f(1)=m\deg f.\]
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that \Cref{1.3} implies that there is a homotopy $F:R_f\circ f\simeq f$, where $R_f$ is the rotation associated with $f$. 
+Moreover, from the proof of that same exercise, it follows that $F$ gives a closed path at every time $t$. 
+Similarly, we have $G:g\simeq R_g\circ g$. 
+Thus if $H:f\simeq g$ where $H$ gives a closed path at every time $t$, then the homotopy which follows $F$, then $H$, and finally $G$ is a homotopy between $R_f\circ f$ and $R_g\circ g$. 
+Thus Corollary 3.18 implies that $f$ and $g$ have the same degree. 
+
+For the converse, simply use Corollary 3.18 to show that $\deg f=\deg g$ implies that there is a homotopy $\rel\Idot$ taking $R_f\circ f$ to $R_g\circ g$. 
+Then using $F$ and $G$ defined above, it is clear that $g\simeq R_g\circ g\simeq R_f\circ f\simeq f$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Theorem 3.7 implies that $\pi_1(T,t_0)=\ZZ\times\ZZ=\ZZ^2$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Because $D^2$ is contractible, its fundamental group is trivial. 
+Thus if there were to exist a retraction $r:D^2\to S^1$, then $r_*:\pi_1(D)\to\pi_1(S^1)$ would be a constant. 
+But then, letting $i:S^1\to D^2$ be the canonical injection, we would have that $(r\circ i)_*=r_*\circ i_*$ is a constant. 
+However, we also know that $r\circ i$ is the identity on $S^1$, and so $(r\circ i)_*$ is the identity on $\pi_1(S^1)$, which is \textit{not} a constant. 
+This is a contradiction, from which we conclude that $S^1$ is not a retract of $D^2$, as desired. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This was proved in Theorem 0.3, which required only the fact proved in the above problem, namely that $S^1$ is not a retract of $D^2$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item Let $\tilde f$ be the unique lifting of $f$ with $\tilde f(0)=0$. 
+Then if $\tilde f(1)\ge1$, the intermediate value theorem implies that every point in the interval $[0,1]\subset\RR$ is in the image of $\tilde f$. 
+But this implies that $f=\exp\circ\tilde f$ must be surjective, a contradiction. 
+
+\item Consider the map which traverses the circle once counterclockwise, reaching the point 1 at time $t=\frac12$, before looping back and making a clockwise rotation. 
+Clearly it is surjective. 
+However, it is composed of two loops, one of which has degree 1 and one of which has degree $-1$. 
+Because $\deg(f*g)=\deg f+\deg g$, it follows that this map has degree 0. 
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+As per the hint, consider an arbitrary closed path $f$ in $X$ and let $\la$ be a Lebesgue number of the open cover $\{f^{-1}(U_j):j\in J\}$ of $\II$. 
+Note that $\la$ exists by the Lebesgue number lemma and compactness of the unit interval. 
+Picking $N\in\NN$ with $N>1/\la$, it follows that if we subdivide $I$ into $N$ equal intervals $I_k=[\frac kN,\frac{k+1}N]$, then $f(I_k)\subseteq U_{j_k}$ for some $j_k\in J$. 
+
+Define $f_k$ as the path in $U_{j_k}$ obtained by restricting $f$ to $I_k$ and then stretching suitably so that the domain is all of $\II$.
+With notation, define $f_k(t)=f\left(\frac{k+t}N\right)\in U_{j_k}$.
+Because $f_k$ is a path in $U_{j_k}$, it follows that $[f'_k]=[i_{j_k}\circ f_k]\in\im(i_j)_*$. But now simply observe that $[f'_0*\dots*f'_{N-1}]=[f]$, implying that $[f]$ is contained in the group generated by the subsets $\im(i_j)_*$. This proves the result. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Let $U_1$ and $U_2$ be defined as in the hint, and let $i_k$ be the injection from $U_k$ to $S^n$ for $k=1,2$. 
+Observe that, by the previous exercise, it suffices to show that $\im(i_k)_*$ is trivial for $k=1,2$. 
+
+Without loss of generality, let $k=1$. 
+But we know that $(i_1)_*$ takes a closed path $f:\II\to U_1$ to the path class $[i_1\circ f]$. 
+(Note that the basepoint doesn't really matter for us as long as it is neither the north nor the south pole.Thus we omit it.)
+Because $U_1\approx D^n$ and is therefore contractible, it follows that $f$ is nullhomotopic. 
+In particular, we know that $i_1\circ f$ is nullhomotopic, and so $[i_1\circ f]=[1]$ for every $f$. 
+Thus $\im(i_1)_*$ is trivial, and similarly for $k=2$, proving the result. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Corollary 3.11 implies that path connected spaces of the same homotopy type must have isomorphic fundamental groups. 
+But obviously $\ZZ\not\cong\{1\}$, and so $S^1$ and $S^n$ do not have the same homotopy type for $n>1$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+The multiplication map $\mu$ on $G/H$ is continuous. 
+After all, if we let $v$ be the natural map, then for any open set $U\subseteq G/H$, we have \[\mu^{-1}(U)=\{([x],[y]):xy\in v^{-1}(U)\}.\] 
+But this set is open in $G/H\times G/H$ because the set consisting of elements $(v^{-1}([x]),v^{-1}([y]))$ for each $([x],[y])\in \mu^{-1}(U)$ is just $\mu^{-1}(v^{-1}(U))$, which is clearly open. 
+
+For the inversion map $i:G/H\to G/H$, a very similar argument holds. 
+In particular, for any open set $U\subseteq G/H$, we have \[v^{-1}(i^{-1}(U))=\{x^{-1}:x\in v^{-1}(U)\}.\]
+Thus $v^{-1}(i^{-1}(U))$ is open, and so $i^{-1}(U)$ is open, proving continuity. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+First, we will show that we can lift a loop $f:(\II,0)\to(G/H,1)$ to a unique continuous map $\tilde f:(\II,0)\to(G,h)$ for any $h_0\in H$, as shown below. 
+\[\begin{tikzcd}[row sep=large]
+    &(G,h_0)\arrow[d,"v"]\\
+    (\II,0)\arrow[ur,"\tilde f"]\arrow[r,"f" swap]&(G/H,1)
+\end{tikzcd}\]
+In the above diagram, the map $v$ is the natural map taking $g$ to the coset $gH\in G/H$. 
+
+First, we will find a suitable neighborhood $U$ of 1 such that the family $\{hU:h\in H\}$ is pairwise disjoint. 
+Discreteness of $H$ implies that there exists an open neighborhood $V$ of 1 with $V\cap H=\{1\}$. 
+It is clear that the map $\phi:(x,y)\mapsto xy^{-1}$ is the composition $\mu\circ(\id\times i)$ and is therefore continuous. 
+Thus $\phi^{-1}(V)\subseteq G\times G$ is an open neighborhood of $(1,1)$. 
+This implies that we can find an open neighborhood $U$ of 1 such that $U\times U\subseteq f^{-1}(V)$. 
+
+Now suppose that there are $h_1,h_2\in H$ and $x,y\in U$ with $h_1x=h_2y$. 
+But this would require that $xy^{-1}=h_1^{-1}h_2$. 
+It is clear that $xy^{-1}\in\phi(U)\subseteq V$. 
+Moreover, because $H$ is a subgroup, we know that $h_1^{-1}h_2\in H$, and so $xy^{-1}\in V\cap H$. 
+Thus $x=y$ and $h_1=h_2$, proving that the sets $hU$ are disjoint, as desired. 
+Note that any translate $U_g=gU$ of $U$ is a neighborhood of $g\in G$ and has $\{hU_g:h\in H\}$ disjoint. 
+
+Note that $v$ is an open map, and so the set $W=v(U)\subseteq G/H$ is open. 
+Moreover, because $v|_U$ is the restriction of a continuous open map to an open set, it follows that $v|_U$ is itself continuous and open. 
+It is also a bijection onto $W$, and so $v|_U:U\to V$ is a homeomorphism. 
+
+Note that the collection of sets $V[g]$ for $[g]\in G/H$ forms an open cover of $G/H$. 
+Thus, if we are given some $f:(\II,0)\to(G/H,1)$, then we can consider the open cover \[\{f^{-1}(V[g]):[g]\in G/H\}\] of $\II$. 
+Note that we can find a finite subcover of this open cover.
+This means that we can take subsets of the sets in this open cover, given us a finite collection open overlapping subintervals which are, in order of their smaller coordinate, labeled $I_1,\dots,I_k$. 
+Let the group elements $g_1,\dots,g_k$ be such that $I_j\subseteq f^{-1}(V[g_j])$. 
+This is simply because $\II=[0,1]$ is connected compact. 
+
+Now we can lift $f$ to each interval $f^{-1}(V[g])$ in this finite subcover. 
+Note that $0=t_1\in I_1\subseteq f^{-1}(V[g_1])$. 
+Moreover, we know that $v^{-1}(V[g_1])$ consists of disjoint unions of $U$, and so we can pick the one containing $h_0$. 
+Now, for each $t\in I_1$, we let $\tilde f(t)$ to be the unique element in this copy of $U$ such that $v(\tilde f(t))=f(t)$. 
+Because the intervals overlap, we know that there is some $t_2\in I_2\cap I_1$, and so we can do the same thing, all the way to $t_k$. 
+This lets us define $\tilde f(t)$ for all $t\in\II$, and it is easy to show that our construction is indeed a lifting satisfying the commutative diagram above. 
+
+Now consider the map $d:\pi_1(G/H,1)\to H$ taking a loop $[f]$ to $d([f])=\tilde f(1)$, where $\tilde f$ is the unique lifting of $f$ with $\tilde f(0)=1$. 
+It is obvious that $\im d\subseteq H$ because $v(\tilde f(1))=f(1)=[1]$ implies that $d([f])=\tilde f(1)\in H$. 
+Moreover, the reverse inclusion holds, showing surjectivity. 
+In particular, if $h\in H$, then path connectedness of $G$ implies that there is a path $\tilde f$ from 1 to $h$. 
+Taking its projection $f=v\circ\tilde f$, note that $f$ is a loop because $v(\tilde f(1))=v(h)=[1]$. 
+Thus $d([f])$ is defined and equal to $h$. 
+To show injectivity, simply note that $\tilde f(1)=1$ implies that $\tilde f$ is a loop in $G$. 
+Because $G$ is simply connected, however, it follows that $\tilde f$, and hence $f$, is nullhomotopic. 
+Thus $f\in\ker d$ implies that $[f]=[1]$. 
+Finally, we must show that $d$ is indeed a homomorphism, i.e., that $d(f*g)=d(f)d(g)$. 
+But this is clear if we lift $f$ to $\tilde f$ with $\tilde f(0)=1$, and if we lift $g$ to $\tilde g$ with $\tilde g(0)=d(f)$. 
+This follows the same proof layout as Theorem 3.16, and proves the result. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+If $S\subseteq GL(n,\RR)$ is a subgroup of $GL(n,\RR)$, then note that $\mu:S\times S\to S$ is continuous. 
+After all, the product, entrywise, is simply a polynomial, and so $\mu$ is a polynomial in each of its $n^2$ entries. 
+Since polynomials are continuous in $\RR^2$, it follows that each of the $n^2$ components of $\mu$ is continuous. 
+Hence $\mu$ is continuous. 
+
+To see that the inversion $i$ is continuous, observe that the determinant $\det A$ is a continuous function, since it too is a polynomial (and is never zero, by definition of $GL$). 
+It thus suffices to show that the function $A\mapsto\adj A$ is continuous. 
+But it is easy to see that the adjugate matrix, which is the transpose of the cofactor matrix, is also a polynomial in the entries of $A$, and so $\adj A$ is continuous too. 
+Thus $i$ is continuous, and so $S$ is a topological group, as desired. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+As hinted in the exercise, fix $h_0\in H$ and let $\phi:G\to H$ be the map taking $x$ to $xh_0x^{-1}h_0^{-1}$. 
+Note that $xh_0x^{-1}\in H$ because $H$ is normal, and so $\phi(x)$ is indeed an element of $H$. 
+Moreover, we know that $\phi$ is continuous and $\{h\}\subseteq H$ is open for each $h\in H$. 
+Thus $\{\phi^{-1}(h):h\in H\}$ is an open cover of $G$ consisting of disjoint open sets. 
+
+In particular, if there are two elements $h_1,h_2\in H$ such that $\phi^{-1}(h_i)\ne\emptyset$ for $i=1,2$, then setting $A=\phi^{-1}(h_1)$ and $B=\bigcup_{h\ne h_1}\phi^{-1}(h)$ will give us two disjoint open sets $A$ and $B$ that cover $G$. 
+This implies that $G$ is disconnected, a contradiction. 
+Thus for all but one element of $H$, we must have $\phi^{-1}(h)=\emptyset$, proving that $\phi$ is constant. 
+But obviously, setting $x=h_0$, we find that $\phi(x)=1$. 
+Thus $xh_0x^{-1}h_0^{-1}=1$ for all $x\in G$, and so $xh_0=h_0x$ for each $h_0\in H$. 
+This proves the result. 
 \end{exercise}
 
 \end{document}
