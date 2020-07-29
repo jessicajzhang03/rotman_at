@@ -9,7 +9,7 @@
 \begin{exercise} \leavevmode
 Note that there is a maximal affine independent subset $S$ of $A$. This is directly implied by the fact that any set of greater than $n+1$ elements is not affine independent. Hence we can take an affine independent subset of $A$ with maximum size (because the empty set is affine independent). 
 
-Wrrite $S=\{p_0,\dots,p_m\}$. Then let $p_{m+1}\in A\setminus S$. By maximality of $S$, we know that $S\cup\{p\}$ is not affine independent. Hence there exist $s_i$ not all 0 such that \[\sum_{i=0}^{m+1}s_ip_i=0,\quad\sum_{i=0}^{m+1}s_i=0.\] Note that the second equation implies $\sum_{i=0}^ms_i\ne0$ for some $i<m+1$. It follows then that \[\sum_{i=0}^m\left(\frac{s_i}{\sum_{i=0}^ms_i}p_i\right)=p_{m+1}.\] But we know that \[\sum_{i=0}^m\frac{s_i}{\sum_{i=0}^ms_i}=1,\] and so it follows that $p_{m+1}$ is in fact in the affine span of $S$. 
+Write $S=\{p_0,\dots,p_m\}$. Then let $p_{m+1}\in A\setminus S$. By maximality of $S$, we know that $S\cup\{p\}$ is not affine independent. Hence there exist $s_i$ not all 0 such that \[\sum_{i=0}^{m+1}s_ip_i=0,\quad\sum_{i=0}^{m+1}s_i=0.\] Note that the second equation implies $\sum_{i=0}^ms_i\ne0$ for some $i<m+1$. It follows then that \[\sum_{i=0}^m\left(\frac{s_i}{\sum_{i=0}^ms_i}p_i\right)=p_{m+1}.\] But we know that \[\sum_{i=0}^m\frac{s_i}{\sum_{i=0}^ms_i}=1,\] and so it follows that $p_{m+1}$ is in fact in the affine span of $S$. 
 \end{exercise} 
 
 \begin{exercise} \leavevmode
@@ -61,7 +61,7 @@ Once again, suppose without loss of generality that $i=0$. Then the map taking $
 \end{exercise} 
 
 \begin{exercise} \leavevmode
-Notice that $[0,e_1,\dots,e_n]$, where $e_i$ are the standard basis vectors in $\RR^n$, is an $n$-simplex. Thus there is a homeomorphism $[p_0,\dots,p_n]\to[0,e_1,\dots,e_n]$. If we translate the image by $\vec v=(-\frac14,-\frac14,\dots,-\frac14)$, then we can map the result to $D^n$ by taking a radial mapping. In particular, this map will take \begin{align*}p_0&\mapsto\frac{\vec v}{\norm{\vec v}}\\p_i&\mapsto\frac{e_i+\vec v}{\norm{e_i+\vec v}}~\text{for}~i\ne0.\end{align*} Note that this extends to a homeomorphism. 
+Notice that $[0,e_1,\dots,e_n]$, where $e_i$ are the standard basis vectors in $\RR^n$, is an $n$-simplex. Thus there is a homeomorphism $[p_0,\dots,p_n]\to[0,e_1,\dots,e_n]$. If we translate the image by $\vec v=(-\frac14,\dots,-\frac14)$, then we can map the result to $D^n$ by taking a radial mapping. In particular, this map will take \begin{align*}p_0&\mapsto\frac{\vec v}{\norm{\vec v}}\\p_i&\mapsto\frac{e_i+\vec v}{\norm{e_i+\vec v}}~\text{for}~i\ne0.\end{align*} Note that this extends to a homeomorphism. 
 \end{exercise} 
 
 \end{document} 
