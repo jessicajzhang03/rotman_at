@@ -1,0 +1,154 @@
+\documentclass[../../solutions.tex]{subfiles}
+
+\setcounter{section}{3}
+
+\begin{document} 
+\section{Singular Homology}
+\subsection{Holes and Green's Theorem}
+No exercises! 
+
+\subsection{Free Abelian Groups}
+\begin{exercise} \leavevmode
+If $\gamma\in F$, then we can write $\ga=\sum_{b\in B}m_bb$, where $m_b\in\ZZ$ is zero for almost all $b$. 
+Now, writing $B=\cup B_\la$ for disjoint $B_\la$, we can define for each $\la$ the value $\ga_\la=\sum_{b\in B_\la}m_bb\in F_\la$. 
+Then obviously $\ga=\sum\ga_\la$. 
+
+To see that this expression is unique, simply observe that if $\ga=\sum\ga'_\la$, then because the sums are formal sums only, it follows that $\ga_\la=\ga'_\la$ for every $\la$. 
+But then it follows that the coefficient for each $b\in B_\la$ must be the same in $\ga_\la$ and in $\ga'_\la$, and so the two expressions are the same. 
+Moreover, it is clear that almost every $\ga_\la$ is zero. 
+After all, only finitely many $m_b$'s are nonzero, and so only finitely many $\ga_\la$ contain a nonzero coefficient. 
+
+Finally, the converse is clear. 
+In particular, if $\ga=\sum\ga_\la$ and $\ga_\la=\sum_{b\in B_\la}m_bb$, then $\ga=\sum_{b\in B}m_bb$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+To see the forward direction (isomorphic implies same rank), simply restrict to the basis. 
+In particular, if $\phi:F\to F'$ is an isomorphism between two free abelian groups, and if $B$ is a basis for $F$, then $\phi(B)$ is a basis for $F'$. 
+But clearly $B$ and $\phi(B)$ have the same cardinality because $\phi$ is injective. 
+Thus $F$ and $F'$ have the same rank. 
+
+To see the converse, consider bases $B$ and $B'$ for $F$ and $F'$, respectively. 
+Because $B$ and $B'$ have the same cardinality, there is a bijection $\phi|_B$ between them. 
+Pick such a bijection and extend it to all of $F$ linearly. 
+Theorem 4.1 tells us that this is a homomorphism; indeed, it is an isomorphism because $\phi|_B$ was a bijection. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item An arbitrary element of $S_1(X)$ looks like $\sum m_\sig\sig$, where $\sig$ ranges over paths in $X$. 
+Then we know that $\partial_1$ takes $\sum m_\sig\sig+\sum n_\sig\sig$ to \[\sum_\sig m_\sig\sig(1)+\sum_\sig n_\sig\sig(1)-\sum_\sig m_\sig\sig(0)-\sum_\sig n_\sig\sig(0)=\partial_1(m)+\partial_1(n),\] where $m=\sum m_\sig\sig$ and similarly for $n$. 
+Thus this is a homomorphism. 
+
+\item If $x_0$ and $x_1$ lie in the same path component of $X$, then there is a path $\sig$ between them. 
+This path is an element of $X$ (indeed, it is a \textit{basis} element of $X$), and satisfies $\partial_1(\sig)=x_1-x_0$. 
+
+The converse is slightly trickier, however. 
+Suppose that $x_0$ and $x_1$ belong to different path components, say $X_0$ and $X_1$, respectively. 
+Then consider the map $\phi:S_0(X)\to\ZZ$ which takes $x\in X$ to 1 if $x\in X_0$ and to 0 otherwise. 
+This defines $\phi$ on the basis of $S_0(X)$, so we can linearly extend it to a group homomorphism (Theorem 4.1). 
+
+Any element in the image of $\partial_1$ can be written as $(\sum m_\sig\sig)(1)-(\sum m_\sig\sig)(0)$. 
+Then we know that \[\phi\left((\sum m_\sig\sig)(1)-(\sum m_\sig\sig)(0)\right)=\sum m_\sig\phi(\sig(1)-\sig(0)).\] 
+But because $\sig$ is a path, obviously $\sig(1)$ and $\sig(0)$ are in the same path component. 
+In particular, we have $\phi(\sig(1)-\sig(0))=0$, and so $\im\partial_1\subset\ker\phi$. 
+Now observe that $\phi(x_1-x_0)=-1$. 
+Thus $x_1-x_0\not\in\im\partial_1$, proving the converse. 
+
+\item By definition, we have that $\sig\in\ker\partial_1$ if and only if $\sig(1)-\sig(0)=0$. 
+Because $\sig$ is a path, however, this condition is equivalent to saying that $\sig$ is a closed path. 
+
+To see that the path condition on $\sig$ is necessary, note that the sum of two closed paths is in $\ker\partial_1$ but is not itself a closed path. 
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that $S_n(X)=\emptyset$ for all $n$, because there is no function $\Delta^n\to X=\emptyset$. 
+Thus $\ker\partial=\im\partial=\emptyset$, and so $H_n(X)$ is trivial.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We know that $\partial_0$ is the zero map, and so $\ker\partial_0=S_0(X)$. 
+Moreover, the proof of the dimension axiom shows that $\partial_1$ is the zero map as well. 
+In particular, we find that $Z_0(X)/B_0(X)\cong S_0(X)$. 
+But we know, once again from the proof of the dimension axiom, that $S_0(X)$ is infinite cyclic and hence $H_0(X)\cong\ZZ$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We already know how $S_n$ acts on objects of $\Top$. 
+Defining $S_n(f)=f_\#$ on morphisms, it is easy to see that $S_n$ satisfies the functorial properties $S_n(1_X)=1_{S_n(X)}$ and $S_n(g\circ f)=S_n(g)\circ S_n(f)$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We know that $S^0$ is the disjoint union of two points, and so $H_n(S^0)=H_n(\{0\})\oplus H_n(\{1\})$. 
+But the dimension axiom and \Cref{4.5} imply that \[H_n(S^0)=\begin{cases}\ZZ^2&~\text{if}~n=0\\0&~\text{otherwise}.\end{cases}.\]
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Because the Cantor set is the disjoint union of countably many points, it follows that $H_0(X)=\ZZ^\omega$ and $H_n(X)=0$ for all $n>0$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item For $n=0$, note that $\beta_1=[a_0,b_0]$, and so $\partial_1\beta_1$ is the constant map taking $e_0\in\Delta^0$ to $b_0-a_0=(e_0,1)-(e_1,0)$. 
+On the other hand, we know that $P_{-1}^\Delta$ is the zero map, and $\la_{i~\#}^\Delta(\delta)=\la_i^\Delta$. 
+Thus the right-hand side of the equation is simply \[\la_1^\Delta-\la_0^\Delta,\] which is the map taking $e_0\in\Delta^0$ to $(e_0,1)-(e_1,0)$. 
+The two sides are therefore the same. 
+
+For $n=1$, we first consider the left-hand side. 
+Note that \begin{align*}\partial_2\beta_2&=[b_0,b_1]-[a_0,b_1]+[a_0,b_0]-[a_1,b_1]+[a_0,b_1]-[a_0,a_1]\\&=[b_0,b_1]+[a_0,b_0]-[a_1,b_1]-[a_0,a_1],\end{align*} and so it is simply the constant map $\Delta^1\to\Delta^1\times\II$ taking everything to $b_0-a_1=(e_0,1)-(e_1,0)$. 
+For the right-hand side, on the other hand, we already know that \[\la_{1~\#}^\Delta(\delta)-\la_{0~\#}^\Delta(\delta)=\la_1^\Delta-\la_0^\Delta:t\mapsto(t,1)-(t,0).\] 
+Moreover, because $\partial_1\Delta^1=e_1-e_0$, we know that \[P_0^\Delta\partial\delta:t\mapsto((e_1-e_0)(e_0),t)=(e_1,t)-(e_0,t).\] 
+Thus the right-hand side takes $e_0$ to \[(e_0,1)-(e_0,0)-(e_1,0)+(e_0,0)=(e_0,1)-(e_1,0)\] and takes $e_1$ to \[(e_1,1)-(e_1,0)-(e_1,1)+(e_0,1)=(e_0,1)-(e_1,0).\] 
+hus the two sides agree on $e_0$ and $e_1$, from which we conclude the result. 
+
+\item We know that \begin{align*}P_1^X(\sig)&=(\sig\times1)_\#(\beta_2)\\&=(\sig\times1)\circ[a_0,b_0,b_1]-(\sig\times1)\circ[a_0,a_1,b_1].\end{align*} 
+The first term takes an arbitrary element $(t_0,t_1,t_2)\in\Delta^2$, where we use barycentric coordinates, to the point $(\sig((t_0+t_1)e_0+t_2e_1),t_1+t_2)$. 
+By corresponding a point $(1-t)e_0+te_1\in\Delta^1$ to $t$, we find that the first term takes $(t_i)$ to $(\sig(t_2),t_1+t_2)$. 
+Similarly, the second term takes $(t_i)$ to $(\sig(t_1+t_2),t_2)$. 
+Thus we find the following explicit formula: \[P_1^X(\sig):(t_0,t_1,t_2)\mapsto(\sig(t_2),t_1+t_2)+(\sig(t_1+t_2),t_2).\]
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Let $\sig:\Delta^n\to X$ be a simplex. 
+Then note that $P_n^X(\sig)=(\sig\times1)_\#(\beta_{n+1})$. 
+Thus \[(f\times1)_\#P_n^X(\sig)=(f\sig\times1)_\#(\beta_{n+1}).\]
+On the other hand, we know that \[P_n^Yf_\#(\sig)=(f_\#\sig\times1)\#(\beta_{n+1}),\] which is the same as the previous expression because $\sig$ is a simplex and so $f_\#\sig=f\sig$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+The inclusion $i$ is a homotopy equivalence, and so Corollary 4.24 implies that $i_*$ is an isomorphism. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that the $\sin(1/x)$ space has two path components, both of which are contractible. 
+Thus $H_0(X)=\ZZ^2$ and $H_n(X)=0$ for $n>0$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We know that $\phi\circ h_\#$ takes the path class $[f]$ to $\phi[h\circ f]=\cls hf\eta$. 
+On the flip side, we know that $h_*\circ\phi$ takes $\phi$ to $h_*\cls f\eta$. But because $f\eta$ is a simplex, this is simply $\cls hf\eta$ as well. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We know that \[f*f^{-1}*(f*f^{-1})^{-1}\simeq c\] for some constant map c. 
+But note that $(f*f^{-1})^{-1}=f*f^{-1}$. 
+Thus we can apply the Hurewicz map to find that \[2\cls((f+f^{-1})\eta)=[0].\] 
+It follows that $f+f^{-1}\in B_1(X)$, where $f$ and $f^{-1}$ are considered as 1-chains. 
+Thus $f$ and $-f^{-1}$ are homologous, as desired. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that the boundary of the second triangle is $\alpha*\beta+\ga-(\alpha*\beta)*\ga$. 
+Thus $\cls(\alpha*\beta*\ga)=\cls(\alpha*\beta+\ga)$. 
+Repeating this procedure on the first triangle, we find that $\cls(\alpha*\beta*\ga)=\cls(\alpha+\beta+\ga)$. 
+Note that, in the text, there is a second equality, namely that these expressions equal $\cls\alpha+\cls\beta+\cls\gamma$. 
+However, homology classes are not actually defined for paths which are not closed, so this seems to be an error. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is proved in Theorem 6.20. 
+\end{exercise}
+
+\end{document}
