@@ -1,0 +1,48 @@
+\documentclass[../../solutions.tex]{subfiles}
+
+\setcounter{section}{4}
+
+\begin{document}
+\section{\texorpdfstring{The Category $\Cat{Comp}$}{The Category Comp}}
+\begin{exercise} \leavevmode
+These results all follow directly from the definition of exactness. 
+\begin{enumerate}
+\item Note that $\ker f=\im 0=0$, and so $f$ is injective. 
+\item In this case, we have $\im g=\ker0=C$. 
+\item By the previous two parts, we know that $f$ is bijective. 
+Because $f$ is a homomorphism as well, it follows that $f$ is an isomorphism. 
+\item Either observe that $0\to A\to0\to0$ is exact and apply the previous part, or note that $A\to0$ is injective while $0\to A$ is surjective, implying that $A\cong0$, i.e., that $A=0$. 
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that $f$ is surjective if and only if $\ker g=\im f=B$. 
+But $\ker g=B$ if and only if $g$ is the zero map, which is itself true exactly when $\ker h=\im g=0$. 
+Since $\ker h=0$ if and only if $h$ is injective, we are done. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We know that $0\to A\xrightarrow{i}B$ implies that $i$ is an injection. 
+But because $i$ is a surjection onto its image, this implies that $iA\cong A$. 
+Moreover, because $\ker p=\im i=iA$, we know that $B/iA=B/\ker p\cong\im p$. 
+Because $p$ is a surjection (see \Cref{5.1}), the result follows. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This amounts, effectively, to following the arrows and the equations given by exactness. 
+In more detail, let $f_n:B_n\to C_n$ and $g_n:C_n\to A_{n-1}$. 
+Now observe that $B_n=\im h_n=\ker f_n$. 
+Thus $f_n$ is the zero map. 
+Moreover, because $\ker g_n=\im f_n$, we know that $g_n$ is injective. 
+Finally, we have $\im g_n=\ker h_{n-1}$. 
+But $h_{n-1}$ is an isomorphism, and so its kernel is trivial. 
+Thus $\im g_n=0$. 
+Because $g_n$ was injective, it follows that $C_n=0$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item 
+\end{enumerate}
+\end{exercise}
+\end{document}
