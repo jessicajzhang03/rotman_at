@@ -3,7 +3,7 @@
 \setcounter{section}{4}
 
 \begin{document}
-\section{\texorpdfstring{The Category $\Cat{Comp}$}{The Category Comp}}
+\section{\texorpdfstring{The Category $\Comp$}{The Category Comp}}
 \begin{exercise} \leavevmode
 These results all follow directly from the definition of exactness. 
 \begin{enumerate}
@@ -42,7 +42,304 @@ Because $g_n$ was injective, it follows that $C_n=0$.
 
 \begin{exercise} \leavevmode
 \begin{enumerate}
-\item 
+\item Let $f$ be the map from $A$ to $B$ and $g$ be the map from $B$ to $C$.
+Let $\{a_\alpha\}$ and $\{c_\gamma\}$ be maximal independent sets of $A$ and $C$, respectively. 
+For every $\alpha$, let $b_\alpha=f(a_\alpha)$. 
+For every $\gamma$, pick some $b_\gamma\in g^{-1}(c_\gamma)$, which is possible by surjectivity of $g$.
+If $\sum n_\alpha b_\alpha+\sum n'_\gamma b'_\gamma=0$, then we know that \[g\left(\sum n_\alpha b_\alpha+\sum n'_\gamma b'_\gamma\right)=0.\]
+But we also know that $\im f=\ker g$, and so $g(b_\alpha)=0$. 
+Thus this simply implies that $\sum n'_\gamma c_\gamma=0$, implying that $n'_\gamma=0$. 
+But now we know that $\sum n_\alpha b_\alpha=0$, and so injectivity of $f$ implies that $\sum n_\alpha a_\alpha=0$ as well. 
+Thus $n_\alpha=0$ for all $\alpha$ as well, and so $\{b_\alpha\}\cup\{b_\gamma\}$ is independent. 
+Thus $\rank B\ge\rank A+\rank C$. 
+
+To show the opposite inequality, it suffices to show that $\{b_\alpha\}\cup\{b_\gamma\}$ is \textit{maximally} independent. 
+Note that $b\not\in f(A)$. 
+Otherwise, we could take $f^{-1}$ on $\{b_\alpha\}\cup\{b\}$, which is not independent. 
+Now consider $\{b_\gamma\}\cup\{b\}$. 
+If $g(b)=g(b_\gamma)$ for any $\gamma$, then we know by \Cref{5.3} that $b-b_\gamma\in f(A)$. 
+Obviously, we cannot have $b-b_\gamma=b_\alpha$ for any $\alpha$, otherwise that would give us our linear dependence. 
+Thus $\{b-b_\gamma\}\cup\{b_\alpha\}$ is a subset of $f(A)$ with $\rank A+1$ elements. 
+This is not independent, a contradiction. 
+
+\item We prove this by induction. 
+The previous part takes care of the base case. 
+Consider the following commutative diagrams. 
+\[\begin{tikzcd}
+0\ar[r] & A_n\ar[r,"f_n"] & A_{n-1}\ar[r,"v"] & A_{n-1}/\im f_n\ar[r] & 0
+\end{tikzcd}\]
+\[\begin{tikzcd}
+0\ar[r] & A_{n-1}/\ker f_{n-1}\ar[r,"\bar f_{n-1}"] & A_{n-2}\ar[r,"f_{n-2}"] & \dots\ar[r,"f_2"] & A_1\ar[r,"f_1"] & A_0\ar[r] & 0.
+\end{tikzcd}\]
+Here $v$ is the natural map and $\bar f_{n-1}$ is the well-defined map taking $x+\ker f_{n-1}$ to $f_{n-1}(x)$. 
+
+Let $r_i$ be the rank of $A_i$. 
+Then the first diagram implies that $r_n-r_{n-1}+r=0$, where $r$ is the rank of $A_{n-1}/\im f_n$. 
+Because $\im f_n=\ker f_{n-1}$, the second diagram implies by induction that $r-r_{n-2}+r_{n-3}+\dots=0$. 
+Thus we subtract the first from the second to find that $r_n-r_{n-1}+r_{n-2}-\dots=0$, as desired. 
 \end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+If $\partial_n=0$ for all $n$, then we know that $H_n(S_*)=\ker\partial_n/\im\partial_{n+1}=S_n/\{0\}=S_n$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+If $f:S_*\to S'_*$ is an equivalence, then it has an inverse $g:S'_*\to S_*$. 
+Thus at every $n$, there is a $g_n:S'_n\to S_n$ so that $g_n\circ f_n=\id_{S_n}$ and $f_n\circ g_n=\id_{S'_n}$. 
+It follows that $f_n$ is an isomorphism for every $n$. 
+
+Conversely, suppose $f_n$ is an isomorphism for every $n$. 
+Then let $g=\{g_n\}$, where $g_n=f_n^{-1}$. 
+It is clear that $f$ and $g$ are inverses, and so $f$ is indeed an equivalence in $\Comp$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+If the former sequence is exact in $\Comp$, then we know that $\im f=\ker g$. 
+Then the terms of degree $n$ of both $\im f$ and $\ker g$ must be the same. 
+In other words, we must have $\im f_n=\ker g_n$, and so the latter sequence is exact in $\Ab$. 
+
+On the other hand, suppose that the latter sequence is exact for every integer $n$. 
+Then we know that the degree $n$ terms of $\ker f$ and $\im g$ are the same. 
+Moreover, we know that the differentiation operators are the same because they are defined, in both cases, simply as restrictions of the differentiation operator in $S_*$. 
+Thus the two complexes are the same, as desired. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item We have the following diagram, where $\bar\partial_n$ represents the map taking $s_n+S'_n\mapsto\partial_n(s_n)+S'_{n-1}$. 
+\[\begin{tikzcd}
+\dots\ar[r] & S_{n+1}\ar[d,"v_{n+1}"]\ar[r,"\partial_{n+1}"] & S_n\ar[d,"v_n"]\ar[r,"\partial_n"] & S_{n-1}\ar[d,"v_{n-1}"]\ar[r] & \dots \\ 
+\dots\ar[r] & S_{n+1}/S'_{n+1}\ar[r,"\bar\partial_{n+1}"] & S_n/S'_n\ar[r,"\bar\partial_n"] & S_{n-1}/S'_{n-1}\ar[r] & \dots 
+\end{tikzcd}\]
+To show that $v$ is a chain map, we must show that $v_{n-1}\partial_n=\bar\partial_nv_n$ for every $n$. 
+Pick a simplex $\sig:\Delta^n\to X$. 
+We know that $v_{n-1}(\partial n\sig)=\partial_n\sig+S'_{n-1}$. 
+However, we also have $\bar\partial_nv_n\sig=\bar\partial_n(\sig+S'_n)=\partial_n\sig+S'_{n-1}$. 
+Thus this is indeed a chain map. 
+
+Moreover, it is obvious that $\ker v_n=S'_n$ for every $n$. 
+The definition of a subcomplex implies that the $\partial_n|\ker v_n$ is the operation in $S'_*$. 
+Thus $\ker v=S'_*$, as desired. 
+
+\item At each $n$, we know from the previous part that we have the following commutative diagram in $\Ab$. 
+\[\begin{tikzcd}
+S_n\ar[d,"v_n"]\ar[r,"\partial_n"] & S_{n-1}\ar[d,"v_{n-1}"] \\ 
+S_n/\ker f_n\ar[r,"\bar\partial_n"] & S_{n-1}/\ker f_{n-1}
+\end{tikzcd}\]
+By the first isomorphism theorem for groups, however, we know that there is an isomorphism $\theta_n$ from $S_n/\ker f_n\to\im f_n$ such that $\theta_nv_n=f_n$. 
+
+We claim that $\theta=\{\theta_n\}$ is the desired chain map. 
+To see this, observe that \[\theta_{n-1}\bar\partial_n(\sig+\ker f_n)=\theta_{n-1}(\partial_n\sig+\ker f_{n-1})=f_{n-1}\partial_n\sig.\] 
+On the other hand, because $\sig+\ker f_n=v_n(\sig)$, we know that \[\partial'_n\theta_n(\sig+\ker f_n)=\partial'_n(f_n(\sig))=\partial_nf_n\sig.\] 
+The two final expressions in the above equations are equal, moreover, because $\{f_n\}$ is itself a chain map. 
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+First, note that both $S'_*/(S'_*\cap S''_*)$ and $(S'_*+S''_*)/S''_*$ are well-defined because everything is abelian. 
+Now consider the map \begin{align*}\phi:S'_*&\to\frac{S'_*+S''_*}{S''_*}\\S'_n&\mapsto S'_n+S''_*.\end{align*}
+Note that we have boundary maps \[\partial'_n:S'_n\to S'_{n-1}\] and \[\overline\partial_n:\frac{S'_n+S''_n}{S''_n}\to\frac{S'_{n-1}+S''_{n-1}}{S''_{n-1}},\] where $\overline\partial_n$ takes $(s'_n+s''_n)+S''_n$ to $(\partial'_ns'_n+\partial''_ns''_n)+S''_{n-1}$. 
+
+We claim that $\phi$ is a chain map.
+To see this, it suffices to show that $\phi_{n-1}\partial'_n=\overline\partial_n\phi_n$. But for any $\sig'\in S'_n$, we know that \[\phi_{n-1}\partial'_n(\sig)=\partial'_n\sig+S''_{n-1}=\overline\partial_n(\sig+S''_n)=\overline\partial_n\phi_n(\sig),\] as desired. 
+Moreover, the second isomorphism theorem for groups implies that $\phi_n$ is a homomorphism with kernel $S'_n\cap S''_n$, from which it follows that $\phi$ is a chain map with $\ker\phi=S'_*\cap S''_*$. The first isomorphism theorem (\Cref{5.9}) implies the result. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Consider the sequence in the problem, namely 
+\[\begin{tikzcd}0\ar[r]&T_*/U_*\ar[r,"i"]&S_*/U_*\ar[r,"p"]&S_*/T_*\ar[r]&0\end{tikzcd}.\]
+Clearly, we have \[\im i_n=\{t_n+U_n:t_n\in T_n\}.\] 
+Moreover, we know that $p_n(s_n+U_n)=s_n+T_n$, so \[\ker p_n=\{s_n+U_n:s_n\in T_n\}.\] Clearly these are equal. 
+
+It now suffices to prove that $\ker i_n=0$ and $\im p_n=S_n/T_n$. 
+But note that $i_n(t_n+U_n)=0$ implies that $t_n\in U_n$. 
+Hence $t_n+U_n=0$ as an element of $T_n/U_n$ as well. 
+Moreover, consider an arbitrary element $s_n+T_n\in S_n/T_n$. 
+It is equal to $p_n(s_n+U_n)$, which proves that $p$ is surjective. 
+Hence the sequence of complexes is exact. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+% By definition, we have \[H_n\left(\sum S_*^\la\right)=\ker\partial_n/\im\partial_{n+1},\] where $\partial_n=\sum\partial_n^\la$. 
+We claim that \[\ker\left(\sum\partial_n^\la\right)=\sum\ker\partial_n^\la.\]
+If $\sum s_n^\la\in\ker\left(\sum\partial_n^\la\right)$, then by definition we must have $\partial_n^\la(s_n^\la)=0$ for each $\la$. 
+The converse is also clearly true. 
+Similarly, we find that \[\im\left(\sum\partial_{n+1}^\la\right)=\left\{\sum\partial_{n+1}^\la(s_{n+1}^\la)\right\}=\sum\im\partial_{n+1}^\la.\]
+Thus we conclude that \[H_n\left(\sum S_*^\la\right)=\frac{\ker\partial_n}{\im\partial_{n+1}}=\frac{\sum\ker\partial_n^\la}{\sum\im\partial_{n+1}^\la}=\sum\frac{\ker\partial_n^\la}{\im\partial_{n+1}^\la}=\sum H_n(S_*^\la).\]
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Suppose $\sum m_\sig\sig+S_n(A)=\sum m'_\sig\sig+S_n(A)$. 
+This implies that $m_\sig-m'_\sig=0$ for every $\sig$ with $\im\sig\not\subseteq A$. 
+Hence we can pick the unique representative \[\sum_{\im\sig\not\subseteq A}m_\sig\sig=\sum_{\im\sig\not\subseteq A}m'_\sig\sig,\] thus showing that this is indeed the free abelian group generated by $\sig$ with $\im\sig\not\subseteq A$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item It suffices to prove that $p_n$ is surjective and that $\im i_n=\ker p_n$. 
+To see that $p_n$ is surjective, consider the following segment of the long exact sequence: 
+\[\begin{tikzcd}
+B_n\ar[r,"p_n"] & C_n \ar[r] & A_{n-1} \ar[r,"i_{n-1}"] & B_{n-1}
+\end{tikzcd}\]
+Note that the map $f_n:C_n\to A_{n-1}$ has $\im f_n=\ker i_{n-1}=0$, and so $\ker f_n=C_n$.
+Thus $\im f_n=C_n$, proving surjectivity. 
+
+To see that $\im i_n=\ker p_n$, simply consider the following segment: 
+\[\begin{tikzcd}
+A_n\ar[r,"i_n"] & B_n \ar[r,"p_n"] & C_n
+\end{tikzcd}\]
+The result immediately follows. 
+
+\item There exists a map $r$ with $r\circ i=\id_A$. 
+Thus $r_*\circ i_*=\id_{H_n(A)}$, from which it follows that $i_*$ is injective. 
+Theorem 5.8 gives an exact sequence 
+\[\begin{tikzcd}
+\dots\ar[r] & H_n(A)\ar[r,"i_n"] & H_n(X)\ar[r,"p_n"] & H_n(X,A)\ar[r,"d"] & \dots
+\end{tikzcd}\]
+where $p_*$ is induced by the quotient map $S_*(X)\to S_*(X)/S_*(A)$.
+Since $i_*$ injective implies that $i_n$ is injective, we can apply the previous part to find an exact sequence 
+\[\begin{tikzcd}
+0\ar[r] & H_n(A)\ar[r,"i_n"] & H_n(X)\ar[r,"p_n"] & H_n(X,A)\ar[r] & 0
+\end{tikzcd}\]
+Then \Cref{5.3} implies that $H_n\oplus H_n(X,A)=H_n(X)$, as desired. 
+
+\item We now have $i\circ r\simeq\id_X$ as well.
+In particular, since $A$ and $X$ have the same homotopy type, we must have $H_n(A)\cong H_n(X)$ by Corollary 4.24.
+Thus $i_n$ in the exact sequence given in the previous part must be the identity, and so $\ker p_n=\im i_n=H_n(X)$. 
+But since $p_n$ is surjective, it follows that $H_n(X,A)=0$, as desired. 
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We prove this in cases. We will use the follow commutative diagram, where the columns are exact: 
+\[\begin{tikzcd}[row sep=large,column sep=large]
+& 0\ar[d] & 0\ar[d] & 0\ar[d] & \\ 
+\dots\ar[r] & S'_{n+1} \ar[r,"\partial'_{n+1}"] \ar[d,"i_{n+1}"] & S'_n \ar[r,"\partial'_n"] \ar[d,"i_n"] & S'_{n-1}\ar[r] \ar[d,"i_{n-1}"] & \dots \\ 
+\dots\ar[r] & S_{n+1} \ar[r,"\partial_{n+1}"] \ar[d,"p_{n+1}"] & S_n \ar[r,"\partial_n"] \ar[d,"p_n"] & S_{n-1}\ar[r] \ar[d,"p_n"] & \dots \\ 
+\dots\ar[r] & S''_{n+1} \ar[r,"\partial''_{n+1}"] \ar[d] & S''_n \ar[r,"\partial''_n"] \ar[d] & S''_{n-1}\ar[r] \ar[d] & \dots \\ 
+& 0 & 0 & 0 & 
+\end{tikzcd}\]
+
+\begin{case}
+$S_*$ and $S'_*$ are acyclic. 
+\end{case}
+We would like to show than $Z''_n=\ker\partial''_n$ is equal to $B''_n=\im\partial''_{n+1}$. 
+We already know that $B''_n\subseteq Z''_n$. 
+Surjectivity of $p$ implies that we can rewrite $Z''_n$ as \[Z''_n=p_n(\ker(\partial''_np_n))=p_n(\ker(p_{n-1}\partial_n)).\] 
+This, in turn, can be written as \[Z''_n=\{p_ns_n:p_{n-1}\partial_ns_n=0\}.\]
+On the other hand, we can rewrite $B''_n$ as \[B''_n=\im(\partial''_{n+1}p_{n+1}=\im(p_n\partial_{n+1}))=p_n\im\partial_{n+1}.\]
+Since $S_*$ is acyclic, we know that $\im\partial_{n+1}=\ker\partial_n$, and so we find that \[B''_n=\{p_nz_n:\partial_nz_n=0\}.\]
+
+Now consider an arbitrary element $p_ns_n\in Z''_n$. 
+Since $p_{n-1}\partial_ns_n=0$, we know that $\partial_ns_n\in\ker p_{n-1}=\im i_{n-1}$, where again we use the fact that $S_*$ is acyclic. 
+Injectivity of $i_{n-1}$ implies the existence of a unique $s'_{n-1}\in S'_{n-1}$ with $i_{n-1}s'_{n-1}=\partial_ns_n$. 
+We know, however, that $\partial_{n-1}\partial_n=0$, and so \[0=\partial_{n-1}\partial_ns=\partial_{n-1}i_{n-1}s'_{n-1}=i_{n-2}\partial'_{n-1}s'_{n-1}.\]
+Since $i_{n-2}$ is injective, it follows that $\partial'_{n-1}s_{n-1}=0$, and so acyclicity of $S'_*$ implies that $s_{n-1}\in\ker\partial'_{n-1}=\im\partial'_n$. 
+In particular, we can write $s'_{n-1}=\partial'_ns'_n$. 
+
+Now notice that \[\partial_ni_ns'_n=i_{n-1}\partial'_ns'_n=i_{n-1}s'_{n-1}=\partial_ns_n,\] where the last equality follows from the definition of $s'_{n-1}$. 
+We know that $z_n=s_n-i_ns'_n\in Z_n$ since $\partial'_n$ is a homomorphism. 
+But we also know that \[p_nz_n=p_n(s_n-i_ns'_n)=p_ns_n-p_ni_ns'_n=p_ns_n,\] where we use exactness of the columns. 
+In other words, we have a $z_n$ with $\partial_nz_n=0$, such that $p_nz_n=p_ns_n$. 
+Thus $p_ns_n\in B''_n$, proving that $Z''_n=B''_n$. 
+To be even more explicit, this implies that $H''_n=Z''_n/B''_n=0$ for all $n$, proving that $S''_*$ is an acyclic complex as well. 
+
+\begin{case}
+$S'_*$ and $S''_*$ are acyclic. 
+\end{case}
+
+Suppose $s_n\in Z_n$, i.e., that $\partial_ns_n=0$. 
+Then $\partial''_np_n=p_{n-1}\partial_n$ implies that $p_ns_n\in\ker\partial''_n=\im\partial''_{n+1}$. 
+Hence write $p_ns_n=\partial''_{n+1}s''_{n+1}$. 
+Since $p_{n+1}$ is surjective, we can find $s_{n+1}$ with $p_{n+1}s_{n+1}=s''_{n+1}$, and so \[p_n\partial_{n+1}s_{n+1}=\partial''_{n+1}p_{n+1}s_{n+1}=p_ns_n.\]
+But then we know that $\partial_{n+1}s_{n+1}-s_n\in\ker p_n=\im i_n$. 
+Thus there exists a unique $s'_n$ with $i_ns'_n=\partial_{n+1}s_{n+1}-s_n$. 
+We can take $\partial_n$ of both sides to find that \[0=\partial_n\partial_{n+1}s_{n+1}-\partial_ns_n=\partial_ni_ns'_n=i_{n-1}\partial'_ns'_n,\] and so it follows that $\partial'_ns'_n=0$. 
+In particular, we know that $s'_n\in\im\partial'_{n+1}$, so we can find $s'_{n+1}$ whose boundary is $s'_n$. 
+Recall that we had \[s_n=\partial_{n+1}s_{n+1}-i_ns'_n.\]
+But the last term is equal to $i_n\partial'_{n+1}s'_{n+1}=\partial_{n+1}i_{n+1}s'_{n+1}$, and so this is in turn equal to \[s_n=\partial_{n+1}(s_{n+1}-i_{n+1}s'_{n+1}).\] 
+This proves that $s_n\in B_n$, and so $Z_n=B_n$. 
+
+\begin{case}
+$S_*$ and $S''_*$ are acyclic. 
+\end{case}
+
+This final case is handled similarly to the first two, but we lay out the details below. 
+Let $s'_n\in\ker\partial'_n=Z'_n$ be arbitrary. 
+Then $i_ns'_n\in\ker\partial_n=\im\partial_{n+1}$, and so \[i_ns'_n=\partial_{n+1}s_{n+1}\] for some $s_{n+1}$. 
+We know that $p_{n+1}s_{n+1}\in\ker\partial''_{n+1}=\im\partial''_{n+2}$ because $p_ni_ns'_n=0$. 
+Hence there exists $s''_{n+2}$ with $\partial''_{n+2}s''_{n+2}=p_{n+1}s_{n+1}$. 
+But then it follows that \[p_{n+1}\partial_{n+2}s_{n+2}=\partial''_{n+2}p_{n+2}s_{n+2}=p_{n+1}s_{n+1},\] from which it follows that $s_{n+1}-\partial_{n+2}s_{n+2}\in\ker p_{n+1}=\im i_{n+1}$. 
+Thus there exists $s'_{n+1}$ with $i_{n+1}s'_{n+1}=s_{n+1}-\partial_{n+2}s_{n+2}$.
+We then find that \[i_n\partial'_{n+1}s'_{n+1}=\partial_{n+1}i_{n+1}s'_{n+1}=\partial_{n+1}s_{n+1}=i_ns'_n.\]
+Injectivity implies $s'_n=\partial'_{n+1}s'_{n+1}\in B_n$, thus proving the final case. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+To show that $f_\#(Z_n(X,A))\subseteq Z_n(X',A')$, consider $\gamma\in Z_n(X,A)$. 
+Note that $\gamma\in S_n(X)$, and so Lemma 4.8 implies that \[\partial'_nf_\#\gamma=f_\#\partial_n\gamma.\] 
+We know, moreover, that $\partial_n\gamma=\sum m_\sig\sig$, where the sum ranges over all $\sig$ with $\im\sig\subseteq A$. 
+Thus it follows that \[\partial'_nf_\#\gamma=f_\#\left(\sum m_\sig\sig\right)=\sum_{\im(f\sig)\subseteq f(A)} m_\sig f\sig.\] 
+Since $f\sig$ is a simplex into $X'$ with image contained in $A'$, it follows that this is an element of $S_{n-1}(A')$. 
+Hence we conclude that $f_\#\gamma\in Z_n(X',A')$, as desired. 
+
+The proof for boundaries is similar. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+As defined, we have that $f_\#:H_n(X,A)\to H_n(X',A')$ is given by \[f_\#:\overline\ga+\im\overline\partial_{n+1}\mapsto f_\#\left(\overline\ga\right)+\im\overline{\partial'}_{n+1},\] where $\overline\partial$ and $\overline{\partial'}$ denote the boundary maps of the quotient complexes $S_*(X)/S_*(A)$ and $S_*(X')/S_*(A')$, respectively, and where \[\overline\ga\in\ker\overline\partial_n=Z_n(X,A)/S_n(A).\] 
+The third isomorphism theorem gives an isomorphism \[H_n(X,A)=\frac{Z_n(X,A)/S_n(A)}{B_n(X,A)/S_n(A)}\to\frac{Z_n(X,A)}{B_n(X,A)}\] which takes \[\overline\ga+B_n(X,A)/S_n(A)\mapsto\ga+B_n(X,A).\] 
+Since $f_\#(\overline\ga)=\overline{f_\#(\ga)}$, we find that, thinking of $f_\#$ as a map from $Z_n(X,A)/B_n(X,A)$ to a map from $Z_n(X',A')/B_n(X',A')$, it takes \[\ga+B_n(X,A)\mapsto f_\#(\ga)+B_n(X',A'),\] as desired.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Recall the definition of $\ep_i:\Delta^{n-1}\to\Delta^n$ as taking $\{e_0,\dots,e_{n-1}\}$ to $\{e_0,\dots,\hat e_i,\dots,e_{n-1}\}$. 
+Thus we have \[\partial_n\sig=\sum_{i=0}^n(-1)^i\sig\ep_i.\]
+Since $\sig\ep_i:\Delta^{n-1}\to X$ has image in $A$ by hypothesis, this is in $S_{n-1}(A)$, as desired. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+By Theorem 5.6, it is sufficient to show that we have a short exact sequence \[\begin{tikzcd}0\ar[r] & \widetilde S_*(A)\ar[r] & \widetilde S_*(X)\ar[r] & S_*(X,A)\ar[r] & 0.\end{tikzcd}\]
+When $n\ge1$, this is clear by Theorem 5.8. 
+When $n=0$, we have the sequence \[0\to\ZZ\to\ZZ\to0\to0,\] which is easily verified to be exact. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Consider the exact sequence \[\begin{tikzcd}H_1(CX)\ar[r] & H_1(CX,X)\ar[r] & \widetilde H_0(X)\ar[r] & \widetilde H_0(CX).\end{tikzcd}\]
+Note that $H_1(CX)=0$ because $CX$ is contractible.
+On the other hand, Corollary 5.18 implies that $\widetilde H_0(X)\cong\ZZ^4$, while $\widetilde H_0(CX)\cong0$. 
+Thus the map $H_1(CX,X)\to\widetilde H_0(X)$ is surjective.
+Moreover, its kernel is equal to the image of the map $H_1(CX)\to H_1(CX,X)$, which is simply 0 since $H_1(CX)=0$. 
+Thus the map is also injective, from which it immediately follows that $H_1(CX,X)\cong\ZZ^4$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Consider the exact sequence 
+\[\begin{tikzcd}
+    \widetilde H_1(S^0)\ar[r] & \widetilde H_1(S^1)\ar[r] & H_1(S^1,S^0)\ar[r] & \widetilde H_0(S^0)\ar[r] & \widetilde H_0(S^1),
+\end{tikzcd}\] 
+which is simply equal to 
+\[\begin{tikzcd}
+    0\ar[r] & \ZZ\ar[r] & \boxed{\phantom{\widetilde HS}}\ar[r] & \ZZ\ar[r] & 0.
+\end{tikzcd}\]
+Now note that the first map has $\im=0$, so the second map has $\ker=0$. 
+Thus the second map has $\im\cong\ZZ$, and so the third map has $\ker\cong\ZZ$. 
+Yet we also know that the last map is the zero map, and so the third map has $\im=\ZZ$, from which it follows that the $H_1(S^1,S^0)=\ZZ\times\ZZ$. 
+\end{exercise}
+
+\begin{exercise} \leavevmode
+When $n=0$, this follows from the exact sequence \[\begin{tikzcd}\widetilde H_0(X)\ar[r] & \widetilde H_0(X)\ar[r] & H_0(X,X)\ar[r] & 0\end{tikzcd}.\]
+After all, the first map is the identity, and so the second map is the zero map. 
+But the second map is surjective, and so $H_0(X,X)=0$. 
+
+For $n>0$, we have the exact sequence 
+\[\begin{tikzcd}
+    \widetilde H_n(X)\ar[r] & \widetilde H_n(X)\ar[r] & H_n(X,X)\ar[r] & \widetilde H_{n-1}(X)\ar[r] & \widetilde H_{n-1}(X).
+\end{tikzcd}\]
+The first map is the identity, and so the second map is everywhere zero. 
+Thus the image of the second map, which is the kernel of the third map too, is equal to 0.
+Since the kernel of the last map, which is 0 (the map is the identity), is equal to the image of the third map, it follows that the third map is everywhere zero. 
+Hence the third map is injective, but also everywhere zero, and so $H_n(X,X)$ must have been 0 in the first place. 
 \end{exercise}
 \end{document}
