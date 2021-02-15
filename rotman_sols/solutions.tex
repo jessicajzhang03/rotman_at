@@ -6,6 +6,7 @@
 \usepackage{mathrsfs}
 \usepackage{subfiles} 
 \usepackage{bookmark}
+\usepackage{asymptote}
 
 \theoremstyle{definition} 
 \newtheorem{intex}{Exercise}[section]
@@ -24,7 +25,7 @@
 \renewcommand*\Top{\Cat{Top}}
 \renewcommand*\Set{\Cat{Set}}
 \newcommand*\Comp{\Cat{Comp}}
-\newcommand*\Ab{\Cat{Ab}}
+%\newcommand*\Ab{\Cat{Ab}}
 \newcommand{\ecls}{%
   {\sim}%
 }
@@ -54,7 +55,7 @@
 
 \vspace{1em}
 
-{\large\sffamily\thedate}
+{\large\sffamily \textit{Last updated:~\thedate}}
 \vspace*{\fill}
 \end{titlepage}
 
@@ -83,6 +84,10 @@
 \newpage 
 
 \subfile{chapters/chapter5/chapter5.tex}
+
+\newpage 
+
+%\subfile{chapters/chapter6/chapter6.tex}
 
 \end{document}
 
