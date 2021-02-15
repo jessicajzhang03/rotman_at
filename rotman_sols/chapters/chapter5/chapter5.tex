@@ -3,7 +3,9 @@
 \setcounter{section}{4}
 
 \begin{document}
-\section{\texorpdfstring{The Category $\Comp$}{The Category Comp}}
+\section{Long Exact Sequences}
+
+\subsection{\texorpdfstring{The Category $\Comp$}{The Category Comp}}
 \begin{exercise} \leavevmode
 These results all follow directly from the definition of exactness. 
 \begin{enumerate}
@@ -169,6 +171,7 @@ Similarly, we find that \[\im\left(\sum\partial_{n+1}^\la\right)=\left\{\sum\par
 Thus we conclude that \[H_n\left(\sum S_*^\la\right)=\frac{\ker\partial_n}{\im\partial_{n+1}}=\frac{\sum\ker\partial_n^\la}{\sum\im\partial_{n+1}^\la}=\sum\frac{\ker\partial_n^\la}{\im\partial_{n+1}^\la}=\sum H_n(S_*^\la).\]
 \end{exercise}
 
+\subsection{Exact Homology Sequences}
 \begin{exercise} \leavevmode
 Suppose $\sum m_\sig\sig+S_n(A)=\sum m'_\sig\sig+S_n(A)$. 
 This implies that $m_\sig-m'_\sig=0$ for every $\sig$ with $\im\sig\not\subseteq A$. 
@@ -299,6 +302,7 @@ Thus we have \[\partial_n\sig=\sum_{i=0}^n(-1)^i\sig\ep_i.\]
 Since $\sig\ep_i:\Delta^{n-1}\to X$ has image in $A$ by hypothesis, this is in $S_{n-1}(A)$, as desired. 
 \end{exercise}
 
+\subsection{Reduced Homology}
 \begin{exercise} \leavevmode
 By Theorem 5.6, it is sufficient to show that we have a short exact sequence \[\begin{tikzcd}0\ar[r] & \widetilde S_*(A)\ar[r] & \widetilde S_*(X)\ar[r] & S_*(X,A)\ar[r] & 0.\end{tikzcd}\]
 When $n\ge1$, this is clear by Theorem 5.8. 
