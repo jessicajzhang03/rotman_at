@@ -15,4 +15,5 @@ rotman_old/
 *.dvi 
 *.fdb*
 *.fls
-.vscode/ 
+.vscode/
+*.out.ps 
