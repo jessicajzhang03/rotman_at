@@ -1,0 +1,290 @@
+\documentclass[../../solutions.tex]{subfiles}
+
+\setcounter{section}{5}
+
+\begin{document}
+\section{Excision and Applications}
+\subsection{Excision and Mayer--Vietoris}
+\begin{exercise} \leavevmode
+Since $A$ and $B$ are both open, we know that $A^\circ=A$ and $B^\circ=B$.
+Thus $A^\circ\cup B^\circ=X$, and so we can use the Mayer--Vietoris sequence, along with the fact that $A\cap B=\emptyset$, to find an exact sequence
+\[\begin{tikzcd}
+0=H_n(\emptyset)\ar[r,"{(i_{1*},i_{2*})}"] & H_n(A)\oplus H_n(B)\ar[r,"g_*-j_*"] & H_n(X)\ar[r,"D"] & H_{n-1}(\emptyset) = 0
+\end{tikzcd}.\]
+Thus the middle map $g_*-j_*$ is an isomorphism, which proves the result.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We use excision directly.
+In particular, Excision II gives us an isomorphism $i_*:H_n(B,\emptyset)\to H_n(X,A)$.
+But $H_n(B,\emptyset)=H_n(B)$ for all $n\ge0$, and so the conclusion follows.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is simply a diagram chase.
+Suppose $D_n([x])=[x']$.
+Then by definition of $D$, we know that there exists some $[z]\in H_n(X_1,X_1\cap X_2)$ such that $d_n([z])=[x']$ and $h_n([z])=q_n([x])$.
+It thus follows that
+\[g_{n-1}(D_n([x]))=[f_{n-1}(x')]=f_{n-1}(d_n([z])).\]
+
+Now set $y=f(x)$, so that $[y]=f_n([x])$.
+We would like to show that $D'_n([y])=f_{n-1}(d_n([z]))$.
+To do this, set $z'=f_n(z)$.
+Then since $d$ commutes with $f$ by definition (cf. Theorem 5.7), we know that
+\[d_n'([z'])=d_n'(f_n(z))=f_{n-1}(d_n([z]))=g_{n-1}(D_n([x])).\]
+Moreover, because $h$ and $q$ are just inclusions, we know that they commute with $f$.
+In particular, from the fact that $h_n([z])=q_n([x])$, and so $f(h_n([z]))=f(q_n([x]))$, we find that
+\[h_n'(f([z]))=q_n'(f_n([x])),\]
+from which it follows by definition that $h_n'([z'])=q_n'([y])$.
+Thus it follows that
+\[D'(f([x]))=D'([y])=g_{n-1}(D_n([x])),\]
+which proves that the desired diagram commutes.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+First note that the condition implies that, for all $n\ge1$, we have
+\[H_n(X_i)=H_n(X_i\cap X_j)=H_n(X_1\cap X_2\cap X_3)=0.\]
+Since each $X_i$ is open, we can apply the Mayer--Vietoris sequence.
+Applying it on $X_1$ and $X_2$ gives an exact sequence
+\[\begin{tikzcd}
+0\ar[r] & H_n(X_1\cup X_2)\ar[r] & 0
+\end{tikzcd},\]
+and so we conclude that $H_n(X_1\cup X_2)=0$.
+
+Now we can apply Mayer--Vietoris to $X_1\cup X_2$ and $X_3$ to find an exact sequence
+\[\begin{tikzcd}
+0\ar[r] & H_n(X)\ar[r] & H_{n-1}((X_1\cup X_2)\cap X_3).
+\end{tikzcd}.\]
+But the last term is exactly $H_{n-1}((X_1\cap X_3)\cup(X_2\cap X_3))$.
+
+To see that this is 0, apply Mayer--Vietoris to $X_1\cap X_3$ and $X_2\cap X_3$.
+In particular, setting $H=H_{n-1}((X_1\cap X_3)\cup(X_2\cap X_3))$ as the desired homology group, we know that
+\[\begin{tikzcd}
+H_{n-1}(X_1\cap X_3)\oplus H_{n-1}(X_2\cap X_3)\ar[r] & H\ar[r] & H_{n-2}((X_1\cap X_3)\cap(X_2\cap X_3))
+\end{tikzcd}\]
+is exact.
+If $n>2$ or if $X_1\cap X_2\cap X_3=\emptyset$, then the first and last terms are clearly 0, which proves that the middle homology group is indeed 0.
+If, on the other hand, we have $n=2$ and $X_1\cap X_2\cap X_3$ is contractible, then the last term is $\ZZ$.
+However, the next map in the Mayer--Vietoris sequence is an injective map, since it is induced by inclusions.
+Thus we have an exact sequence
+\[\begin{tikzcd}
+0\ar[r] & H\ar[r] & \ZZ\ar[r] & A
+\end{tikzcd},\]
+where $A$ is some homology group (in fact, it is $\ZZ^2$) and the map $\ZZ\to A$ is injective.
+Note that the image of the first map is 0, and so the map $H\to\ZZ$ is injective.
+But we also know that $\im(H\to\ZZ)=\ker(\ZZ\to A)=0$.
+Thus $H=0$, as desired.
+\end{exercise}
+
+\subsection{Homology of Spheres and Some Applications}
+No exercises!
+
+\subsection{Barycentric Subdivision and Proof of Excision}
+\begin{exercise} \leavevmode
+We use induction.
+In particularly, for $\Sig^0$ we know we have $(0+1)!=1$ 0-simplexes.
+Now suppose the statement is true for $n-1$.
+Using the notation in the definition, note that each $n$-simplex in $\Sig^n$ is spanned by $b$ and an $(n-1)$-simplex in $\Sd\phi_i$.
+Since there are $n+1$ total possible $\phi_i$'s, and since there are $n!$ total $(n-1)$-simplexes in $\Sd\phi_i$, it follows that $\Sd\Sig^n$ has $(n+1)!$ total $n$-simplexes, as desired,
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+By construction, every point is the barycenter of at least one face.
+Moreover, writing $\Sig^n=[p_0,\dots,p_{n+1}]$, suppose that $b$ is the barycenter of $[p_{i_1},\dots,p_{i_k}]$, as well as of $[p_{j_1},\dots,p_{j_\ell}]$.
+Then
+\[\frac{1}{k+1}(p_{i_1}+\dots+p_{i_k})=\frac{1}{\ell+1}(p_{j_1}+\dots+p_{j_\ell}).\]
+This implies linear dependence, unless the two subsimplexes of $\Sig^n$ are actually the same simplex.
+\item
+This is clear for $n=0$.
+Now suppose that the statement is true for $n-1$
+Note that, by definition, every $n$-simplex of $\Sig^n$ is spanned by the barycenter $b$ of $\Sig^n$ and an $(n-1)$-simplex of $\Sd\phi_i$.
+But every face of $\Sig^n$ is a subset of $\Sig^n$.
+Thus we can write an $n$-simplex of $\Sig^n$ as $[b^{\sig_0},\dots,b^{\sig_n}]$ with $\sig_0<\dots<\sig_{n-1}<\sig_n=\Sig^n$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+Note that $\Sd_1(\dlt^1)$ is exactly $b_1.\Sd_0(\partial\dlt^1)$.
+Since $\Sd_0$ is the identity, we know that this is $b_1.(\partial\dlt^1)$.
+But $\partial\dlt^1=e_1-e_0$, while $b_1=\frac{1}{2}(e_0+e_1)$, and so it follows that
+\begin{align*}
+\Sd_1(\dlt^1)(t)&=b_1.e_1(t)-b_1.e_0(t)\\
+&=\left(\frac t2(e_0+e_1)+(1-t)e_1\right)-\left(\frac t2(e_0+e_1)+(1-t)e_0\right).
+\end{align*}
+Note that both terms within the large parentheses are 1-simplexes, and so we cannot ``cancel'' the $\frac t2(e_0+e_1)$ terms.
+
+For $n=2$, we would like to evaluate $b_2.\Sd_1(\partial\dlt^2)$.
+Note that $\partial\dlt^2=[e_1,e_2]-[e_0,e_2]+[e_0,e_1]$.
+Thus we know, either by using the same argument as before or by appealing to the case $n=1$ in part (ii) below, that
+\begin{align*}
+\Sd_1(\partial\dlt^2)(t)=\bigg(\frac t2&(e_1+e_2)+(1-t)e_2\bigg)-\left(\frac t2(e_1+e_2)+(1-t)e_1\right)\\
+&-\left(\frac t2(e_0+e_2)+(1-t)e_2\right)+\left(\frac t2(e_0+e_2)+(1-t)e_0\right)\\
+&+\left(\frac t2(e_0+e_1)+(1-t)e_1\right)-\left(\frac t2(e_0+e_1)+(1-t)e_0\right).
+\end{align*}
+Thus we may evaluate $\Sd_2(\dlt^2)$ on a term-by-term basis.
+For example, the first term of $\Sd_2(\dlt^2)(t_1,t_2)$ is
+\[t_1b_2+(1-t_1)\left(\frac{t_2/(1-t_1)}{2}(e_1+e_2)+(1-t_2/(1-t_1))e_2\right)=t_1b_2+\left(\frac{t_2}2(e_1+e_2)+(1-t_1-t_2)e_2\right).\]
+We can do this with each term to find $\Sd_2(\dlt^2)$.
+\item
+We can simply evaluate this using the previous part.
+In particular, we have
+\begin{align*}
+\Sd_1(\sig)&=\sig_\#\Sd_1(\dlt^1)\\
+&=\left(\frac t2(\sig(e_0)+\sig(e_1))+(1-t)\sig(e_1)\right)-\left(\frac t2(\sig(e_0)+\sig(e_1))+(1-t)\sig(e_0)\right).
+\end{align*}
+Similarly, by replacing each $e_i$ in $\Sd_2(\dlt^2)$ with $\sig(e_i)$, we have $\Sd_2(\sig)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+It is sufficient to show commutativity for generators $\sig:\Dlt^n\to X$.
+But note that $f_\#\Sd_n(\sig)=f_\#\sig_\#\Sd_n(\dlt^n)$.
+However, since $f_\#\sig_\#=(f\circ\sig)_\#$, it follows that this is in turn equal to $(f\circ\sig)_\#\Sd_n(\dlt^n)=\Sd_n(f\circ\sig)=\Sd_nf_\#\sig$.
+This proves commutativity, as desired.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Recall that the $j$-th face of $\sig$ is $\sig\ep_j:[e_0,\dots,e_{n-1}]\to[e_0,\dots,\hat e_i,\dots,e_n]$.
+Now observe that $\ep_j$ is clearly affine.
+After all, we know that
+\[\ep_j\left(\sum_it_ie_i\right)=\sum_{i<j}t_ie_i+\sum_{i\ge j}t_ie_{i+1}=\sum_it_i\ep_j(e_i).\]
+Thus we know that
+\[\sig\ep_j\left(\sum t_ie_i\right)=\sig\left(\sum t_i\ep_j(e_i)\right)=\sum t_i\sig(\ep_j(e_i)).\]
+Thus $\sig\ep_j$ is affine.
+Since $\sig\ep_j(e_i)$ is either $e_i$ (if $i<j$) or $e_{i+1}$ (if $i\ge j$), it follows that the vertex set of $\sig\ep_j$ is a (proper) subset of the vertex set of $\sig$.
+Since $\partial\sig$ is just an alternating sum of faces of $\sig$, it follows that $\partial\sig$ is affine whenever $\sig$ is.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Recall the definition of a cone:
+\[b.\sig(t_0,\dots,t_{n+1})=
+\begin{cases}
+b&\text{if}~t_0=1,\\
+t_0b+(1-t_0)\sig\left(\frac{t_1}{1-t_0},\dots,\frac{t_{n+1}}{1-t_0}\right)&\text{if}~t_0<1.
+\end{cases}\]
+It is clear that $b$ is affine.
+Since the case $t_0<1$ results in the sum of affine maps, it follows that this is also affine.
+
+Now note that $b.\sig(e_0)=b$ and $b.\sig(e_i)=\sig(e_i)$ for $i\ne0$.
+Thus the vertex set of $b.\sig$ is the union of $\{b\}$ and the vertex set of $\sig$.
+Note that $\Sd_0\sig$ is affine whenever $\sig:\Dlt^0\to E$ is affine.
+If $\Sd_{n-1}$ preserves affineness, then note that $\Sd_n$ must as well.
+After all, we know that $\Sd_n\sig=b_n.\Sd_{n-1}(\partial\sig)$ is the cone of some point $b_n\in E$ and the affine function $\Sd_{n-1}(\partial\sig)$.
+(Note that this last function is affine because $\partial\sig$ is, by \Cref{6.9}, affine.)
+The result follows.
+\end{exercise}
+
+
+\subsection{More Applications to Euclidean Space}
+\begin{exercise} \leavevmode
+Writing $(1+a^n_\#)\ga$ as $\ga+a^n_\#\ga$, note that
+\begin{align*}
+\partial(\ga+a^n_\#\ga) &= \partial\ga + a^{n-1}_\#\partial\ga \\
+&= \ga(e_1) - \ga(e_0) + (-\ga(e_1)) - (-\ga(e_0)).
+\end{align*}
+But recall that $-\ga(e_1)=\ga(e_0)$ and $-\ga(e_0)=\ga(e_1)$, and so we know that the terms cancel out to 0.
+Thus $(1+a^n_\#)\ga$ is a 1-cycle.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We can simply compute evaluate $(1+a^n_\#)(1-a^n_\#)$ on a simplex $\sig$.
+In particular, we find that
+\begin{align*}
+(1+a^n_\#)(1-a^n_\#)\sig &= (1+a^n_\#)(\sig-a^n\sig) \\
+&= \sig + a^n_\#\sig - a^n\sig - a^n_\#(a^n\sig) \\
+&= \sig + a^n\sig - a^n\sig - a^na^n\sig.
+\end{align*}
+But of course we have $\sig=a^na^n\sig$, and so the terms all cancel out.
+We can simply extend to any 1-chain $\ga$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Again, we evaluate the expression on a simplex $\sig$ and find that
+\begin{align*}
+(1+a^n_\#)(1+a^n_\#)\sig &= (1+a^n_\#)(\sig+a^n\sig) \\
+&= \sig+a^n\sig+a^n\sig+a^na^n\sig \\
+&= 2\sig + 2a^n\sig = 2(1+a^n_\#)\sig.
+\end{align*}
+As before, we can extend.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Letting $\tau$ be, as in Theorem 6.22, the southerly path in $S^1$ from $a^1(y)$ to $y$, recall that the homology class of the cycle $\sig+\tau$ generates all of $H_1(S^1)$.
+But notice that $[(1+a^1_\#)\sig]=[\sig+a^1\sig]=[\sig+\tau]$, which proves the result.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Suppose $f:S^1\to\RR$ is continuous.
+Note that such a function is effectively a continuous function $f:[0,1]\to\RR$ with $f(0)=f(1)$, and so the intermediate value theorem implies the result.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Suppose $S\subseteq\RR^2$ is homeomorphic to $S^2$.
+Then there is a function $\phi:S^2\to S\hookrightarrow\RR^2$, where the $S^2\to S$ part is a homeomorphism.
+The Borsuk-Ulam theorem, however, implies that there exists some point $x\in S^2$ with $\phi(x)=\phi(-x)$.
+But $\phi$ is an injection, a contradiction.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is obvious from Borsuk-Ulam.
+Since there exists an $x$ with $f(x)=f(-x)$, but $f(-x)=-f(x)$ for all $x$, it follows that there exists an $x$ with $f(x)=-f(x)$, i.e., with $f(x)=0$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This follows the same proof as that of Borsuk-Ulam.
+In particular, we use the function
+\begin{align*}
+g(x):S^n&\to S^{n-1} \\
+x&\mapsto\frac{f(x)-f(-x)}{\norm*{f(x)-f(-x)}}.
+\end{align*}
+This would be an antipodal map, a contradiction.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Suppose $a^n(F_i)\cap F_i=\emptyset$ for $i=1,\dots,n$.
+There exist functions $g_i:S^n\to I$ with $g_i(F_i)=0$ and $g_i(a^nF_i)=1$.
+Then define $f:S^n\to\RR^n$ by $f(x)=(g_1(x),\dots,g_n(x))$.
+Note that \Cref{6.18} implies that there exists some $x_0\in S^n$ with $f(x_0)=f(-x_0)$.
+Thus it follows that \[g_i(x_0)=g_i(-x_0)=g_i(a^nx_0)\] for all $i$.
+Hence if $x_0\in F_i$ then the left side of the equation is 0 while the right side is 1, and if $x_0\in a^nF_i$ then the left side is 1 while the right side is 0.
+Either way, this is a contradiction, and so it follows that $x_0,a^nx_0\not\in F_i$ for all $i$.
+Thus $x_0a^nx_0\in F_{n+1}$.
+
+I have not come up with a counterexample in the $n+2$ case, unfortunately.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Suppose $A\subseteq S^n$ is a subspace, and suppose that $h:S^n\to A$ is a homeomorphism.
+Invariance of domain implies that $A$ is open in $S^n$.
+But we also know by compactness of $S^n$ that $A$ must be compact, and hence closed in its ambient space.
+Thus $A$ is clopen.
+Since $A$ is obviously nonempty, it follows by connectedness that $A=S^n$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This follows because we can just write $S^n=\RR^n\cup\{\infty\}$.
+Hence any open set in $\RR^n$, including $\RR^n$ itself, is just an open set in $S^n$.
+
+Walking through this in more detail, suppose $U,V\subseteq\RR^n$ with a homeomorphism $h:U\to V$ and with $U$ open.
+Then $U$ is an open subset of $S^n$ because $\RR^n$ is open in $S^n$.
+Hence invariance of domain on $S^n$ implies that $V$ is open in $S^n$, and so $V\cap\RR^n=V$ is open in $\RR^n$ as well.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Suppose $\phi:X\to Y$ is a homeomorphism.
+Then we can simply pass to a homeomorphism between $U$ and $V$ in $X$ to a homeomorphism between $\phi(U)$ and $\phi(V)$ in $Y$.
+Since every open set in $Y$ is of the form $\phi(U)$ for some open $U$ in $X$, the result follows immediately.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Consider the map $h:D^n\to\overline{D_{\frac12}(0)}$ defined by $h(x)=\frac x2$.
+It effectively shrinks $D^nn$ down to the closed ball with radius $\frac12$.
+Obviously the two disks are homeomorphic.
+But $D^n$ is open while $\overline{D_{\frac12}(0)}$ is not.
+\end{exercise}
+
+\end{document}
