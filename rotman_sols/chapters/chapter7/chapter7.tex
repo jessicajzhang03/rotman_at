@@ -1,0 +1,617 @@
+\documentclass[../../solutions.tex]{subfiles}
+
+\setcounter{section}{6}
+
+\begin{document}
+\section{Simplicial Complexes}
+\subsection{Definitions}
+\begin{exercise} \leavevmode
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{7-1.pdf}
+\label{fig:7-1}
+\end{figure}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Consider some (nondegenerate) triangle with vertices $P,x_0,y_0$ in $\RR^2$.
+Then define $x_i$ to be the midpoint of $P$ and $x_{i-1}$, and similarly define $y_i$.
+Then the union $X$ of the triangle with all the line segments $x_iy_i$ is compact and connected.
+
+We claim that it is not a polyhedron.
+Otherwise, there exists some simplicial complex $K$ admitting a homeomorphism $h:|K|\to X$.
+But observe that $K$ must have an infinite vertex set.
+
+To see this, for each $i$, define $s_i$ to be
+\[s_i=\bigcap_{h^{-1}(x_i)\in s}s,\]
+where $s$ ranges over all simplices of $K$.
+Note that this intersection is over a nonempty set because $\bigcup s=|K|$, so there must exist some $s$ containing $h^{-1}(x_i)$.
+Moreover, there are only finitely many simplices, so the intersection exists.
+Condition (ii) implies that $s_i$ is a common face of $s$, and thus is a simplex.
+It must be 0-dimensional since the segment $Px_i$, $x_iy_i$, and $x_0x_i$ cannot all be part of the same 1-simplex.
+In other words, $x_i$ must be a common face of two 1-simplices, and so it must be a point.
+
+Hence there are infinitely many vertices of $K$, a contradiction.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that the upper right and lower right triangles are the same.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+The forwards direction is just the definition of the subspace topology.
+To see the backwards direction, suppose $F\cap s$ is closed in $s$ for every $s\in K$.
+Each $s$ is closed in $|K|$, so $F\cap s$ is closed in $|K|$.
+Since there are finitely many $s$ and $\bigcup s=|K|$, it follows that we can take the union of all $F\cap s$.
+In particular, we have
+\[F=\bigcup_{s\in K}(F\cap s)\]
+is the finite union of closed sets, hence is itself closed in $|K|$.
+
+\item
+This is obviously true if $K$ has dimension 0.
+
+If $K$ (and hence $s$) has dimension $>1$, then consider the complement of $s^\circ$:
+\[(s^\circ)^c=(|K|-s)\cup\dot s.\]
+Then notice that
+\[\big[(|K|-s)\cup\dot s\big]\cap s=\dot s,\]
+which is closed in $s$.
+Suppose $t\in K$ is not equal to $s$.
+Then consider
+\[A_t=\big[(|K|-s)\cup\dot s\big]\cap t.\]
+If $s\cap t=\emptyset$, then $A_t=\emptyset$ is closed in $t$.
+Otherwise, we know that $s\cap t$ is a face of $t$.
+Since $s$ is of highest dimension, we know that either $s=t$, which we already took care of above, or $s\cap t$ is part of $\dot s$, in which case we know that
+\[\dot s\cap t=s\cap t,\quad(|K|-s)\cap t=t-s\cap t.\]
+Hence $A_t=t$, which is still closed in $t$.
+
+The previous part proves the result.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We begin by showing $s^\circ\cap t^\circ=\emptyset$ when $s\ne t$.
+Note that
+\[s^\circ\cap t^\circ=(s-\dot s)\cap(t-\dot t)=s\cap t-\dot s\cap t-s\cap\dot t.\]
+But $s\cap t$ is a face of both $s$ and $t$.
+It can't be equal to both $s$ and $t$ since $s\ne t$.
+Thus $s\cap t$ is a \textit{proper} face of at least one of $s$ and $t$, say $s$.
+This means that $s\cap t$ is part of $\dot s$, and thus is in $\dot s\cap t$.
+This proves disjointness.
+
+To see that $\bigcup s^\circ=|K|$, simply do this in the case of $K$ as a simplex, and take unions.
+(To do this when $K$ is a single simplex, use induction.)
+\end{exercise}
+
+\begin{exercise} \leavevmode
+The backwards direction is obvious by the definition of $\st$.
+For the forwards direction, suppose
+\[x\in\st(p)=\bigcup_{p\in\Vt(t)}t^\circ.\]
+Then we know that $x\in t^\circ$ for some $t$ having $p$ as a vertex.
+Uniqueness implies that $s=t$, so $p\in\Vt(s)$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+Obviously the union is $|K|$ because every $s\in K$ has at least one vertex, hence is contained in at least one star.
+To see that $\st(p)\subseteq|K|$ is open, notice that
+\[(\st(p))^c=\bigcup_{p\not\in\Vt}s^\circ.\]
+Intersect this with $t\in K$.
+If $p\not\in\Vt(t)$, then this intersection is equal to $t$ since no simplex of $\dot t$ can have $p$ as a vertex.
+If $p\in\Vt(t)$, then write $t=[p,p_1,\dots,p_k]$.
+The intersection can be seen to simply be $\{p_1,\dots,p_k\}$, which is obviously closed.
+Thus \Cref{7.4} implies the result.
+
+\item
+If $x\in\st(p)$, then $x\in s^\circ$ for some $s$ with $p\in\Vt(s)$.
+Since $x,p\in s$ and $s$ is convex, it follows that the line segment is also contained in $\st(p)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+The forwards direction is because $[p_0,\dots,p_n]$ is in the intersection.
+The backwards direction is because there must exist some simplex $[p_0,\dots,p_n,q_0,\dots,q_m]\in K$.
+Since any face of a simplex in $K$ is also in $K$, it follows that $[p_0,\dots,p_n]$ is a simplex in $K$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+In the forwards direction, suppose $\phi$ is a simplicial map.
+If $\bigcap\st(p_i)\ne\emptyset$, then there exists a simplex in $K$ with vertices $[p_i]$.
+The definition implies that there must exist a simplex with vertices $[\phi(p_i)]$, proving this direction.
+The backwards direction follows directly from \Cref{7.8}.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Suppose $\phi$ is a simplicial approximation to $f$, and suppose $x\in|K|$ with $f(x)\in s^\circ$.
+Write $x\in t^\circ$ for $t\in K$, and write $t=[p_1,\dots,p_n]$.
+Then we know that $x\in\st(p_i)$ implies that $f(x)\in\st(\phi(p_i))$, so that $s^\circ\subseteq\st(\phi(p_i))$.
+Thus $s$ has $\phi(p_i)$ as a vertex for each $i=1,\dots,n$.
+
+Hence $|\phi|(x)$, which is determined by $\phi(p_i)$, is in $s$ by affineness.
+
+Now suppose that $f(x)\in s^\circ$ implies $|\phi|(x)\in s$.
+Let $p$ be some vertex of $K$ so that $x\in\st(p)$.
+Then $f(x)\in s^\circ$, so $|\phi|(x)\in s$.
+Hence $\phi(p)$ is a vertex of $s$ by affineness and the definition of $|\phi|$, from which it follows that
+\[f(x)\in s^\circ\subseteq\st(\phi(p)).\]
+We can take the union over all $x\in\st(p)$:
+\[\bigcup_{x\in\st(p)}f(x)\subseteq\st(\phi(p)).\]
+Of course, this left side is exactly $f(\st(p))$, and so we're done.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Suppose $\phi:K\to L$ is a simplicial approximation.
+Consider the obvious homotopy:
+\[H(t,x)=(1-t)|\phi|(x)+tf(x).\]
+We can do this because $|\phi|(x)$ and $f(x)$ are, by \Cref{7.10}, in the same simplex.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+This is true because it's true for simplices.
+
+\item
+Order the vertices of $K$, and define $\phi(b^s)$ to be the smallest vertex of $s$ under this order.
+We claim that this gives a simplicial approximation to the identity.
+Consider a vertex $b^s$ of $\Sd(K)$.
+Then we know that
+\[f(\st(b^s))=s^\circ\subseteq\st(\phi(b^s))\]
+by the definition of $\phi(b^s)$, where $f$ is the identity.
+
+\item
+There exists a homeomorphism $g:|L|\to X$.
+If $g(v)$, then we are done.
+Otherwise, we know that $x\in g(s^\circ)$ for some unique $s\in L$.
+Consider the subdivision $K$ of $L$ obtained by drawing lines from $s$ to every vertex of $s$.
+This gives a function $h:|K|\to X$ which is equal to $g$, and thus is a homeomorphism, as desired.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Suppose that $\sum\la_ib^{s_i}=0$.
+Since $s_0<\dots<s_q$, we knwo that there exists some vertex $p_q$ which only appears in $b^{s_q}$, so $\la_q=0$.
+But then there is a vertex $p_{q-1}$ which only appears in $b^{s_{q-1}}$, so $\la_{q-1}=0$, and so on.
+Thus $\la_i=0$ for all $i$, proving independence.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Every point of $\Sd K$ is contained in a unique open simplex of $K$, so it follows that an open simplex of $\Sd K$ can be contained in at most one open simplex of $K$.
+To see that there is at least one such simplex, note that $[b^{s_0},\dots,b^{s_q}]^\circ$ is contained in $s_q^\circ$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This follows from the triangle inequality:
+\[|x-y|\le|x-p|+|p-y|\le2\mu,\]
+because $x$ and $p$ are in one simplex, and $y$ and $p$ are in another.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Write $s=[b^{s_0},\dots,b^{s_q}]$, where $s_0<\dots<s_q$.
+Then $\diam s=\sup||b^{s_i}-b^{s_j}||$.
+If $i<j$, then we know that
+\[||b^{s_i}-b^{s_j}||\le\frac{n_j}{n_j+1}\diam s_j,\]
+where $n_j=\dim s_j$.
+But $\diam s_j\le\mesh K$ since $s_j\in K$, and $\frac{n_j}{n_j+1}\le\frac{n}{n+1}$, since $n_j\le n$.
+Hence it follows that
+\[\diam s\le\frac n{n+1}\mesh K,\]
+and so $\mesh\Sd K\le(n/n+1)\mesh K$.
+Induction implies the general result.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+If $s\in K^{(q)}$, then $s=[p_0,\dots,p_r]$ for some $r\le q$.
+Thus $\phi(s)=[\phi(p_0),\dots,\phi(p_r)]\in L^{(q)}$, as desired.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Let $b$ be the barycenter of the $(n+1)$-simplex, and consider
+\[f(x)=\frac{x-b}{||x-b||}+b.\]
+This is the desired homeomorphism.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+In general, there are $\binom{n+2}{q+1}$ total $q$-simplices in an $(n+1)$-simplex.
+Since $S^n$ is the $n$-skeleton of such a simplex, it follows that we must simply evaluate
+\[\chi(S^n)=\sum_{q=0}^n\binom{n+2}{q+1}(-1)^q=\sum_{q=0}^{n+2}\binom{n+2}q(-1)^{q+1}+\binom{n+2}0+\binom{n+2}{n+2}=2\]
+when $q$ is even.
+When $q$ is odd, the last term is negative, and we find that $\chi(S^n)=0$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Here, we have $\alpha_2=18$, $\alpha_1=27$, and $\alpha_0=9$.
+Thus $\chi(T)=18-27+9=0$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that $i$ is obviously an injection.
+Moreover, since the element $\sum{b\in B_1}m_bb+\sum_{c\in B_2}m_cc\in F(b)$ is equal to
+\[\sum{b\in B_1}m_bb+\sum_{c\in B_2}m_cc\in F(b)=p\left(\sum m_bb,\sum-m_cc\right),\]
+we see that $p$ is surjective.
+Finally, note that
+\begin{align*}
+\ker p&=\left\{\left(\sum m_bb,\sum m_cc\right):\sum m_bb=\sum m_cc\right\}\\
+&=\{(x,x):x\in F(B_1)\cap F(B_2)\}\\
+&=\{(x,x):x\in F(B_1\cap B_2)\}=\im i,
+\end{align*}
+which completes the proof of exactness.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+For $q\ge1$, the complexes are the same.
+If $q=0$, we use the same argument as in Theorem 5.17, in particular, by restricting our attention to the ending:
+\[
+\begin{tikzcd}
+0\ar[r] & \ker\tilde\partial_0\ar[r,hookrightarrow] & C_0(K)\ar[r,"\tilde\partial_0"] & C_{-1}(K)\ar[r] & 0
+\end{tikzcd}.
+\]
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is simply because $\ker\tilde\partial_{-1}=C_{-1}(K)$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+We can simply use the straight line homotopy between $\phi(p)$ and $\psi(p)$ for all vertices $p$ of $K$;
+the rest of the point follow by affineness.
+The reason this works is simply because $\phi(p)$ and $\psi(p)$ belong to the same simplex, which is convex.
+\item
+Since $|\phi|\simeq|\psi$, we know that $|\phi|_*=|\psi|_*$, which in turn implies that $\phi_*=\psi_*$ by Theorem 7.22.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Let $L$ be a line segment, along with its endpoints and its midpoints.
+Thus it is composed of two 1-simplices, and three 0-simplices.
+Then let $\phi_1$ map a 1-simplex to the left side of $L$, and $\phi_2$ map it to the right side of $L$.
+Finally, if $\phi_3$ maps the 1-simplex to the midpoint, it follows that $\phi_1\sim\phi_3\sim\phi_2$, but obviously $\phi_1\not\sim\phi_2$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+This is clear by mapping the base points together, and mapping a given equivalence class to the corresponding equivalence class.
+For example, we have some point $x\in X$, then the homeomorphism would take $[[x]]\in(X\vee Y)\vee Z$ to $[x]\in X\vee(Y\vee Z)$.
+Similarly, it would take $[[y]]\mapsto[[y]]$ and $[z]\mapsto[[z]]$.
+
+\item
+For $i=1,2$, there exists a simplicial complex $L_i$ and a homeomorphism $h_i:|L_i|\to K_i$.
+Fix some vertex $x_i\in\Vt(L_i)$.
+Then let $L=L_1\vee L_2$.
+Then, identifying each $L_i$ with the natural corresponding set in $L$, we can apply Theorem 7.17 to find the exact senuence
+\[
+\begin{tikzcd}[column sep=small]
+\dots\ar[r] & H_n(L_1\cap L_2)\ar[r] & H_n(L_1)\oplus H_n(L_2)\ar[r] & H_n(L)\ar[r] & H_{n-1}(L_1\cap L_2)\ar[r] & \dots.
+\end{tikzcd}
+\]
+Of course, we have $L_1\cap L_2$ is a singleton, so the homology groups are 0.
+Thus, if $n\ge2$, then we know that $H_n(L_1\cap L_2)=H_{n-1}(L_1\cap L_2)=0$, and so $H_n(L)\cong H_n(L_1)\oplus H_n(L_2)$, as desired.
+Otherwise, we can simply use the tail:
+\[
+\begin{tikzcd}[column sep=small]
+\dots\ar[r] & H_1(L)\ar[r] & H_0(L_1\cap L_2)\ar[r] & H_0(L_1)\oplus H_0(L_2)\ar[r] & H_0(L)\ar[r] & 0.
+\end{tikzcd}
+\]
+If $L_i$ has $c_i$ components, then notice that $L$ has $c_1+c_2-1$ components.
+Since the map $H_0(L_1)\oplus H_0(L_2)\to H_0(L)$ is surjective, it follows that its kernel is $\ZZ$ (or, more accurately, a free abelian group of rank 1).
+Hence the image of $H_0(L_1\cap L_2)\to H_0(L_1)\oplus H_0(L_2)$ is $\ZZ$.
+The fact that $H_0(L_1\cap L_2)=\ZZ$ implies that this map is an isomorphism, thus with empty kernel.
+Finally, we conclude that the image of $H_1(L)\to H_0(L_1\cap L_2)$ is trivial, and so we again have the exact sequence
+\[
+\begin{tikzcd}[column sep=small]
+0\ar[r] H_1(L_1)\oplus H_1(L_2)\ar[r] & H_1(L)\ar[r] & 0
+\end{tikzcd}.
+\]
+The result follows.
+
+\item
+Use Corollary 7.19.
+In particular, let $K_q$ consist of all proper faces of an oriented $(q+1)$-simplex.
+Then the corollary implies that $H_q(K_q)=\tilde H_q(K_q)=\ZZ$ and $H_r(K_q)=0$ for any $r\ne q$.
+(Note that reduced homology matches the regular homology since $q\ge 1$.)
+Thus the previous part shows that the space
+\[\bigvee_{q=1}^n\bigvee_{i=1}^{m_q}K_q,\]
+where the wedge occurs at some identified vertex, satisfies the desired properties.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+This follows directly from the five lemma and Theorem 7.22, namely by looking at the following commutative diagram with exact rows:
+\[
+\begin{tikzcd}[column sep=small]
+\dots\ar[r] & H_n(L)\ar[d]\ar[r] & H_n(K)\ar[d]\ar[r] & H_n(K,L)\ar[d]\ar[r] & H_{n-1}(L)\ar[d]\ar[r] & H_{n-1}(K)\ar[d]\ar[r] & \dots\\
+\dots\ar[r] & H_n(|L|)\ar[r] & H_n(|K|)\ar[r] & H_n(|K|,|L|)\ar[r] & H_{n-1}(|L|)\ar[r] & H_{n-1}(|K|)\ar[r] & \dots
+\end{tikzcd}.
+\]
+
+\item
+This follows from the previous part, Corollary 7.17, and Theorem 7.22.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We can simply use the straight line homotopy to $p$.
+\Cref{7.7} implies that this is well-defined.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+In particular, we must show that
+\[\left(\bigcap L_{\alpha_i}\right)\cap\left(\bigcap L_{\beta_i}\right)\ne\emptyset.\]
+But notice that $\sig_0<\sig_1<\dots<\sig_q$ implies that $\sig_0\in L_{\beta_i}$ for each $\beta_i$.
+We also know that $\sig_0\in L_{\alpha_0}\cap\dots\cap L_{\alpha_q}$, and so it follows that $\sig_0$ is in the displayed intersection above.
+Hence $g$ and $f$ are contiguous.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We have the following exact sequence:
+\[
+\begin{tikzcd}[column sep=small]
+H_q(M\cap L_1)\ar[r] & H_q(M)\oplus H_q(L_1)\ar[r] & H_q(M\cup L_1)\ar[r] & H_{q-1}(M\cap L_1).
+\end{tikzcd}
+\]
+The conditions imply that $H_q(M)\oplus H_q(L_1)=H_q(M)$ and the two outermost terms are both trivial.
+Thus $H_q(M)\cong H_q(M\cup L_1)$.
+
+Now consider the following exact sequence:
+\[
+\begin{tikzcd}[column sep=small]
+H_q((M\cup L_1)\cap L_2)\ar[r] & H_q(M\cup L_1)\oplus H_q(L_2)\ar[r] & H_q(M\cup L_1\cup L_2)\ar[r] & H_{q-1}((M\cup L_1)\cap L_2).
+\end{tikzcd}
+\]
+But notice that
+\[(M\cup L_1)\cap L_2=(M\cap L_2)\cup(L_1\cap L_2)=M\cap L_2\]
+since $L_1\cap L_2\subseteq M$.
+Hence the flanking terms of the exact sequence displayed above are again 0.
+Since $L_2$ is acyclic, it follows that $H_q(M\cup L_1)\cong H_q(M\cup L_1\cup L_2)$.
+Repeating this proves the result.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Consider the Klein bottle, as in \Cref{fig:7-31}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.2\textwidth]{7-31.pdf}
+\caption{The Klein bottle}
+\label{fig:7-31}
+\end{figure}
+Let $P$ be the entire square.
+Then we can define the adequate subcomplex with chains
+\[E_2=\langle P\rangle,\quad E_1=\langle a\rangle\oplus\langle b\rangle,\quad E_2=\langle v\rangle.\]
+We have
+\begin{align*}
+\partial P&=a+b+a-b\\
+\partial a=\partial b&=0\\
+\partial v&=0.
+\end{align*}
+Hence it follows that we have
+\[
+\begin{tabular}{l l l}
+$Z_2=0$, & $Z_1=\langle a\rangle\oplus\langle b\rangle$, & $Z_0=\langle v\rangle$, \\
+$B_2=0$, & $B_1=\langle2a\rangle$, & $B_0=0$.
+\end{tabular}
+\]
+The results are obvious.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This time, if we let $a$ denote each edge and $v$ denote each vertex, we have
+\[\partial P=ka,\quad\partial a=0,\quad\partial v=0.\]
+Thus we now have
+\[
+\begin{tabular}{l l l}
+$Z_2=0$, & $Z_1=\langle a\rangle\oplus\langle b\rangle$, & $Z_0=\langle v\rangle$, \\
+$B_2=0$, & $B_1=\langle ka\rangle$, & $B_0=0$.
+\end{tabular}
+\]
+This gives the desired homology groups.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is true because equality is an equivalence relation.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+It suffices to show that $\oo(\alpha)$ cannot be changed in a single move.
+But this is clear.
+In particular, using the definition, note that $\oo(\alpha)$ is $\oo(\beta)$ if $\beta\ne\emptyset$, and is $p$ if $\beta$ is empty.
+The same holds for $\oo(\alpha')$, so $\oo(\alpha)$ is preserved.
+Similarly, $\ee(\alpha)=\ee(\alpha')$.
+
+\item
+Again, it suffices to show this for a single elementary move.
+We can further assume that $\beta=\beta'$.
+Write $\alpha=\ga(p,q)(q,r)\dlt$ and $\alpha'=\ga(p,r)\dlt$.
+Then
+\[\alpha\beta=\ga(p,q)(q,r)\dlt\beta=\ga(p,r)\dlt\beta=\alpha'\beta'.\]
+(Recall $\beta=\beta'$.)
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+An edge path, by definition, only goes along the 1-skeleton.
+Thus $K$ being connected automatically implies that $K^{(1)}$ is.
+
+If $K^{(1)}$ is connected, then let $x,y\in|K|$.
+There are unique open simplices $s^\circ,t^\circ$ with $x\in s^\circ$ and $y\in t^\circ$.
+Pick vertices $v$ and $w$ of $s$ and $t$, respectively.
+Then consider the path taken by going straight line from $x$ to $v$, then along the edges to $w$, then along a straight to $y$.
+Hence $|K|$ is connected (indeed, path-connected).
+
+If $|K|$ is connected, then $|K|$ is clearly path-connected.
+
+Finally, if $|K|$ is path-connected, then we can find edge paths between any two vertices of $K$ in the following manner:
+Each time the path crosses the 1-skeleton, say along the edge between $v$ and $w$, pick either $v$ and $w$ and append that vertex (or, rather, the edge between that vertex and the previous one) to the edge path.
+That this works is clear.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is exactly the proof of Theorem 3.6, with $\ga$ as the edge path from $p_0$ to $p_1$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Since an elementary move only moves across a 2-simplex, it follows that the edge path group is only dependent on the 2-skeleton.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+This is clear.
+
+\item
+If $v$ and $w$ are in the same component as some point $x$, then by taking an edge path from $v$ to $x$, then from $x$ to $w$, we have an edge path between $v$ and $w$.
+This proves that components are connected.
+
+Obviously the union of the components is $K$.
+To see that the unions are disjoint, suppose $v\in[x]\cap[y]$ and $w\in[x]$.
+Then the path $w\to x\to v\to y$ implies that $w\in[y]$.
+Since $w$ was arbitrary, and since $w\in[y]$ would similarly imply $w\in[x]$, it follows that $[x]=[y]$.
+This proves disjointness.
+
+\item
+Suppose $[\alpha]\in\pi(K,x)$.
+Then we claim that $[\alpha]\in\pi(L,x)$.
+But this is simply because any vertex along $\alpha$ is necessarily connected to $p$ via an edge path, hence belongs to $L$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+Write $\alpha=e_1\dots e_m$ and $\beta=e_{m+1}\dots e_{m+n}$.
+Then $(\alpha\beta)^\circ:I_{m+n}\to K$ takes $v_i$ to $p_i$, where $p_i=\alpha^\circ(v_i)$ for $0\le i\le m$ and $p_i=\beta^\circ(v_{i-m-1})$ otherwise.
+This is exactly $\ga$.
+
+\item
+It suffices to show this if $\alpha$ and $\beta$ are separated by one step.
+But, writing $\alpha=\ga(p,q)(q,r)\dlt=\ga(p,r)\dlt=\beta$, simply note that we can use the straight line homotopy from the center of $(p,r)$ to go to $q$.
+Resizing intervals as necessary, as in the previous part, gives the result.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+It suffices to show that trees are contractible.
+This is true for zero or one 1-simplices.
+For $(n+1)$ total 1-simplices, simply pick an edge one of whose endpoints is a leaf.
+Then we can contract that edge to the other vertex, which is connected to the rest of the tree.
+Induction implies the result.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Suppose $e_1\dots e_n$ were a circuit in $T_1\cup T_2$.
+Suppose without loss of generality that $e_1\in T_1$.
+Let $i$ and $j$ be the first and last indices, respectively, such that $e_i,e_j\in T_1\cap T_2$.
+There is a path $\alpha$ which starts with $e_i$ and ends with $e_j$ contained in $T_1\cap T_2$.
+Now notice that $e_1\dots e_{i-1}\alpha e_{j+1}\dots e_n$ is a circuit contained entirely within $T_1$, contradicting that $T_1$ is a tree.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Let $G$ be any abelian group, and let $\phi:\{xF':x\to X\}\to G$.
+Our goal is to show that there is a unique homomorphism $\psi:F/F'\to G$ with $\psi(xF')=\phi(xF')$ for all $xF'\in F/F'$.
+(See Theorem 4.1(i).)
+
+As in the definition of a free group, let $\tilde\phi$ be the unique homomorphism from $F$ to $G$ with $\tilde\phi(x)=\phi(xF')$ for all $x\in X$.
+Now define
+\begin{align*}
+\psi:F/F'&\to G\\ fF'&\mapsto\tilde\phi(f).
+\end{align*}
+To see that this is well-defined, notice that $f\in F'$ implies that $f=g^{-1}h^{-1}gh$ for some $g,h\in F$.
+Thus
+\[\tilde\phi(f)=\tilde\phi(g)^{-1}\tilde\phi(h)^{-1}\tilde\phi(g)\tilde\phi(h).\]
+But $G$ is abelian, so this is exactly 1, which proves well-definedness.
+
+To see that $\psi$ does indeed satisfy that $\psi(xF')=\phi(xF')$, simply notice that $\psi(xF')=\tilde\phi(x)$, which is defined to be $\phi(xF')$.
+
+Finally, to see that $\psi$ is the \textit{unique} homomorphism with this property, note that any other function $\psi'$ would have to have $\psi'(fF')=\tilde\phi(f)$, and thus be exactly equal to $\psi$.
+
+Hence $F/F'$ is indeed free abelian, with the desired basis.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\Cref{7.42} shows that the rank of the free group $F$ is the rank of the free abelian group $F/F'$.
+But this latter rank is invariant with respect to $X$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+By picking a maximal tree $T$, and setting some edge not in the tree to be $x$, we can see that every other edge becomes either $x$, $x^{-1}$, or 1.
+Hence $G_{\RR P^2,T}\cong\ZZ/2\ZZ$, and Corollary 7.37 implies the result.
+
+\item
+Hurewicz's theorem applies since $\RR P^2$ is obviously path-connected.
+Moreover, since $\ZZ/2\ZZ$ is abelian, its commutator subgroup is trivial.
+Thus $H_1(\RR P^2)\cong\ZZ/2\ZZ$, as desired.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+Pick points $x,y\in X$.
+Then consider vertices $p$ and $q$ of the simplices containing $x$ and $y$, respectively.
+Consider the following path:
+Take the straight line from $x$ to $p$, then take the path mapped out by $F(p,t)$ as $t\in\II$, then the path mapped out by $F(q,1-t)$, and finally the straight line from $q$ to $y$.
+
+\item
+Let $F:X\times\II\to X$ have $F(v,0)$ for all $v\in X^{(1)}$ and $F(~,1)$ a constant function.
+Then by taking the homotopy along $F$, we can go from $(p,q)$ to the constant point, then back to some arbitrary edge of $T$, where $T$ is a maximal tree of $X$.
+Hence $(p,q)=1$, implying a trivial edge path group.
+Thus the fundamental group is trivial too.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Since there are $n$ vertices, we know that there are $n-1$ edges of a maximal tree.
+The result follows from Corollary 7.35.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+If $X$ has $m$ edges and $n$ vertices, then $\chi(X)=-m+n$.
+Thus $1-\chi(X)=m-n+1$.
+Now use Hurewicz's theorem, \Cref{7.35}, \Cref{7.42}, and Corollary 7.35 to find the result for $H_1$.
+Note that $H_0(X)=\ZZ$ because $X$ is connected, and $H_q(X)=0$ for $q\ge2$ because $X$ has dimension 1.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We know that $S^m$ is the boundary of an $(m+1)$-simplex.
+Thus there is an edge between any two vertices, so we can fix one vertex $p$ and let $T$ be the star consisting of all edges $(p,q)$.
+Now consider any other edge $(q,r)$.
+Note that $\{p,q,r\}$ forms a simplex, so $(p,q)(q,r)=(p,r)$.
+But in $G_{K,T}$, we know that $(p,q)=(p,r)=1$, so $(q,r)=1$ as well.
+Thus $\pi(K,p)\cong G_{K,T}=1$, and so $\pi_1(S^m)=1$.
+Hence $S^m$ is simply connected.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item 
+Since every vertex is contained in $K^{(q)}$, we can pick any simplex of maximal dimension.
+Its vertices are contained in $\Vt(K^{(q)})$, but it does not itself belong in the $q$-skeleton.
+\item 
+If a full subcomplex $L$ exists, we know that it would need to include every simplex of $K$ with vertices in $A$.
+Moreover, adding any other simplex would introduce new vertices.
+Thus such a subcomplex would be unique.
+Note that the set thus described is indeed a subcomplex, since any faces of $s\in L$ would have to have vertices in $A$ as well.
+
+The second part of the statement follows from the description of $L$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Consider some element $[\alpha]=\in\pi(K,v_0)$.
+Then there is some path $\alpha'\simeq\alpha$ with $\alpha'\in\pi(L,v_0)$.
+Thus $i[\alpha']=[\alpha]$, proving surjectivity.
+
+If $K$ is the 2-simplex and $L$ is its boundary, then obviously any closed edge path in $K$ is also in $L$ (and, in particular, is homotopic to a closed edge path in $L$).
+But the fact that $K$ is simply connected while $L$ is not implies that there cannot be an isomorphism.
+\end{exercise}
+
+\end{document}
