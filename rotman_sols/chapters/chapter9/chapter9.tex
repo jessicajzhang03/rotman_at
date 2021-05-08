@@ -1,0 +1,664 @@
+\documentclass[../../solutions.tex]{subfiles}
+
+\setcounter{section}{8}
+
+\begin{document}
+\section{Chapter 9: Natural Transformations}
+\subsection{Definitions and Examples}
+\begin{exercise} \leavevmode
+This is obvious from Lemma~4.8.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is exactly the statement of \Cref{4.10}.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+The commutative diagram in \Cref{4.13} is exactly the statement that the map is natural.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Commutativity of the diagram
+\[
+\begin{tikzcd}
+H_n(X,A)\ar[r,"f_*"]\ar[d,"\partial",swap] & H_n(Y,B)\ar[d,"\partial"]\\
+H_{n-1}(A,\emptyset)\ar[r,"(f|A)_*",swap] & H_{n-1}(B,\emptyset)
+\end{tikzcd}
+\]
+follows from the exact sequence in Theorem~5.8, since $H_{n-1}(A,\emptyset)=H_{n-1}(A)$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is again precisely the statement from \Cref{6.8}.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+Suppose $\sig:F\to G$ and $\tau:G\to H$ are natural.
+Then we can ``stack'' the commutative diagrams:
+\[
+\begin{tikzcd}
+F(C)\ar[r,"Ff"]\ar[d,"\sig_C",swap] & F(D)\ar[d,"\sig_D"]\\
+G(C)\ar[r,"Gf"]\ar[d,"\tau_C",swap] & G(D)\ar[d,"\tau_D"]\\
+H(C)\ar[r,"Hf"] & H(D)
+\end{tikzcd}
+\]
+Hence it follows that $\tau\sig=(\tau_C\sig_C)$ gives a natural transformation.
+
+\item
+Reflexivity is due to the commutativity of the following diagram:
+\[
+\begin{tikzcd}
+F(C)\ar[r,"Ff"]\ar[d,"1_{F(C)}",swap] & G(C)\ar[d,"1_{G(C)}"]\\
+F(C)\ar[r,"Ff"] & G(C)
+\end{tikzcd}
+\]
+To see symmetry, simply choose $\tau_C^{-1}$ for each object $C$.
+This can be done because each $\tau_C$ is an equivalence.
+Finally, transitivity follows from the previous part and the fact that the composition of equivalences is an equivalence.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+If $\phi\in\Nat(\Hom(~,A),F)$, then $\phi_A$ is a map from $\Hom(A,A)$ to $F(A)$.
+Since $1_A\in\Hom(A,A)$, it follows that $\phi_A(1_A)\in F(A)$.
+Thus $y$ is a well-defined function.
+\item
+We must check that $\tau\in\Nat(\Hom(~,A),F)$ whenever $\mu\in F(A)$.
+First, observe that $\tau_X$ is indeed a morphism from $\Hom(X,A)$ to $F(X)$.
+After all, if $f:X\to A$, then $Ff:FA\to FX$.
+Hence $\tau_X(f)=(Ff)(\mu)$ is an element of $F(X)$.
+
+To see that $\tau$ is natural, we must show that the following diagram commutes for all $f:X\to Y$.
+\[
+\begin{tikzcd}[column sep=huge]
+\Hom(X,A)\ar[d,"\tau_X",swap] & \Hom(Y,A)\ar[l,"\Hom(f{,}A)",swap]\ar[d,"\tau_Y"] \\
+F(X) & F(Y)\ar[l,"Ff"]
+\end{tikzcd}
+\]
+But for each $g\in\Hom(X,A)$, we know that
+\[(Ff)\circ\tau_Y(g)=(Ff)(Fg(\mu))=F(g\circ f)\mu,\]
+while we have $\Hom(f,A)=f^*$, so that
+\[\tau_X\circ\Hom(f,A)(g)=\tau_X\circ f^*(g)=\tau_X(g\circ f)=F(g\circ f)\mu.\]
+These are equal, so $\tau$ is a natural transformation.
+
+\item
+First, we will show that $y\circ y':F(A)\to F(A)$ is the identity.
+Let $\mu\in F(A)$.
+Then we know that
+\[y'(\mu)=\{\tau_X:f\mapsto(Ff)(\mu)\},\]
+and so we have that
+\[y(y'(\mu))=(y'(\mu))_A(1_A)=F(1_A)(\mu).\]
+But $F$ is a functor, so $F(1_A)=1_{F(A)}$, and so this is exactly equal to $1_{F(A)}(\mu)=\mu$, which proves that $y\circ y'$ is the identity on $F(A)$.
+
+Now to check $y'y$, suppose $\phi\in\Nat(\Hom(~,A),F)$.
+Then we know that
+\[y'(y(\phi))=\{\tau_X:f\mapsto(Ff)(\phi_A(1_A)).\]
+We would like to show that
+\[(Ff)(\phi_A(1_A))=\phi_Xf,\]
+since this will imply that $y'(y(\phi))=\phi$.
+But we know that the following diagram commutes:
+\[
+\begin{tikzcd}[row sep=large]
+\Hom(X,A)\ar[d,"\phi_X",swap] & \Hom(A,A)\ar[l,"f^*",swap]\ar[d,"\phi_A"] \\
+F(X) & F(A)\ar[l,"Ff"]
+\end{tikzcd}
+\]
+Thus we know, in particular, that
+\[Ff\circ\phi_A(1_A)=\phi_Xf^*(1_A)=\phi_X(1_A\circ f)=\phi_x\circ f.\]
+This is what we wanted.
+
+\item
+If $\phi:\Hom(~,A)\to\Hom(~,B)$ is natural, then we have the following commutative diagram:
+\[
+\begin{tikzcd}[row sep=huge, column sep=2.5cm]
+\Hom(X,A)\ar[d,"\phi_X",swap] & \Hom(Y,A)\ar[l,"\Hom(f{,}A)",swap]\ar[d,"\phi_Y"] \\
+\Hom(X,B) & \Hom(Y,B)\ar[l,"\Hom(f{,}B)"]
+\end{tikzcd}
+\]
+Let $F$ be the functor $\Hom(~,B)$.
+Then we know that
+\begin{align*}
+\phi_X(f)&=y'(y(\phi))_X(f)\\
+&=(Ff)(\phi_A(1_A))\\
+&=\Hom(f,B)(\phi_A(1_A))\\
+&=\phi_A(1_A)\circ f,
+\end{align*}
+where $f:X\to A$.
+Thus $\phi_X(f)=\mu f$, as desired.
+
+
+\item
+Same proof.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We must verify the properties of a category.
+To see that the family of $\Hom(F,G)$'s, where $F$ and $G$ are functors $\cat C\to\cat A$, is disjoint, notice that this means that there exists some $\tau=(\tau_C:F(C)\to G(C))$ and $\sig=(\sig_C:F'(C)\to G'(C))$ which are equal.
+Hence $F(C)=F'(C)$ and $G(C)=G'(C)$ for all $C$, since $\tau_C=\sig_C$ is in both $\Hom(F(C),G(C))$ and $\Hom(F'(C),G'(C))$.
+Since this is true for all $C\in\cat C$, it follows that $F=F'$ and $G=G'$.
+
+Composition of natural transformations reduces to composition of morphisms, which is associative.
+
+Finally, note that $1_A\in\Hom(F,F)$ given by
+\[1_A=\{(1_A)_C=1_{F(C)}\}\]
+works as an identity morphism.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+We shall verify the properties of a contravariant functor.
+The functor gives us a complex
+\[
+\begin{tikzcd}
+\dots\ar[r] & C_{n+1}\ar[r,"\partial_{n+1}"] & C_n\ar[r,"\partial_n"] & C_{n-1}\ar[r] & \dots\ar[r] & C_0\ar[r] & C_{-1}\ar[r] & \dots
+\end{tikzcd}
+\]
+Since $C_n$ is abelian, we know that $n\in\ZZ$ implies that $C(n)=C_n\in\Ab$.
+
+The only morphisms in $\ZZ$ are $\iota^x_y$ when $x\le y$.
+Note that $C(\iota^x_y)$ is the composition $\partial_{x+1}\circ\dots\circ\partial y:C_y\to C_x$.
+We must verify that composition is reversed and identities are respected.
+But this is clear from the definition:
+\[]iota_z^y\circ\iota_y^x=\iota_z^x=\partial_{x+1}\circ\dots\circ\partial_z\]
+is exactly $C(\iota^x_y)\circ C(\iota^y_z)$, and $C(\iota^x_x)$ is the composition of an empty set of differentiation operators, and thus is the identity.
+
+\item
+The chain map condition is exactly the condition of commutativity.
+\end{enumerate}
+\end{exercise}
+
+\subsection{Eilenberg--Steenrod Axioms}
+No exercises!
+
+\subsection{Chain Equivalences}
+\begin{exercise} \leavevmode
+To prove (i) implies (ii), note that $ps=1_C$ implies $s$ is injective.
+Then the same argument as in Corollary~9.2 implies that $B=\ker p\oplus\im s$.
+Of course, we have $\ker p=\im i$ and $C'=\im s=s(C)\cong C$.
+Since $p(C')=C$, this proves the first implication.
+
+The second implication is clear.
+In particular, consider $q:B\to A$ defined by $(i(x),c)\mapsto x$.
+Then $qi(a)=q(i(a))=a$.
+
+Finally, to show (iii) implies (i), define $s(c)$ as
+\[s(c)=p^{-1}(c)-iqp^{-1}(c).\]
+To see that this is well-defined, pick $b\in\ker p=\im i$, so $b=i(a)$.
+Thus $b-iq(b)=i(a)-iqi(a)=0$.
+Hence $p(b)=p(b')$ means that $b-iqb=b'-iqb'$, proving well-definedness.
+To see that this choice of $s$ gives a split exact sequence, simply verify that
+\[ps(c)=p(p^{-1}(c)-iqp^{-1}(c))=c-piqp^{-1}(c).\]
+Since $pi=0$, this is equal to $c$.
+\end{exercise}
+
+\subsection{Acyclic Models}
+\begin{exercise} \leavevmode
+First we show that the diagram given by Rotman commutes, i.e., that
+\[\partial_n(t_n-t;_n-s_{n-1}d_n)=0.\]
+We know that
+\begin{align*}
+\partial_nt_n-\partial_nt'_n-\partial_ns_{n-1}d_n&=t_{n-1}d_n-t'_{n-1}d_n-\partial_ns_{n-1}d_n.
+\end{align*}
+The inductive hypothesis implies that
+\[\partial_ns_{n-1}=t_{n-1}-t'_{n-1}-s_{n-2}d_{n-1}.\]
+Plugging this value in and canceling gives us
+\[\partial_nt_n-\partial_nt'_n-\partial_ns_{n-1}d_n=s_{n-2}d_{n-1}d_n=0,\]
+because $dd=0$.
+
+Thus the diagram commutes.
+In particular, we know that
+\[\im(t_n-t_n'-s_{n-1}d_n)\subseteq\ker\partial_n=\im\partial_{n+1},\]
+where the final equality comes from the fact that $E_*$ is an acyclic complex.
+This means that we can rewrite the diagram as follows:
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+& F_n\ar[d,"t_n-t'_n-s_{n-1}d_n",swap] & \\
+E_{n+1}\ar[r,"\partial_{n+1}",swap] &
+\parbox[t]{3cm}{\centering $\im(t_n-t'_n-s_{n-1}d_n)$\\{\small$=\im\partial_{n+1}=\ker\partial_n$}}\ar[r,"\partial_n=0",swap] & 0
+\end{tikzcd}
+\]
+Thus Theorem~9.1 implies that we can find $s_n$ with the desired properties.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We have $F(g)=F(0+g)=F(0)+F(g)$, so $F(0)$ acts as the 0 element.
+If $A$ is the zero group, then its identity is the zero homomorphism.
+Hence $1_{F(A)}=F(1_A)$ is the zero homomorphism, so $F(A)=0$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+We'll prove the covariant case.
+By \Cref{9.10}, we have a morphism $q:A\to B$ with $qi=1_A$.
+Note that $(Fp)\circ(Fs)=F(p\circ s)=F(1_C)=1_{F(C)}$, and similarly for $q$ and $i$, so that we still have a split sequence, as long as it is exact.
+Moreover, these imply that $Fp$ is surjective and $Fi$ is injective.
+
+It now suffices to check that $\im Fi=\ker Fp$.
+But notice that $B\cong iq(B)\oplus sp(B)$ implies that $F(B)$ is equal to the functored version of the right side, thus making the center of the short functored sequence exact.
+
+\item
+This simply uses induction on $|I|=n+1$ and the following short exact sequence:
+\[
+\begin{tikzcd}
+0\ar[r] & \sum_{i=1}^nA_i\ar[r,"i"] & \sum_{i=1}^{n+1}A_i\ar[r,"p"] & A_{n+1}\ar[r] & 0.
+\end{tikzcd}
+\]
+Note that this is split exact with $s:a_{n+1}\mapsto(0,\dots,0,a_{n+1})$.
+Thus the previous part applies, and \Cref{9.10} implies that
+\[F\left(\sum_{i=1}^{n+1}A_i\right)\cong F\left(\sum_{i=1}^nA_i\right)\oplus F(A_{n+1})=\sum_{i=1}^{n+1}F(A_i),\]
+where the last equality follows from the inductive hypothesis.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+If $\partial_n\partial_{n+1}=0$, then $F(\partial_n\partial_{n+1})=0$ thanks to additivity.
+This proves that the functored complex is a chain complex too.
+
+\item
+Note that $f_{n-1}\partial_n=\partial'_nf_n$ implies that $F(f_{n-1}\partial_n)=F(\partial'_nf_n)$.
+Since functors respect composition, this proves the result.
+
+\item
+Note that additive functors respect homotopy because they rerspect both composition and addition.
+Hence if $g:B_*\to A_*$ makes $f$ an equivalence, i.e., if $g\circ f\simeq 1_{A_*}$ and $f\circ g\simeq 1_{B_*}$, then it follows that
+\[Fg\circ Ff\simeq F1_{A_*}=1_{FA_*},\]
+and similarly for $B$.
+Hence $Fg$ is an inverse for $Ff$, so $Ff$ is a chain equivalence.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+This simply involves applying Corollary~9.13(ii).
+In particulars, we know that $F_p$ and $S_p$ arer both free with basis in $\mathcal M=\{\Dlt^p\}$.
+We want to show that $\Dlt^p$ is totally $S$- and $F$-acyclic.
+But notice that $\tilde H_n(S_*(\Dlt^k))=0$ because $\Dlt^k$ is contractible, and similarly for $F_p$, since it coincides with $C_p$ ono $\Dlt$.
+This proves acyclicity, and so the two are naturally chain equivalent.
+
+\item
+Theorem~9.8 implies that singular and large simplicial homology are the same, while Theorem~7.22 implies that normal simplicial and singular homology are the same.
+\end{enumerate}
+\end{exercise}
+
+\subsection{Lefschetz Fixed Point Theorem}
+\begin{exercise} \leavevmode
+Notice that $1_G$ induces $1_{G/tG}:x+tG\mapsto x+tG$.
+Hence, with any basis $\{x_1,\dots,x_n\}$ of $G/tG$, we have $1_{G/tG}$ equal to the identity matrix whose dimension is $\rank G/tG$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+A basis $\{x_1,\dots,x_k\}$ of $G'/tG'$ can be extended to $\{x_1,\dots,x_n\}$ of $G/tG$.
+Since $G''$ is just $G/G'$ and $f''(g+G')=pf(g)=f(g)+G'$.
+Thus $f''(x_i+G')=f(x_i)+G'$ for $i=k+1,\dots,n$.
+Thus the matrix of $\bar f$ is diagonal, of the form shown on p.~259 of the textbook, which implies the result.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+If $f:S^n\to S^n$, then $f_{0*}$ and $f_{n*}$ are maps $\ZZ\to\ZZ$.
+Note that $f_{0*}$ is the identity, and thus has trace 1.
+If $\tr f_{n*}=1$ as well, then the whole map is homotopic to either the identity or the antipodal map, implying that $f$ is a homotopy equivalence.
+Thus $\tr f_{n*}=0$, and so $\la(f)=1\ne0$.
+The Lefschetz fixed point theorem implies the result.
+\end{exercise}
+
+\subsection{Tensor Products}
+\begin{exercise} \leavevmode
+Note that
+\begin{align*}
+a\otimes0+a'\otimes b'&=a\otimes0+(a\otimes b'+(a'-a)\otimes b')\\
+&=a\otimes b'+(a'-a)\otimes b'\\
+&=a'\otimes b',
+\end{align*}
+and similarly for $0\otimes b$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We would like to show that $m(a,b)\sim(ma,b)$ for $m\in\ZZ$.
+It is true for $m>0$ by induction, true for $m=0$ by \Cref{9.19}, and true for $m<0$ by inverses.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+The hint gives the full solution.
+If $a\in A$ then there exists some $m>0$ so that $ma=0$.
+Hence $a\otimes q=ma\otimes(q/m)=0$.
+Since this is true fora all generators of $A\otimes\QQ$, the result follows.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Let $m$ be the order of $a\in A$ and $n$ the order of $b\in B$.
+Then  we know that $\gcd(m,n)=1$, so that there exist integers $x,y$ with $mx+ny=1$.
+Hence we have that
+\begin{align*}
+a\otimes b&=a\otimes(mx+ny)b\\
+&=(mx+ny)(a\otimes b)\\
+&=mx(a\otimes b)+ny(a\otimes b)\\
+&=(mxa\otimes b)+(a\otimes nyb)=0.
+\end{align*}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is the exact same argument as Corollary~9.27.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+Use Theorem~9.25(ii) with the fact that $A\times B\cong B\times A$.
+
+\item
+To see this, simply consider the following commutative diagram:
+\[
+\begin{tikzcd}
+A\otimes B\ar[d]\ar[r,"1_A\otimes f"] & A\otimes C\ar[d]\\
+B\otimes A\ar[r,"f\otimes1_A",swap] & C\otimes A
+\end{tikzcd}
+\]
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that $T_A(f+g)=1_A\otimes f+1_A\otimes g$, since both maps complete the diagram
+\[
+\begin{tikzcd}
+A\times B\ar[dr,"\phi",swap]\ar[rr] & & A\otimes B\ar[dl,dashed] \\
+& A\otimes B &
+\end{tikzcd}
+\]
+where $\phi(a,b)=(a,(f+g)(b))$.
+But note that $1_A\otimes f+1_A\otimes g$ is just $T_A(f)+T_A(g)$, proving additivity.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is clear, since we have
+\begin{align*}
+1_A\otimes f:A\otimes B&\to A\times B\\a\otimes b&\mapsto a\otimes fb=a\otimes mb=m(a\otimes b).
+\end{align*}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+This is easy to show directly.
+In particular, we show that $a\mapsto1\otimes a$ is an isomorphism.
+We would like to show that $1\otimes a=n\otimes b$ if $nb=a$.
+But $n\otimes b=n(1\otimes b)=1\otimes(nb)=1\otimes a$, as desired.
+Hence this map is surjective.
+It is injective because, otherwise, every $1\otimes a$ would be 0, which would violate the universal property of tensor products given by Theorem~9.25.
+Hence this is an isomorphism.
+
+\item
+We must show that the following commutes:
+\[
+\begin{tikzcd}[column sep=large]
+\ZZ\otimes A\ar[r,"1_A\otimes f"]\ar[d,"\tau_A",swap] & \ZZ\otimes B\ar[d,"\tau_B"] \\
+A\ar[r,"f",swap] & B
+\end{tikzcd}
+\]
+This commutes because
+\[\tau_B\circ(1_A\otimes f):(n,a)\mapsto(n,f(a))\mapsto nf(a),\]
+while
+\[f\circ\tau_A:(n,a)\mapsto na\mapsto f(na),\]
+and $nf(a)=f(na)$ since $f$ is a homomorphism.
+\end{enumerate}
+\end{exercise}
+
+\subsection{Universal Coefficients}
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item 
+We can write $F=\sum A_j$ where $A_j=\ZZ x_j$, and $F'=\sum A'_k$ where $A'_k=\ZZ x'_k$.
+Then $F\otimes F'$ is just
+\begin{align*}
+F\otimes F'&=F\otimes\sum A'_k=\sum(F\otimes A'_k)\\
+&=\sum\left(\sum A_j\otimes A'_k\right)\\
+&=\sum_{j,k}A_j\otimes A'_k.
+\end{align*}
+But it is easy to verify that $A_j\otimes A'_k=\ZZ(x_j\otimes x'_k)\cong\ZZ$, which proves the result.
+
+\item 
+This is obvious from the previous part since
+\[\rank F\otimes F'=|J\times K|=|J||K|=\rank F\rank F'\]
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is simply an application of Theorem~9.28 and Corollary~9.30, along with \Cref{9.27}.
+We end up with
+\[A\otimes B=\ZZ/2\ZZ\oplus\ZZ/3\ZZ\oplus\ZZ/3\ZZ\oplus\ZZ/5\ZZ\oplus\ZZ/5\ZZ\oplus\ZZ/5\ZZ.\]
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item 
+Using coordinate-wise addition and scalar multiplication of the form
+\[p\sum(q_i,g_i)=\sum(pq_i,g_i)\]
+shows that $\QQ\otimes G$ is a $\QQ$-vector space.
+Hence $\dim\QQ\otimes G$ is defined.
+
+\item
+This follows immediately from the $\Tor$ exact sequence, along with the fact that $\Tor(\QQ,B)=0$ for all $B$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is simply a calculation using the properties of Tor.
+We end up with
+\[\ZZ/3\ZZ\oplus\ZZ/5\ZZ.\]
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Using \Cref{9.30} with the short exact sequence
+\[0\to F\to G\to G/F\to0\]
+gives us
+\[\dim\QQ\otimes G=\dim\QQ\otimes F+\dim\QQ\otimes G/F.\]
+But $\dim\QQ\otimes G/F=0$ by \Cref{9.21} and the fact that $G/F$ is torsion.
+Moreover, we know that $\QQ\otimes F$ has basis $(1,x_i)$, where $x_i$ is a generator of $F$, so $\dim\QQ\otimes F=\rank F=\rank G$, which proves the result.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that [Tor 1] and [Tor 5] imply that there is an exact sequence
+\[0\to\Tor(B',A)\to\Tor(B,A)\to\Tor(B'',A)\to B'\otimes A\to B\otimes A\to B''\otimes A\to0,\]
+since $B\otimes A\cong A\otimes B$ by \Cref{9.24}.
+But if $A$ is torsion-free, then $\Tor(B'',A)=0$ by [Tor 2], which gives us the desired exact sequence.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is false!
+Consider, for example, when $F=\ZZ$ and $H=\ZZ/2\ZZ$, and $a=2$, $h=1$.
+In general, we need the condition that if $a=\sum m_jx_j$, where $\{x_j\}$ is a basis for $F$, then $m_jh\ne0$ for at least some $j$.
+After all, we need that
+\[a\otimes h=(m_jx_j\otimes h)_j=(m_jh)\ne0.\]
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Let $\alpha$ be the map $(\cls z)\otimes g\mapsto\cls(z\otimes g)$.
+Then the Universal Coefficients Theorem implies that
+\[
+\begin{tikzcd}
+0\ar[r] & H_n(X)\otimes G\ar[r,"\alpha"] & H_n(X;G)\ar[r] & \Tor(H_{n-1}(X),G)\ar[r] & 0
+\end{tikzcd}
+\]
+is exact.
+Of course, since $G$ is torsion-free, we know that $\Tor(H_{n-1}(X),G)=0$.
+Hence $\alpha$ is an isomorphism.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Use the second part of the Universal Coefficients Theorem.
+In particular, it gives us that
+\[H_n(X;\ZZ/m\ZZ)\cong(H_n(X)\otimes\ZZ/m\ZZ)\oplus H_{n-1}(X)[m],\]
+since
+\[\Tor(H_{n-1}(X),\ZZ/m\ZZ)=H_{n-1}(X)[m]\]
+by [Tor 4].
+If $H_{n-1}(X)$ is torsion-free, the second term is zero, which gives the conclusion.
+\end{exercise}
+
+\subsection{Eilenberg--Zilber Theorem and the K\"unneth Formula}
+\begin{exercise} \leavevmode
+This is a straightforward calculation.
+In particular, we find that 
+\begin{align*}
+(\la\otimes\mu)_{n-1}D_n(c_i\otimes e_j)&=(\la\otimes\mu)_{n-1}(dc_i\otimes e_j+(-1)^ic_i\otimes\partial e_j)\\
+&=(\la_{i-1}\otimes\mu_j)(dc_i\otimes e_j)+(\la_i\otimes\mu_{j-1})((-1)^ic_i\otimes\partial e_j)\\
+&=\la_{i-1}dc_i\otimes\mu_je_j+(-1)^i\la_ic_i\otimes\mu_{j-1}\partial e_j.
+\end{align*}
+A similar calculation gives
+\begin{align*}
+D'_n(\la\otimes\mu)_n(c_i\otimes e_j)&=D'_n(\la_i\otimes\mu_j)(c_i\otimes e_j)\\
+&=D'_n(\la_ic_i\otimes\mu_je_j)\\
+&=d\la_ic_i\otimes\mu_j e_j+(-1)^i\la_ic_i\otimes\partial(\mu_je_j).
+\end{align*}
+Of course, we know that $d\la=\la d$ and $\partial \mu=\mu\partial$, which implies the result.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that it suffices to prove the hint, since transitivity will finish the proof.
+The proof of the hint is a routine, if long, computation.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Suppose $\la:C_*\to C_*'$ and $\la':C_*'\to C_*$ with $\la\circ\la'\simeq1_{C'_*}$ and $\la'\circ\la\simeq1_{C_*}$.
+Similarly define $\mu$ and $\mu'$.
+Then \Cref{9.38} implies that
+\[\la\otimes\mu:C_*\otimes E_*\to C'_*\otimes E'_*,\]
+and similarly for $\la'\otimes\mu')$.
+But
+\[(\la\otimes\mu)\circ(\la'\otimes\mu')=(\la\la')\otimes(\mu\mu')\simeq 1_{C'_*}\otimes 1_{E'_*}=1_{C'_*\otimes E'_*}.\]
+The same calculation holds for the other composition, which proves chain equivalence.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Each $n$ (i.e., each $0\to S'_n\to S_n\to S''_n\to0$) works because $E_*$ is a chain complex, hence $E_n$ is free.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+For $n\ge1$, we know that $H_n(X)=0=H_n(Y)$.
+Hence the K\"unneth formula implies that
+\[H_n(X\times Y)\cong\sum_{i+j=n}H_i(X)\otimes H_j(Y)\oplus\sum_{p+q=n-1}\Tor(H_p(X),H_q(Y)).\]
+But the first term is 0 since one of $i,j$ is at least 1, and thus one of $H_i(X),H_j(Y)$ is 0.
+The second term is zero since the only way for $H_p(X)$ and $H_q(Y)$ to both be nonzero is if $p=q=0$, in which case both homology groups are free.
+Hence the torsion $\Tor(H_0(X),H_0(Y))$ is zero in that case too.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+For path-connected $X$ and $Y$, we have
+\[H_1(X\times Y)=H_0(X)\otimes H_1(Y)\oplus H_1(X)\otimes H_0(Y)\oplus\Tor(H_0(X),H_0(Y)).\]
+But $H_0(X)=H_0(Y)=\ZZ$, and so using \Cref{9.27} gives us that the first two terms are $H_1(Y)$ and $H_1(X)$, respectively, while [Tor 2] implies that the last term is 0.
+This gives the first equation.
+
+For $H_2$, notice that the $\Tor$ terms have either $H_0(X)$ or $H_0(Y)$, so [Tor 2] implies that they are 0.
+Hence
+\[H_2(X\times Y)=[H_0(X)\otimes H_2(Y)]\oplus[H_1(X)\otimes H_1(Y)]\oplus[H_2(X)\otimes H_0(Y)].\]
+Using $H_0(X)=H_0(Y)=\ZZ$ again gives the result.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This splits into multiple cases and is slightly annoying.
+We end up with the following:
+\[
+H_p(K\times\RR P^n)=
+\begin{cases}
+0 & p\ge n+2 \\
+\ZZ\oplus\ZZ/2\ZZ & p=n+1,n~\text{odd} \\
+\ZZ/2\ZZ & p=n+1,n~\text{even} \\
+\ZZ\oplus\ZZ/2\ZZ & p=n,n~\text{odd} \\
+\ZZ/2\ZZ\oplus\ZZ/2\ZZ & p=n,n~\text{even} \\
+\ZZ/2\ZZ\oplus\ZZ/2\ZZ & 1<p<n \\
+\ZZ/2\ZZ\oplus\ZZ/2\ZZ\oplus\ZZ/2\ZZ & p=1,p\ne n \\
+\ZZ & p=0
+\end{cases}    
+\]
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We once again have many, many cases.
+\[
+H_p(\RR P^n\times S^m)=
+\begin{cases}
+\ZZ & p=0,m\ne0 \\
+\ZZ\oplus\ZZ & p=m=0 \\
+\ZZ/2\ZZ & p~\text{odd},p<\min(m,n) \\
+\ZZ\oplus\ZZ/2\ZZ & m~\text{odd},p=m \\
+\ZZ/2\ZZ & m~\text{odd},p~\text{odd between}~m~\text{and}~n \\
+\ZZ & m~\text{odd},p~\text{even},p\le m+n \\
+\ZZ & m~\text{even},p=m \\
+\ZZ\oplus\ZZ/2\ZZ & m~\text{even},p~\text{odd between}~m~\text{and}~n \\
+\ZZ & m~\text{even},p~\text{odd},p\le m+n \\
+0 & \text{otherwise}
+\end{cases}
+\]
+(Something like that, I can't quite read my work anymore.)
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is the exact same idea, but I'll admit I didn't work it all out.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+It turns out that the machinery we have (i.e., fundamental groups) isn't sufficient to distinguish $S^1\vee S^2\vee S^3$ from $S^1\times S^2$, as they both have fundamental group $\ZZ$.
+In fact, this seems to require cohomology (see \Cref{12.21}).
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We use the K\"unneth formula here.
+Note that the homology groups of $S^1$ are all cyclic or zero, so the $\Tor$ terms are zero.
+Hence
+\[H_n(S^1\times S^1)=\sum_{i+j=n}H_i(S^1)\otimes H_j(S^1).\]
+If $n>2$, then one of $H_i(S^1)$ and $H_j(S^1)$ is zero, so
+\[H_n(S^1\times S^1)=0\quad n>2.\]
+When $n=0$, then we have $i=0,j=0$, so
+\[H_0(S^1\times S^1)=\ZZ\otimes\ZZ=\ZZ\]
+If $n=1$, then we have $(i,j)=(0,1),(1,0)$, and so
+\[H_1(S^1\times S^1)=\ZZ\otimes\ZZ\oplus\ZZ\otimes\ZZ=\ZZ\oplus\ZZ.\]
+Finally, if $n=2$, then we only have to consider $(i,j)=(1,1)$, so that
+\[H_2(S^1\times S^1)=\ZZ\otimes\ZZ=\ZZ.\]
+
+Now recall that
+\[H_n(K_1\vee K_2)\cong H_n(K_1)\oplus H_n(K_2),\]
+so we know that
+\[H_n(S^2\vee S^1\vee S^1)\cong H_n(S^2)\oplus H_n(S^1)\oplus H_n(S^1).\]
+We know the homology groups of $S^1$ and $S^2$, and working them out gives the same homology groups as those of $S^1\times S^1$.
+
+(Interestingly, the fundamental groups of these two spaces are different from one another, which one can show using Seifert--Van Kampen.
+I wonder if Rotman mixed up this problem with \Cref{9.46}.)
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+This is straightforward using the fact that the homology of wedges is the direct sum of homology groups.
+Hence both homology groups are $\ZZ$ when $n=0,3$, $\ZZ/2\ZZ$ when $n=1$, and 0 otherwise.
+
+\item
+According to a cursory search online, this requires universal coverings.
+
+\item
+This seems to be another mistake on Rotman's part, as he seems to have thought that $\RR P^3$ and $\RR P^2\vee S^3$ had different fundamental groups.
+In fact, they both have $\ZZ/2\ZZ$ as their fundamental group, and so it is obvious that $\RR P^3\times\RR P^2$ and $(\RR P^2\vee S^3)\times\RR P^2$ have the same homology groups and fundamental group.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Since the homology groups of $S^1$ are all cyclic or zero, the Tor terms in the K\"unneth formula don't count.
+Suppose that
+\[H_n(T^{r-1})=\ZZ^{\binom{r-1}n}.\]
+Note that this is true for $r=1$.
+Then we have that
+\[H_n(S^1\times T^{r-1})\cong\sum_{i+j=n}H_i(S^1)\otimes H_j(T^{r-1})=H_n(T^{r-1})\oplus H_{n-1}(T^{r-1}).\]
+But of course we know that
+\[\binom{r-1}{n}+\binom{r-1}{n-1}=\binom rn,\]
+and so it follows that
+\[H_n(T^r)=H_n(S^1\times T^{r-1})=\ZZ^{\binom rn}.\]
+\end{exercise}
+
+\end{document}
