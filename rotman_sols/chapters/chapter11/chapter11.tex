@@ -1,0 +1,157 @@
+\documentclass[../../solutions.tex]{subfiles}
+
+\setcounter{section}{10}
+
+\begin{document}
+\section{Homotopy Groups}
+\subsection{Function Spaces}
+No exercises!
+
+\subsection{Group Objects and Cogroup Objects}
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+By definition of a product, there is a unique morphism $\theta:(X,q_1,q_2)\to(C_1\times C_2,p_1,p_2)$ in $\cat C$ making the diagram commute, namely $\theta=(q_1,q_2)$.
+
+\item
+The objects are ordered triples $(X,k_1,k_2)$ where $X$ is a set and $k_i:C_i\to X$ are functions.
+Morphisms $\theta:(X,k_1,k_2)\to(Y,\ell_1,\ell_2)$ are functions $\theta:X\to Y$ making the following commute:
+\[
+\begin{tikzcd}
+& X \ar[dd,"\theta"] & \\
+C_1 \ar[ur,"k_1"] \ar[dr,"\ell_1",swap] & & C_1 \ar[ul,"k_2",swap] \ar[dl,"\ell_2"] \\
+& Y &
+\end{tikzcd}
+\]
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We first tackle $\Ab$.
+
+The map $\theta:X\to G_1\oplus G_2$ in the product diagram is given by $\theta(g)=(q_1g,q_2g)$.
+Commutativity follows from the fact that $p_i(\theta(g))=q_i(g)$.
+Uniqueness of $\theta$ follows from the fact that any other $\theta'$ must satisfy $\theta'(g)=(g_1,g_2)$ where $g_i=p_i(g_1,g_2)=q_i(g)$.
+Hence $\theta'=\theta$.
+
+The map $\eta:G_1\oplus G_2\to X$ in the coproduct diagram is given by $(g,h)\mapsto k_1(g)+k_2(h)$, where $+$ denotes the operation in the abelian group $X$.
+We can easily check commutativity and uniqueness using the fact that $\eta$ must be a group homomorphism.
+
+Now, for $\Grp$, note that the free product property on p.~173 is exactly the coproduct property.
+The same argument as in the abelian case shows that direct product is the product in $\Grp$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+We will show this for $\Top_*$.
+Suppose we have $((X,x),k_1,k_2)$.
+It is obvious that the map $\theta:(A_1\vee A_2,*)\to(X,x)$, if it exists, must take $*$ to $x$, and $*\ne a_i\in j_i(A_i)$ to $k_i(a_i)$.
+We need only show that this map $\theta$ is continuous.
+(In contrast, the proof has already been completed for $\Set_*$; commutativity of the relevant diagram is obvious from the definition of $\theta$.)
+
+Suppose $U\subseteq X$ is closed.
+Note that $\theta^{-1}(U)\cap A_i=k_i^{-1}(U)$.
+(This statement is clear if $*\not\in U$.
+If $*\in U$, then
+\[\theta^{-1}(U)\cap A_i=(\theta^{-1}(U\setminus\{x\})\cap A_i)\cup\{*\}=k_i^{-1}(U\setminus\{x\})\cup\{a_i\}=k_i^{-1}(U),\]
+which proves the statement anyway.)
+The definition of the topology of the wedge (see Example~8.9) implies that $\theta^{-1}(U)$ is closed.
+Hence $\theta$ is continuous, completing the proof.
+
+\item
+Call this subset $S$.
+The map $f:A_1\vee A_2\to S$ which takes $a\in A_i$ (or, more accurately, $a\in j_i(A_i)$) to $(a,a_2)$ if $i=1$ and to $(a_1,a)$ if $i=2$ is continuous by the previous argument.
+It is clearly bijective and closed, since a closed set $F$ in $A_1\vee A_2$ is still closed in $A_1\times A_2$.
+Thus it is a homeomorphism.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Commutativity follows from the interchanging of $C_1$ and $C_2$ in the definition.
+To see associativity, consider the following diagram:
+\[
+\begin{tikzcd}
+& & (C_1\times C_2)\times C_3\ar[dl,bend right]\ar[ddrr,bend left] & & \\
+& C_1\times C_2\ar[dl]\ar[dr] & & & \\
+C_1 & & C_2 & & C_3 \\
+& & X\ar[ull,bend left=5]\ar[u]\ar[urr,bend right=5]\ar[uul,bend left=10] & &
+\end{tikzcd}
+\]
+There is a unique map $X\to(C_1\times C_2)\times C_3$ making this diagram commute.
+
+Now define $p_1:(C_1\times C_2)\times C_3\to C_1$ to be the composition of the red arrows below.
+Furthermore, the product property of $C_2\times C_3$ implies the existence of the following blue and green arrows:
+\[
+\begin{tikzcd}
+& & (C_1\times C_2)\times C_3\ar[dl,bend right,red]\ar[ddrr,bend left]\ar[dr,blue] & & \\
+& C_1\times C_2\ar[dl,red]\ar[dr] & & C_2\times C_3\ar[dr,green]\ar[dl,green] & \\
+C_1 & & C_2 & & C_3 \\
+& & X\ar[ull,bend left=5]\ar[u]\ar[urr,bend right=5]\ar[uul,bend left=10] & &
+\end{tikzcd}
+\]
+Let $p_2$ be the blue arrow.
+The fact that there is still the same unique map $X\to(C_1\times C_2)\times C_2$ making this commute, then, implies that $(C_1\times C_2)\times C_3$ is the product of $C_1$ and $C_2\times C_3$, thus proving associativity.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+We would like to find $f_1\times f_2$ making the following commute:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+C_2\ar[r,"f_2"]\ar[d,leftarrow] & D_2\ar[d,leftarrow] \\
+C_1\times C_2\ar[r,"f_1\times f_2"]\ar[d] & D_1\times D_2\ar[d]\\
+C_1\ar[r,"f_1"] & D_1
+\end{tikzcd}
+\]
+But the existence of maps $C_1\times C_2\to C_i\to D_i$ implies, by the product property of $D_1\times D_2$, a unique map $f_1\times f_2$ into $D_1\times D_2$ making the diagram commute.
+
+\item
+Same idea.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+Note that $\Dlt_X$ is the unique map making the red part of the diagram commute, while $q_1\times q_2$ is the unique map making the blue part commute:
+\[
+\begin{tikzcd}
+& D_1\times D_2\ar[dl,blue]\ar[dr,blue] & \\
+D_1 & & D_2 \\
+& X\times X\ar[uu,dashed,blue,"q_1\times q_2"]\ar[dl,red]\ar[dr,red] & \\
+X\ar[uu,blue] & & X\ar[uu,blue] \\
+& X\ar[uu,red,dashed,"\Dlt_X"]\ar[ul,red]\ar[ur,red] &
+\end{tikzcd}
+\]
+But of course, since the maps $q_i\circ 1_X=X\to X\to D_i$ are equal to simply the maps $q_i:X\to D_i$, we know that the unique map $X\mapsto D_1\times D_2$ making this entire diagram commute is $(q_1,q_2)$.
+Uniqueness implies that $(q_1,q_2)$ must be equal to $(q_1\times q_2)\Dlt_X$.
+
+\item
+This is the same idea.
+
+\item
+We already showed the first statement.
+For the second, notice that $\nabla_B(f\times g)=(f,g)$.
+But $(f,g)\Dlt_A(a)=(f(a),g(a))=(f+g)(a)$ because $A\oplus B=A\amalg B$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+Everything follows from the hint, except that we must verify that $1_{X\times Z}$ and $\theta\la$ complete the given diagram.
+Commutativity of the left triangle is obvious in both cases.
+To see that $q1_{X\times Z}=t$, note that $Z$ being terminal implies that $q=t$.
+To show that $q\theta\la=t$, note that $q\theta\la:X\times Z\to X\to X\times Z\to Z$.
+Thus $Z$ being terminal again implies the result.
+
+Now $\theta$ and $\la$ are inverses, and so $X\times Z$ and $X$ are equivalent.
+
+\item
+This is the dualized version of the previous part.
+\end{enumerate}
+\end{exercise}
+
+\end{document}
