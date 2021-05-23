@@ -6,125 +6,281 @@
 \section{Covering Spaces}
 \subsection{Basic Properties}
 \begin{exercise} \leavevmode
-
+Obviously $\RR$ is path-connected and $\exp$ is continuous.
+Furthermore, for each $\exp(2\pi it)\in S^1$, consider the neighborhood $S^1\setminus\{\exp(\pi+2\pi it)\}$.
+Of course, we know that
+\[\exp^{-1}(U)=\bigcup_{n\in\ZZ}\left(n+t-\frac12,n+t+\frac12\right),\]
+so $U$ is evenly covered.
 \end{exercise}
 
 \begin{exercise} \leavevmode
+To see that $p_k:z\mapsto z^k$ is continuous, pick some open $U\subseteq S^1$.
+Pick $\exp(2\pi it)\in p_k^{-1}(U)$, so that $\exp(2\pi ikt)\in U$.
+Then there is some $\ep>0$ so that
+\[\{\exp(2\pi ikx):t-\ep<x<t+\ep\}\subseteq U.\]
+Then it follows that the open set $\{\exp(2\pi ix):t-\ep<x<t+\ep\}$ is contained in $p_k^{-1}(U)$, so that $p_k^{-1}(U)$ is open.
+Hence $p_k$ is continuous.
 
+To see that $(S^1,p_k)$ is a covering space, let $e\exp(2\pi it)\in S^1$.
+Pick the open neighborhood
+\[U=\{\exp(2\pi ix):t-\tfrac12<x<t+\tfrac12\}.\]
+Note then that
+\[p_k^{-1}(U)=\bigcup_{n\in\ZZ}\left\{\exp\left(2\pi ix):\frac{t-\frac12+n}{k}<x<\frac{t+\frac12+n}{k}\right)\right\},\]
+proving that $U$ is evenly covered.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+Informally:
+Note that a point of $\RR P^n$ corresponds to a pair of antipodal points in $S^n$.
+Given some point in $S^n$, there is always a small open neighborhood which does not intersect its reflection (which is a neighborhood of the antipodal point).
+This neighborhood is evenly covered.
 \end{exercise}
 
 \begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+Consider any (basic) open neighborhood of $x_0$.
+The preimage of this neighborhood under $q$ looks like two disjoint intervals on $S^1$.
+The only possibility is if $q$ restricted to a homeomorphism on each of these intervals.
+But this isn't the case (surjectivity fails), so no neighborhood of $x_0$ is evenly covered.
 
+\item
+A non-tangency point obviously has an evenly covered neighborhood, while $x_0$ has an evenly covered neighborhood whose sheets correspond to small neighborhoods of the infinitely many tangency points of $\widetilde X$.
+\end{enumerate}
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+Each element of $p^{-1}(x_0)$ belongs to a different sheet, since $p$ is a homeomorphism on each sheet.
+Thus $p^{-1}(x_0)$ is discrete.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+Since a covering projection is a local homeomorphism, it follows that local topological properties are all inherited by picking a suitably small neighborhood of any given point.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+If $p^{-1}(U)=\bigcup S_i$ and $S'_i\subseteq S_i$ is $p^{-1}(V)\cap S_i$, then note that $p^{-1}(V)=\bigcup S'_i$.
+Furthermore, we know that $p:S'_i\to V$ is a homeomorphism since $p:S_i\to U$ is a homeomorphism and $p(S'_i)=V$.
+Hence $V$ is evenly covered.
 \end{exercise}
 
 \begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+Pick $(x_1,x_2)\in(X_1,X_2)$.
+Suppose neighborhoods $U_i$ of $x_i$ are $p_i$-admissible for $i=1,2$.
+In particular, write
+\[p_1^{-1}(U_1)=\bigcup S_i,\quad p_2^{-1}(U_2)=\bigcup T_j.\]
+Then it is easy to check that
+\[(p_1\times p_2)^{-1}(U_1\times U_2)=\bigcup S_i\times T_j.\]
+Note that $\RR$ is a covering space of $S^1$ (\Cref{10.1}), and so it follows that $\RR\times\RR$ covers the torus $S^1\times S^1$.
 
+\item
+Either using \Cref{10.2} or by noting that $(X,1_X)$ covers $X$ for any path-connected space $X$, it is easy to see that $S^1$ is a covering space of $S^1$.
+Hence the conclusion follows from the previous part.
+\end{enumerate}
 \end{exercise}
 
 \begin{exercise} \leavevmode
+Note that $q=\alpha^{-1}p\beta$ is continuous.
+Since $\widetilde Y$ and $\widetilde X$ are homeomorphic, we know that $\widetilde Y$ is path-connected.
 
+Now let $y\in Y$ correspond to $x\in X$, i.e., have $\alpha(y)=x$.
+Note that $x$ has a neighborhood $U_x$ such that $p^{-1}(U_x)=\bigcup S_i$ for sheets $S_i$.
+Write $\beta^{-1}(S_i)=T_i$, where $T_i$ and $S_i$ are homeomorphic.
+Observe that
+\[q(T_i)=\alpha^{-1}p\beta(T_i)=\alpha^{-1}p(S_i)=\alpha^{-1}(U_x).\]
+Moreover, we know that $q|T_i$ is a homeomorphism, because $p$ is a homeomorphism on $S_i$, making $q=\alpha^{-1}p\beta$ a composition of homeomorphisms.
+Hence $\alpha^{-1}(U_x)$ is a $q$-admissible neighborhood of $y$.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+In this case, we have $p_*\pi_1(\widetilde X,\tilde x_0)$ trivial, so that
+\[m=[\pi_1(X,x_0):p_*\pi_1(\widetilde X,\tilde x_0)]=|\pi_1(X,x_0)|.\]
+If $m$ is prime, then the only group of order $m$ is $\ZZ/m\ZZ$.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+This is the same logic as \Cref{10.10}.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+Pick $u\in U$.
+Then $p^{-1}(U)$ has cardinality $m$.
+But no two elements of $p^{-1}(U)$ can be in the same sheet, else $p|S_i$ would not be injective, while there is at least one element of $p^{-1}(U)$ in each $S_i$, else $p|S_i$ would not be surjective onto $U$.
+Since no element can be in multiple sheets, as the sheets are disjoint, it follows that the elements of $p^{-1}(U)$ can be put into 1-1 correspondence with the sheets $S_i$.
+Hence $|I|=m$.
 \end{exercise}
 
 \begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+Note that $[f]\in\ker\theta$ iff $\tilde x[f]=\tilde x$ for all $\tilde x\in p^{-1}(x_0)$.
+By definition, we know that $\tilde x[f]=\tilde f(1)$.
+Hence the following are all equivalent:
+\begin{itemize}
+\item $[f]\in\ker\theta$
+\item $\tilde f(1)=\tilde x[f]=\tilde x$ for all $\tilde x\in p^{-1}(x_0)$
+\item $\tilde f$ is a closed loop at $\tilde x$ for all $\tilde x$
+\item $p[\tilde f]\in p_*\pi_1(\widetilde X,\tilde x)$
+\item $[f]\in\bigcap_{\tilde x\in Y}p_*\pi_1(\widetilde X,\tilde x)$
+\end{itemize}
+The equivalence of the first and last conditions is what we originally wanted.
 
+\item
+Note that $\widetilde X$ being simply connected implies that $\bigcap p_*\pi_1(\widetilde X,\tilde x)$ is trivial.
+Hence $\ker\theta$ is trivial, so $\theta$ is an injection.
+\end{enumerate}
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+We know that $G$ is a covering space for $G/H$ with $p:g\mapsto gH$.
+Let $\theta:\pi(G/H,1)\to S_H$ be as defined in \Cref{10.13}.
+Since $G$ is simply connected, we know that $\theta$ is injective.
+Hence $\pi_1(G/H,1)\cong\im\theta$.
+Note that $\theta$ takes $\tilde x\mapsto\tilde f(1)$, where $\tilde f(0)=\tilde x$.
+But these path lifts in $\im\theta$ correspond precisely to elements of $H$, since $\tilde f(1)\in\ker p=H$.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+Every subgroup of an abelian group is normal.
+Hence $p_*\pi_1(\widetilde X,\tilde x_0)$ is a normal subgroup of $\pi_1(X,x_0)$.
+This is the definition of a regular covering space.
 \end{exercise}
 
 \begin{exercise} \leavevmode
+Pick $x\in X$.
+Let $\tilde y\in q^{-1}(x)$ and $\tilde x=h(\tilde y)$.
+We have the following diagram:
+\[
+\begin{tikzcd}
+(\widetilde Y,\tilde y)\ar[rr,"h"]\ar[dr,"q",swap] & & (\widetilde X,\tilde x)\ar[dl,"p"] \\
+& (X,x) &
+\end{tikzcd}
+\]
 
+Pick some path $\tilde f_X:\II\to\widetilde X$ with $\tilde f_X(0)=\tilde x$.
+Define $f=p\tilde f_X$.
+There is a unique $\tilde f_Y$ lifting $f$ to $(\widetilde Y,\tilde y)$, i.e., with $\tilde f_Y(0)=\tilde y$.
+But now notice that $h\tilde f_Y$ is a path lifting $f$ into $\widetilde X$ such that $(h\tilde f_Y)(1)=h(\tilde y)=\tilde x$.
+Uniqueness implies that $h\tilde f_Y=\tilde f_X$.
+
+Now $\im h$ contains $\im\tilde f_x$, which contains $x$.
+Thus $x\in\im h$.
+Since $x$ was arbitrary, this proves that $h$ is surjective.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+Let $\tilde x_0\in p^{-1}(x_0)$.
+Now consider the following statements, all of which are equivalent:
+\begin{itemize}
+\item $[f]\in p_*\pi_1(\widetilde X,\tilde x_0)$
+\item $[f]$ stabilizes $\tilde x_0$
+\item $\tilde x_0[f]=\tilde x_0$
+\item $\tilde f(1)=\tilde x_0$ where $\tilde f$ is the lifting with $0\mapsto\tilde x_0$
+\item $\tilde f$ is closed at $\tilde x_0$
+\end{itemize}
 \end{exercise}
 
 \subsection{Covering Transformations}
 \begin{exercise} \leavevmode
+The isomorphism is the composition of two isomorphisms.
+The first is $\Cov(\widetilde X/X)\to\Aut(p^{-1}(x_0))$ which takes $h$ to $h|p^{-1}(x_0)$.
+The second is $\Aut(p^{-1}(x_0))\to\pi_1(X,x_0)$ which takes $\phi$ to $[f^{-1}]$ where $f$ is the well-defined path so that $\phi(\tilde x_0)=\tilde x_0[f]$ for $\tilde x_0$ in the fiber over $x_0$.
 
+Hence the isomorphism $\Cov(\tilde X/X)$ takes $h$ to the map $[f^{-1}]$ defined by $h(\tilde x_0)=\tilde x_0[f]$ for $\tilde x_0\in p^{-1}(x_0)$.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+No.
+Any neighborhood of $p\in S^n$ is necessarily going to include some $q\tilde p$, thus making an even covering of any neighborhood impossible.
+To see why any neighborhood of $p$ intersects $\{q:q\sim p\}$ at a point that isn't $p$, simply note that the equivalence class of $p$ is connected.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+This is exactly the same argument as Example~10.2.
 \end{exercise}
 
 \begin{exercise} \leavevmode
+Suppose that, for each closed path $f:\II\to X$, either every lifting $\tilde f$ of $f$ is closed, or no lifting $\tilde f$ is closed.
+\Cref{10.17} implies that $p_*\pi_1(\widetilde X,\tilde x_0)=p_*\pi_1(\widetilde X,\tilde x_1)$ for all $\tilde x_0,\tilde x_1\in p^{-1}(x_0)$.
+Now Corollary~10.12 says that, if $\tilde x_0\in p^{-1}(x_0)$, then $gp_*\pi_1(\widetilde X,\tilde x_0)g^{-1}=p_*\pi_1(\widetilde X,\tilde x_1)$ for some $\tilde x_1\in p^{-1}(x_0)$.
+Hence the conjugate of $p_*\pi_1(\widetilde X,\tilde x_0)$ is itself, making it a normal subgroup.
+This is true for every $x_0$, so $(\widetilde X,p)$ is regular.
 
+Now suppose $(\widetilde X,p)$ is regular.
+Then $p_*\pi_1(\widetilde X,\tilde x_0)$ is normal for each $\tilde x_0$.
+Corollary~10.12(i) implies that $p_*\pi_1(\widetilde X,\tilde x_0)$ and $p_*\pi_1(\widetilde X,\tilde x_1)$ are conjugate for all $\tilde x_0,\tilde x_1$ in the fiber over $x_0$.
+Hence they are equal.
+Now use \Cref{10.17}:
+\[p_*\pi_1(\widetilde X,\tilde x_0)=\{[f]:\tilde f~\text{closed at}~\tilde x_0\}.\]
+Hence if the lifting $\tilde f$ to $\tilde x_0$ is closed, then so too is the lifting to $\tilde x_1$.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+The monodromy group is $\pi_1(X,x_0)/\ker\theta$ where $\ker\theta=\bigcap_{\tilde x\in p^{-1}(x_0)}p_*\pi_1(\widetilde X,\tilde x)$.
+But the $p_*$'s are all equal by Corollary~10.12(i).
+Hence $\ker\theta=p_*\pi_1(\widetilde X,\tilde x_0)$ for some $\tilde x_0\in p^{-1}(x_0)$.
+Corollary~10.28 implies the result.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+If $X$ is an $H$-space, then $\pi_1$ is abelian.
+Hence every subgroup is normal, so every covering space $X$ is regular.
 \end{exercise}
 
 \subsection{Existence}
 \begin{exercise} \leavevmode
-
+It suffices to show that $[\bar f]=[f^{-1}]$.
+After all, if this is true, then $\bar f*f$ is nullhomotopic, hence $[\bar f*f]\in G$, hence $\langle f\rangle_G=\langle f^{-1}\rangle_G$.
+But note that $e\simeq\tilde f\circ f\simeq\tilde f*f\rel\dot\II$.
+Hence $[\bar f]=[f^{-1}]$ as desired.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+A similar argument, on multiplication only, holds.
 \end{exercise}
 
 \begin{exercise} \leavevmode
+Let $\mathcal U$ be an open cover of $\widetilde X$.
+For $x\in X$, consider an admissible neighborhood $V_x$ of $x$:
+\[p^{-1}(V_x)=\bigcup_{i=1}^jS_i.\]
+Let $W_x$ be admissible with $\overline{W_x}\subseteq V_x$.
+Then we can write
+\[p^{-1}(W_x)=\bigcup_{i=1}^jT_i,\]
+where $\overline{T_i}\subseteq S_i$.
+Note that $T_i\approx W_x$ and $S_i\approx V_x$ for each $i=1,\dots,j$.
+Hence $\overline{T_i}$ is compact, since it is homeomorphic to a closed subset of the compact set $\overline{W_x}$.
 
+Thus there are, for each $i=1,\dots,j$, finitely many sets of $\mathcal U$ which together cover $\overline{T_i}$.
+Take all of them to obtain a (finite) cover of
+\[\bigcup\overline{T_i}\supseteq\bigcup T_i=p^{-1}(W_x).\]
+Call this finite cover to be $\mathcal W_x$.
+
+Note that the family of all $W_x$'s covers $X$.
+Since $X$ is compact, it follows that finitely many $W_x$'s cover $X$, say $W_{x_1},\dots,W_{x_n}$.
+Then
+\[\bigcup_{i=1}^nW_{x_i}=\widetilde X,\]
+which gives a finite subcover of $\mathcal U$.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+The $j$-sheeted covering spaces is exactly the number of $\widetilde X_G$ where $\widetilde X_G$ is $j$-sheeted.
+By Theorem~10.9(iii), this is exactly the number rof $G$ with $[\pi_1(X,x_0):p_*\pi_1(\widetilde X_G,\tilde x_0)]=j$.
+Of course, this $p_*$-group is exactly $G$, and so this is exactly the number of subgroups having index $j$.
 \end{exercise}
 
 \begin{exercise} \leavevmode
-
+The result follows as long as any finite CW complex has a finitely generated $\pi_1$.
+But this can be seen to be true by Van Kampen.
 \end{exercise}
 
 \subsection{Orbit Spaces}
 % 10.29
 \begin{exercise} \leavevmode
-We know by Theorem~10.54 that $\Cov(\tilde X/(\tilde X/H))=H$, and so we can think of $G$ as a subgroup of $\Cov(\tilde X/(\tilde X/H))$.
-Now use Theorem~10.52, with $X=\tilde X/H$.
-We know, in particular, that $G$ is a subgroup of $\Cov(\tilde X/X)$, and thus is exactly a covering space $(\tilde X/G,v)$ of $X=\tilde X/H$, as desired.
+We know by Theorem~10.54 that $\Cov(\widetilde X/(\widetilde X/H))=H$, and so we can think of $G$ as a subgroup of $\Cov(\widetilde X/(\widetilde X/H))$.
+Now use Theorem~10.52, with $X=\widetilde X/H$.
+We know, in particular, that $G$ is a subgroup of $\Cov(\widetilde X/X)$, and thus is exactly a covering space $(\widetilde X/G,v)$ of $X=\widetilde X/H$, as desired.
 \end{exercise}
 
 \begin{exercise} \leavevmode

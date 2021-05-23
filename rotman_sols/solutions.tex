@@ -20,11 +20,12 @@
 
 \newcommand*\II{\mathbb I}
 \renewcommand*\cat[1]{\mathscr{#1}}
-\newcommand*\Cat[1]{\mathsf{#1}}
+\newcommand*\Cat[1]{\mathbf{#1}}
 \renewcommand*\Top{\Cat{Top}}
 \renewcommand*\Set{\Cat{Set}}
 \newcommand*\Comp{\Cat{Comp}}
-%\newcommand*\Ab{\Cat{Ab}}
+\renewcommand*\Ab{\Cat{Ab}}
+\renewcommand*\Grp{\Cat{Grp}}
 \newcommand{\ecls}{%
   {\sim}%
 }
@@ -47,6 +48,7 @@
 \DeclareMathOperator\tr{tr}
 \DeclareMathOperator\Tor{Tor}
 \DeclareMathOperator\Cov{Cov}
+\DeclareMathOperator\Aut{Aut}
 
 \setcounter{section}{-1} 
 \setcounter{secnumdepth}{1}
@@ -118,6 +120,10 @@
 \newpage
 
 \subfile{chapters/chapter10/chapter10.tex}
+
+\newpage
+
+\subfile{chapters/chapter11/chapter11.tex}
 
 \end{document}
 
