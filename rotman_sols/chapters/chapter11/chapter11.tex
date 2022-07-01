@@ -154,4 +154,342 @@ This is the dualized version of the previous part.
 \end{enumerate}
 \end{exercise}
 
+\begin{exercise} \leavevmode
+We will use the definition of a group object.
+If $G$ is a group object, then the terminal object $Z$ is the one-element group $\{z\}$.
+With standard notation, let $e\in G$ be $\ep(z)$.
+Note that $\mu(g,e)=\mu(e,g)=g$.
+Now the fact that $\mu$ is a homomorphism implies that
+\[\mu(g_1,g_2)=\mu(g_1,e)\mu(e,g_2)=g_1g_2,\]
+so that $\mu$ must be the multiplication operation of $G$.
+Using this, we can show that $\eta$ is indeed the inverse operation: $\eta(g)=g^{-1}$.
+In particular, we know that
+\[g\cdot\eta(g)=(\mu\circ(1,\eta))(g)=e\]
+for any $g$.
+
+Now we know that $\eta$ must be a homomorphism.
+Thus
+\[g^{-1}h^{-1}=\eta(g)\eta(h)=\eta(gh)=(gh)^{-1}=h^{-1}g^{-1}.\]
+Obviously this proves that $G$ is abelian.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+The initial object $A$ in both cases is the empty set.
+The existence of a morphism $e:C\to A$ implies that $C=\emptyset$.
+It is easy to verify that $\emptyset$ is a cogroup object, which completes the proof.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This time we use the co-identity property.
+Let $x\in C$.
+Then $m(x)$ is either in the first coordinate or the second (or it is the basepoint $*$).
+Thus either $1\amalg e$ or $e\amalg 1$ will take $m(x)$ to $e(C)=*\in A\subseteq C\amalg A$.
+
+Now we compare this with the maps in the co-identity triangles.
+In particular, if $x\ne*$ is an element of $C$, then the maps $C\to C\amalg A$ and $C\to A\amalg C$ take $x$ to itself, not $x\mapsto*$.
+This contradicts commutativity, so $C=\{*\}$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+We prove this only for group objects; the result for cogroup objects simply involves oppositely oriented arrows.
+
+Identities follow from the commutativity of the following:
+\[
+\begin{tikzcd}
+G\times G\ar[d,"\mu",swap]\ar[r,"1_G\times1_G"] & G\times G\ar[d,"\mu"] \\
+G\ar[r,"1_G",swap] & G.
+\end{tikzcd}
+\]
+Associativity follows from associativity of $\cat C$.
+Composition follows from commutativity of the following:
+\[
+\begin{tikzcd}
+G\times G\ar[r,"f\times f"]\ar[d] & H\times H\ar[r,"g\times g"]\ar[d] & J\times J\ar[d] \\
+G\ar[r,"f",swap] & H\ar[r,"g",swap] & J,
+\end{tikzcd}
+\]
+as well as the fact that
+\[(g\times g)\circ(f\times f)=gf\circ gf.\]
+
+\item
+The first statement follows from Theorem~11.4.
+
+For the second statement, we must show that
+\[f_*(M_X^G(p,q))=M_X^H(f_*(p),f_*(q)),\]
+where $p,q\in\Hom(X,G)$.
+But we know that
+\[M_X^G(p,q)=\mu^G(p,q)\in\Hom(X,G),\]
+so that
+\[f\circ M_X^G(p,q):x\mapsto f(\mu^G(p(x),q(x))).\]
+On the other hand we know that
+\[M_X^H(f_*(p),f_*(q))=\mu^H(fp,fq)\]
+is the map taking
+\[x\mapsto\mu^H(fp(x),fq(x)).\]
+It thus suffices to show that
+\[f(\mu^G(p(x),q(x))=\mu^H(fp(x),fq(x)).)\]
+But following $(p(x),q(x))\in G\times G$ in the special diagram implies the result.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+That every abelian group is a group object is clear by \Cref{11.8}.
+To see that it is a cogroup object, define $e:g\mapsto a$ where $A=\{a\}$, $m:g\mapsto(g,g)$, and $h:g\mapsto -g$.
+The axioms are easy to check.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We will show that $\Hom(F,-)$ takes values in groups, where $F$ is a finitely generated free group.
+Let $\{x_1,\dots,x_n\}$ be a basis for $F$.
+Now consider the following function $P_G:\Hom(F,G)\times\Hom(F,G)\to\Hom(F,G)$:
+\[P_G:(f,g)\mapsto (x_i\mapsto f(x_i)g(x_i)).\]
+We will show that this gives $\Hom(F,G)$ a group structure.
+
+Note that an element of $\Hom(F,G)$ is completely determined by where it sends each $x_i$.
+Thus $P_G$ is well-defined.
+Now suppose $\phi:G\to H$, so that $\phi_*:\Hom(F,G)\to\Hom(F,H)$.
+Then we need to show that
+\[\phi_*(P_G(f,g))=P_H(\phi_*(f),\phi_*(g)).\]
+The left side takes
+\[x_i\mapsto f(x_i)g(x_i)\mapsto\phi(f(x_i)g(x_i)).\]
+On the other hand, the right side takes
+\[x_i\mapsto(\phi f(x_i),\phi g(x_i))\mapsto\phi f(x_i)\cdot\phi g(x_i).\]
+But these are equal because $\phi$ is a homeomorphism.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is easy; we can even use the same functions/morphisms.
+\end{exercise}
+
+\subsection{Loop Space and Suspension}
+\begin{exercise} \leavevmode
+We would like to show that the following commutes for all $f:A'\to A$:
+\[
+\begin{tikzcd}
+\Hom(A\otimes Y,C)\ar[r,"(f\otimes 1)^*"]\ar[d,"\tau_{AC}",swap] & \Hom(A'\otimes Y,C)\ar[d,"\tau_{A'C}"] \\
+\Hom(A,\Hom(Y,C))\ar[r,"f^*",swap] & \Hom(A',\Hom(Y,C)),
+\end{tikzcd}
+\]
+where $\tau_{AC}(\phi)=\phi^\#$.
+
+First, we look at the lower path $f^*\circ\tau_{AC}$.
+If $\phi:A\otimes Y\to C$ takes $(a,y)$ to $\phi(a,y)$, then $\tau_{AC}(\phi)=\phi^\#$ takes $a\in A$ to the map $\phi_a\in\Hom(Y,C)$ defined by $\phi_a(y)=\phi(a,y)$.
+Thus $\phi^\#f:A'\to\Hom(Y,C)$ is defined by
+\[\phi^\#f:f'\mapsto a\mapsto\phi_a,\]
+where $a=f(a')$.
+
+On the other hand, the upper path takes $\phi$ to the map
+\[[\phi(f\otimes 1)]^\#:A'\to\Hom(Y,C)\]
+defined by taking
+\[a'\mapsto[\psi_{a'}:y\mapsto\phi(f(a'),1(y))].\]
+Of course, these are the same since $f(a')=a$, proving commutativity.
+
+The second square is similar.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We'll show the first square, namely commutativity of
+\[
+\begin{tikzcd}
+\Hom(GA,C)\ar[r,"(Gf)^*"]\ar[d,"\tau_{AC}",swap] & \Hom(GA',C)\ar[d,"\tau_{A'C}"] \\
+\Hom(A,C)\ar[r,"f^*",swap] & \Hom(A',C),
+\end{tikzcd}
+\]
+where $\tau_{AC}$ takes $\phi:GA\to C$ to $\phi|_A$.
+But commutativity is obvious, since both paths end up taking $\phi$ to $\phi f:A'\to C$, where the maps are as sets.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We will show this for $G$; the statement for $F$ amounts to dualizing the following argument.
+
+Adjointness implies that there is a bijection $\tau_{AC}$ between $\Hom(FA,C)$ and $\Hom(A,GC)$.
+Hence consider the two diagrams below; the left one is in $\cat C$ and the right one is in $\cat A$:
+\[
+\begin{tikzcd}
+& FX\ar[dl,"\tilde q_1",swap]\ar[dd,dashed,"\tilde\theta"]\ar[dr,"\tilde q_2"] & & & & X\ar[dl,"q_1",swap]\ar[dd,dashed,"\theta"]\ar[dr,"q_2"] & \\
+C_1 & & C_2 & & GC_1 & & GC_2 \\
+& C\ar[ul,"p_1"]\ar[ur,"p_2",swap] & & & & GC\ar[ul,"Gp_1"]\ar[ur,"Gp_2",swap] &
+\end{tikzcd}
+\]
+Here, we let $\theta:X\to GC$ be the morphism corresponding to $\tilde\theta$ under $\tau_{XC}$, and we let $\tilde q_i$ be the morphism corresponding to $q_i$ under the bijection $\tau_{XC_i}$.
+We claim that $\theta$ completes the diagram on the right.
+To see this, use the fact that $(Gg)_*\tau=\tau g_*$.
+Now if $g=p_1$, then
+\[\tau g_*(\tilde\theta)=\tau(p_1\tilde\theta)=\tau(\tilde q_1)=q_1.\]
+
+Now we must show that $\theta$ is the unique map making the product diagram on the right commute.
+Suppose $\eta$ were another possible map.
+Define $\tilde\eta=\tau^{-1}(\eta)$.
+We will show that $\tilde\eta=\tilde\theta$, so the product diagram in $\cat C$ and the fact that $\tau$ is a bijection will imply that $\eta=\theta$.
+
+But notice that
+\[((Gp_1)_*\circ\tau)(\tilde\eta)=(Gp_1)*(\eta)=(Gp_1)*(\theta)=((Gp_1)_*\circ\tau)(\tilde\theta)=(\tau\circ(p_1)_*)(\tilde\theta).\]
+But naturality implies that
+\[((Gp_1)_*\circ\tau)(\tilde\eta)=(\tau\circ(p_1)_*)(\tilde\eta).\]
+It thus follows that
+\[\tau(p_1\tilde\theta)=\tau(p_1\tilde\eta).\]
+Since $\tau$ is a bijection, it follows that
+\[p_1\tilde\theta=p_1\tilde\eta=\tilde q_1.\]
+Thus $\tilde\eta$ completes the product diagram in $\cat C$, so that $\tilde\eta=\tilde\theta$, proving the result.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This is exactly stereographic projection (or the reverse of it).
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that $J^n$ is homeomorphic to $\II^n\setminus\{N\}$, where $N$ is some fixed point.
+Hence $(J^n)^\infty\approx\II^n$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Consider the map taking $A$ to $\infty$ and taking $x\in X\setminus A$ to itself.
+This is obviously a homeomorphism.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We have the following:
+\[S^m\wedge S^n=(\RR^m)^\infty\wedge(\RR^n)^\infty=(\RR^{m+n})^\infty=S^{m+n}.\]
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We have
+\[\II^n\wedge\II=(J^n)^\infty\wedge J^\infty=(J^{n+1})^\infty=\II^{n+1}.\]
+\end{exercise}
+
+\subsection{Homotopy Groups}
+\begin{exercise} \leavevmode
+Let $F:\beta\simeq y_0$ be a homotopy.
+We would like to show that
+\begin{align*}
+\beta_*:\pi_n(X,x_0)&\to\pi_n(Y,y_0)\\
+[\alpha]&\mapsto[\beta\circ\alpha].
+\end{align*}
+To do so, we must show that $\beta\circ\alpha$ is nullhomotopic $\rel\dot\II^n$.
+Consider the map
+\begin{align*}
+F\circ(\alpha\times\id_\II):\II^n\times\II&\to Y\\
+(u,t)&\mapsto F(\alpha(u),t).
+\end{align*}
+Obviously, this is a homotopy between $\beta(\alpha(u))$ and the constant map at $y_0$.
+To see that this is $\rel\dot\II^n$, simply note that $u\in\dot\II^n$ implies that $F(\alpha(u),t)=F(x_0,t)=y_0$, since $\alpha$ and $F$ are pointed maps.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We have the following chain of equalities (note that some equalities are up to isomorphism or homotopy, depending on the category):
+\begin{align*}
+\pi_n(X\times Y)&=[S^n,X\times Y] \\
+&=\Omega(X\times Y) \\
+&=\Omega X\times\Omega Y \\
+&=[S^n,X]\times[S^n,Y] \\
+&=[S^n,X]\oplus[S^n,Y]=\pi_n(X)\oplus\pi_n(Y).
+\end{align*}
+Since $\pi_n(S^1)=0$, it follows that $\pi_n(T)=\pi_n(S^1)\times\pi_n(S^1)=0$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This follows from Theorem~11.29 and the fact that $S^n$ covers $\RR P^n$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Note that Theorem~10.54(i) applies because locally path-connected and contractible implies connected.
+Thus $X$ is a covering space for $X/G$, and so Theorem~11.29 implies that $\pi_n(X)\cong\pi_n(X/G)$.
+But $\pi_n(X)=0$ for $n\ge2$ since $X$ is contractible.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+This follows almost immediately from the hint.
+To see that $*$ and $\circ$ coincide, note that
+\[f*g=(f\circ e)*(e\circ g)=(f*e)\circ(e*g)=f\circ g.\]
+To see commutativity, we need only check that $f*g=g\circ f$.
+But this follows because
+\[f*g=(e\circ f)*(g\circ e)=(e*g)\circ(f*e)=g\circ f,\]
+as desired.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+\begin{enumerate}
+\item
+We follow the path laid out in the hints.
+First, note that, if $q\in Q$, then
+\[\mu(f,e)(q)=\mu(f(q),p_0)=(\mu(-,p_0)\circ f)(q).\]
+Thus it follows that
+\[[f]*[e]=[\mu(f,e)]=[\mu(-,p_0)\circ f]=[1_P\circ f]=[f],\]
+where we use the property of an $H$-space.
+Similarly, we can show that $[e]*[f]=[f]$.
+
+Now we must show that $[f]\circ[e]=[f]$.
+But $[f]\circ[e]=[(f,e)m]$, and $(f,e)m$ takes $q$ to $f(q)$ if $m(q)$ is in the first coordinate of $Q\vee Q$, and takes $q$ to $p_0$ if $m(q)$ is in the second coordinate.
+Letting $q_1$ be as in the definition of an $H'$-group, i.e., letting $q_1$ be the projection to the first coordinate, we see that $q_1m$ takes $q$ to $q$ if $m(q)$ is in the first coordinate and takes $q$ to $q_0$ otherwise.
+Thus $fq_1m$ takes $q$ to either $f(q)$ or $p_0$, depending on the coordinate of $q$, and so it follows that $fq_1m=(f,e)m$.
+But of course $q_1m\simeq 1_Q$, from which the conclusion follows.
+
+To show the second condition of \Cref{11.27}, note first that
+\[([f]\circ[h])*([g]\circ[j])=[\mu((f,h)m,(g,j)m)].\]
+The map on the right side takes $q$ to either $\mu(fq,gq)$ or $\mu(hq,jq)$, depending on where $m(q)$ is in the first or second coordinate of $Q\vee Q$.
+On the other hand, we have
+\[([f]*[g])\circ([h]*[j])=[(\mu(f,g),\mu(h,j))m],\]
+which takes
+\[q\mapsto m(q)\mapsto\begin{cases}\mu(fq,gq)\\\mu(hq,jq)\end{cases},\]
+which is the exact same.
+Thus condition (ii) is satisfied, and the previous exercise proves the result.
+
+\item
+Note that $[\Sig^2X,Y]=[\Sig X,\Omega Y]$ since $\Sig$ and $\Omega$ are adjoint functors.
+Now since $\Sig X$ is an $H'$-group and $\Omega Y$ is an $H$-group in the category, hence an $H$-space, it follows from the previous part that $[\Sig X,\Omega Y]$ is abelian.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \leavevmode
+First, we must show that this is well-defined.
+Suppose $F:f\simeq g\rel\{s_n\}$.
+We claim that $\Sig f\simeq\Sig g$ with the map $G:(a,b,t)\mapsto (F(a,t),b)$.
+But this is easy to verify because $G(a,b,0)=(F(a,0),b)=(f(a),b)=(\Sig f)(a,b)$, and similarly for $G(a,b,1)$.
+
+Now, we will show that it is a homomorphism.
+Let $m_n:S^n\to S^n\vee S^n$ be comultiplication.
+Then $[f][g]=[(f,g)m]$.
+We would like to show that
+\[[\Sig((f,g)m_n)]=[\Sig f][\Sig g]=[(\Sig f,\Sig g)m_{n+1}].\]
+To see this, note that the left side takes $(a,b)$ to $(f(a),b)$ or $(g(a),b)$, depending on which $S^n\wedge S^1$-component $m_{n+1}(a,b)$ belongs to in $(S^n\wedge S^1)\vee(S^n\wedge S^1)$.
+On the other hand, we know that $\Sig((f,g)m_n)$ takes $(a,b)$ to $(((f,g)m_n)(a),b)$.
+This first coordinate $((f,g)m_n)(a)$ is $f(a)$ or $g(a)$, depending on which ``half'' $m_n$ takes $a$ to.
+Using a rotation to make sure the two halves which $m_n$ and $m_{n+1}$ determine line up (after projecting $S^{n+1}$ down to the equator, which is $S^n$), it is easy to show that these maps are homotopic.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+Any map $Y\to X$ is homotopic to some simplicial approximation $Sd^qL\to K$.
+Obviously, there are only countably many simplicial approximations, since there are only finitely many vertices of each $\Sd^qL$ and of $K$.
+Hence $[Y,X]$ is countable.
+Thus $\pi_n(X)=[S^n,X]$ must be countable.
+\end{exercise}
+
+\subsection{Exact Sequences}
+\begin{exercise} \leavevmode
+This is the exact same argument as part (ii) of \Cref{5.14}.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+The same diagram chase remark applies, just changing $H$ to $\pi$.
+\end{exercise}
+
+\begin{exercise} \leavevmode
+We have the following long exact sequence:
+\[
+\begin{tikzcd}[column sep=small]
+\dots\ar[r] & \pi_{n+1}(X,X)\ar[r,"d"] & \pi_n(X)\ar[r,"\id"] & \pi_n(X)\ar[r,"j_*"] & \pi_n(X,X)\ar[r,"d"] & \pi_{n-1}(X)\ar[r,"\id"] & \dots
+\end{tikzcd}
+\]
+Now we know that $\ker j_*=\im\id=\pi_n(X)$, so that $\im j_*=0$.
+Hence $\ker d=0$.
+But $\im d=\ker\id=0$, and so $\ker d=\pi_n(X,X)$.
+The result now follows.
+\end{exercise}
+
+\subsection*{Fibrations}
+\begin{exercise} \leavevmode
+
+\end{exercise}
+
 \end{document}
